@@ -1,5 +1,9 @@
 # MAST-web
 
-**MAST web interface** is a project to setup a Linux service to mount __Multiple Auto-SSH Tunnels__
+**MAST** is a project to provide a web interface to the `MAST` project (a __Multiple Auto-SSH Tunnels__ mounter)
 
 [TOC]
+
+## Requirements
+
+* Apache `2.2+`
