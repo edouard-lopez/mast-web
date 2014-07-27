@@ -22,24 +22,26 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action): ?>
-                        <li>
-                            <a href="#/api/<?=$action?>" id="<?=$action?>" class="btn btn-default btn-action">
-                                <?= ucfirst(i18n($this,$action))?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
 
-                    <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper): ?>
-                        <li>
-                            <a href="#/api/<?=$helper?>" id="<?=$helper?>" class="btn btn-default btn-action">
-                                <?= ucfirst(i18n($this,$helper))?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
+                <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
+                    <li>
+                        <button type="button" id="<?=$action?>" class="btn btn-<?=$props['class']?> btn-sm btn-action">
+                            <i class="glyphicon glyphicon-<?=$props['icon']?>"></i>
+                            <?= ucfirst(i18n($this,$action))?>
+                        </button>
+                    </li>
+                <?php endforeach; ?>
                 </ul>
 
                 <ul class="nav navbar-nav">
+                <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper => $props): ?>
+                    <li>
+                        <button type="button" id="<?=$helper?>" class="btn btn-<?=$props['class']?> btn-sm btn-helper">
+                            <i class="glyphicon glyphicon-<?=$props['icon']?>"></i>
+                            <?= ucfirst(i18n($this,$helper))?>
+                        </button>
+                    </li>
+                <?php endforeach; ?>
                     <li>
                         <a href="/api/<?=$helper?>" id="<?=$helper?>" class="btn btn-default btn-action">
                             <?=i18n($this,'clear')?>

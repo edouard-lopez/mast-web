@@ -17,7 +17,7 @@ class Service extends CI_Controller {
 	 */
 	public function action($_)
 	{
-        if (in_array($_, $this->config->item('SERVICE_ACTIONS'))) {
+        if (array_key_exists($_, $this->config->item('SERVICE_ACTIONS'))) {
             return $this->shell->run("/etc/init.d/mast $_");
         } else {
             show_error('Invalid action', 500);
