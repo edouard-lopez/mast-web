@@ -41,7 +41,6 @@
 $route['default_controller'] = "welcome";
 $route['default_controller'] = "home";
 $route['404_override'] = '';
-// $route['404_override'] = 'errors/404';
 $route['api/(:any)'] = 'service/action/$1';
 
 
