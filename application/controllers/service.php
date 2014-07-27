@@ -20,7 +20,7 @@ class Service extends CI_Controller {
         if (array_key_exists($_, $this->config->item('SERVICE_ACTIONS'))) {
             return $this->shell->run("/etc/init.d/mast $_");
         } else {
-            show_error('Invalid action', 500);
+            show_error('Invalid action'.basename(__FILE__), 500);
         }
 	}
 }

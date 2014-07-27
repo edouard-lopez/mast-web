@@ -31,7 +31,7 @@ class Shell {
             echo '<br/>';
         } else {
             var_dump($_);
-            show_error('Invalid command output', 500);
+            show_error('Invalid command output in '.basename(__FILE__), 500);
         }
     }
 
