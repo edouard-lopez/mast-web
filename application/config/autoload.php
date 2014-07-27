@@ -64,7 +64,7 @@ $autoload['libraries'] = array('Shell');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array();
+$autoload['helper'] = array('i18n');
 
 
 /*
@@ -96,7 +96,7 @@ $autoload['config'] = array('mast');
 |
 */
 
-$autoload['language'] = array();
+$autoload['language'] = array('fr_FR');
 
 
 /*
