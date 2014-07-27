@@ -2,6 +2,10 @@
  * User: ed8
  * Date: 7/27/14
  */
+.stdout {
+    width: 100%;
+    min-height: 20em;
+}
 .brand {
     position: relative;
     top: -.75em;
