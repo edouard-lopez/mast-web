@@ -16,7 +16,7 @@
                     <?php endforeach; ?>
 
     <div>
-        <pre id="output"><?= $this->shell->run("/etc/init.d/mast status"); ?></pre>
+        <pre class="stdout"><?= $this->shell->run("/etc/init.d/mast status"); ?></pre>
     </div>
 
 <?php require TPL_PATH.'/footer.php'; ?>
