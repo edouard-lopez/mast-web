@@ -28,6 +28,12 @@
                         </button>
                     </li>
                 <?php endforeach; ?>
+                    <li>
+                        <button type="button" class="btn btn-default btn-sm btn-clear">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
+                            <?=i18n($this,'clear')?>
+                        </button>
+                    </li>
                 </ul>
             </div>
 
@@ -42,12 +48,14 @@
                     </li>
                 <?php endforeach; ?>
                     <li>
-                        <a href="/api/<?=$helper?>" id="<?=$helper?>" class="btn btn-default btn-action">
+                        <button type="button" class="btn btn-default btn-sm btn-clear">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
                             <?=i18n($this,'clear')?>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
+
             <div class="tab-pane" id="settings">
                 <p class="bg-danger">The Kraken <strong>eat them all!</strong></p>
             </div>
