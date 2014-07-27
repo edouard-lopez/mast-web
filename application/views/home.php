@@ -1,12 +1,27 @@
+<?
+/**
+ * User: ed8
+ * Date: 7/27/14
+ */
+?>
 <?php require TPL_PATH.'/header.php'; ?>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-	<div class="container">
-		<h2>Mast web</h2>
+<div class="container">
+    <h2><?=i18n($this,'dashboard')?></h2>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
-	</div>
-</div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
                     <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action): ?>
                         <li>
                             <a href="#/api/<?=$action?>" id="<?=$action?>" class="btn btn-default btn-action">
@@ -15,8 +30,29 @@
                         </li>
                     <?php endforeach; ?>
 
+                    <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper): ?>
+                        <li>
+                            <a href="#/api/<?=$helper?>" id="<?=$helper?>" class="btn btn-default btn-action">
+                                <?= ucfirst(i18n($this,$helper))?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/api/<?=$helper?>" id="<?=$helper?>" class="btn btn-default btn-action">
+                            <?=i18n($this,'clear')?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div>
         <pre class="stdout"><?= $this->shell->run("/etc/init.d/mast status"); ?></pre>
     </div>
+</div>
 
 <?php require TPL_PATH.'/footer.php'; ?>
