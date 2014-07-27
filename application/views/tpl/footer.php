@@ -1,6 +1,8 @@
-
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>
+            &copy; <?= $this->config->item('PROJECT.html') ?>,
+            see on <a href="https://github.com/edouard-lopez/mast-web">Github</a> <?= date('Y') ?>.
+        </p>
       </footer>
     </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="resources/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
