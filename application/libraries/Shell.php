@@ -25,10 +25,8 @@ class Shell {
     public static function toString($_ = null) {
         if (is_array($_ )) {
             foreach($_ as $k => $line) {
-                if ($line == '1') { continue; }
-                echo "$line";
+                echo $line.'<br/>';
             }
-            echo '<br/>';
         } else {
             var_dump($_);
             show_error('Invalid command output in '.basename(__FILE__), 500);
