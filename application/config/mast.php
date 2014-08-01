@@ -4,6 +4,11 @@
  * Date: 7/27/14
  */
 
+/**
+* Whitelist service actions
+* @param :{string} class HTML class for the button
+* @param :{string} icon glyphicon class
+*/
 $config['SERVICE_ACTIONS'] = array(
     'start' => array(
         'class' => 'success',
