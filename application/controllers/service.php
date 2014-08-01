@@ -14,11 +14,13 @@ class Service extends CI_Controller {
 	/**
 	 * Start
 	 * @return array [description]
+	 * @param string _ action to request on the service (start|stop|restart|…)
 	 */
-	public function action($_)
+	public function action($_, $config = null)
 	{
+	// @todo: sanitize command's arguments!!
         if (array_key_exists($_, $this->config->item('SERVICE_ACTIONS'))) {
-            return $this->shell->run("/etc/init.d/mast $_");
+            return $this->shell->run("/etc/init.d/mast $_ $config");
         } else {
             show_error('Invalid action'.basename(__FILE__), 500);
         }
