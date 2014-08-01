@@ -26,6 +26,10 @@ $config['SERVICE_ACTIONS'] = array(
         'class' => 'info',
         'icon' => 'list',
     ),
+    'list-ports' => array(
+        'class' => 'info',
+        'icon' => 'list',
+    ),
     'list-log' => array(
         'class' => 'info',
         'icon' => 'info-sign',
