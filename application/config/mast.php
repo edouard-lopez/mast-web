@@ -28,7 +28,7 @@ $config['SERVICE_ACTIONS'] = array(
     ),
     'list-log' => array(
         'class' => 'info',
-        'icon' => 'align-justify',
+        'icon' => 'info-sign',
     ),
 );
 $config['SERVICE_HELPERS'] = array(
