@@ -1,0 +1,21 @@
+/**
+ * User: ed8
+ * Date: 7/27/14
+ */
+.stdout {
+    width: 80%;
+    min-height: 20em;
+    margin: 0 auto;
+}
+.brand {
+    position: relative;
+    top: -.75em;
+}
+
+p {
+    padding: .75em;
+    margin-top: .25em;
+}
+p:last-child {
+    margin-top: 0;
+}

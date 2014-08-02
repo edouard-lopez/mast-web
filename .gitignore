@@ -1,3 +1,6 @@
+mast-web/
+
+# github boilerplate
 .DS_Store
 
 application/cache/*
