@@ -6,6 +6,44 @@
 ?>
 <?php require TPL_PATH . '/header.php'; ?>
 
+<style type="text/css">
+    .layerFull{
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        background-color: #eee;
+        position: absolute;
+    }
+
+    #parent {
+        z-index: 1000;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        display: table;
+        top: 0;
+        left: 0;
+    }
+
+    .child {
+        z-index: 1001;
+        opacity: 0.99;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+</style>
+
+<div id="parent" onclick="javascript:$(this).hide();">
+    <div class="layerFull"></div>
+    <div class="child">
+        <h2 class="bg-danger">----------------<br/>
+            <strong>WARNING :</strong> Vous etes sur une interface d'administration,<br/>
+            <strong> manipuler avec precaution!</strong><br/>----------------
+        </h2>
+    </div>
+</div>
+
 <div class="container">
     <h2><?= i18n($this, 'dashboard') ?></h2>
 
@@ -57,7 +95,6 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <p class="bg-danger">The Kraken <strong>eat them all!</strong></p>
         <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
             <li><a href="#tunnels" role="tab" data-toggle="tab">Tunnels</a></li>
         </ul>
