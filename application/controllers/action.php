@@ -23,7 +23,8 @@ class Action extends CI_Controller {
             return $this->shell->run(MAST_SERVICE." $_ $config");
         }
         elseif (array_key_exists($_, $this->config->item('SERVICE_HELPERS'))) {
-            return $this->shell->run(MAST_UTILS." $_ NAME=$config");
+            $config= ! is_null($config) ? "NAME=$config" : '' ;
+            return $this->shell->run(sprintf("%s %s %s", MAST_UTILS, $_, $config));
         } else {
             show_error('Invalid action'.basename(__FILE__), 500);
         }
