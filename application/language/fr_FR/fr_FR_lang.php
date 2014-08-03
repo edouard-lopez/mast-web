@@ -7,7 +7,9 @@ $lang['start'] = 'Démarrer';
 $lang['stop'] = 'Arrêter';
 $lang['restart'] = 'Redémarrer';
 $lang['list'] = 'Lister';
-$lang['list-log'] = 'Journaux';
+$lang['list-logs'] = 'Journaux';
+$lang['list-hosts'] = 'Machines';
+$lang['list-channels'] = 'Canaux';
 $lang['add-host'] = 'Ajouter un hôte';
 $lang['remove-host'] = 'Supprimer un hôte';
 

@@ -22,17 +22,7 @@ $config['SERVICE_ACTIONS'] = array(
         'class' => 'warning',
         'icon' => 'refresh',
     ),
-    'list' => array(
         'class' => 'info',
-        'icon' => 'list',
-    ),
-    'list-ports' => array(
-        'class' => 'info',
-        'icon' => 'list',
-    ),
-    'list-log' => array(
-        'class' => 'info',
-        'icon' => 'info-sign',
     ),
 );
 $config['SERVICE_HELPERS'] = array(
@@ -43,6 +33,18 @@ $config['SERVICE_HELPERS'] = array(
     'remove-host' => array(
         'class' => 'danger',
         'icon' => 'remove-sign',
+    ),
+    'list-channels' => array(
+        'class' => 'info',
+        'icon' => 'random',
+    ),
+    'list-hosts' => array(
+        'class' => 'info',
+        'icon' => 'list',
+    ),
+    'list-logs' => array(
+        'class' => 'info',
+        'icon' => 'info-sign',
     ),
 );
 $config['PROJECT'] = 'Mast web';

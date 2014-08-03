@@ -42,4 +42,10 @@ class Shell {
         $ouput = self::execute($_);
         return self::toString($ouput);
     }
+
+    public static function list_channels($_) {
+        $output = self::execute(sprintf("%s %s NAME=%s", MAST_UTILS, "list-channels", $_));
+        return $output;
+    }
+
 }
