@@ -1,7 +1,8 @@
       <footer>
         <p>
-            &copy; <?= $this->config->item('PROJECT.html') ?>,
-            see on <a href="https://github.com/edouard-lopez/mast-web">Github</a> <?= date('Y') ?>.
+            <?= date('Y') ?>,
+            &copy; <?= $this->config->item('PROJECT.html') ?>
+            under <a href="http://choosealicense.com/licenses/gpl-3.0/">GPLv3 license</a>.
         </p>
       </footer>
     </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
