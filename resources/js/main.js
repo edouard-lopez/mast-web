@@ -25,7 +25,7 @@ var instance = {
 
 	init: function () {
 		var self = this;
-        $('#service .btn-action').on( "click", function() {
+        $('.service .btn-action').on( "click", function() {
             self.apiCall(this.id);
         });
         $('#tunnels .btn-action').on( "click", function() {

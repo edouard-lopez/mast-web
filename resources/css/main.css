@@ -19,3 +19,14 @@ p {
 p:last-child {
     margin-top: 0;
 }
+
+.btn-action span,
+.btn-clear span
+{
+    /*display: none;*/
+}
+.btn-action:hover span,
+.btn-clear:hover span
+{
+    display: inline;
+}
