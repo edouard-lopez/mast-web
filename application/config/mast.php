@@ -49,3 +49,6 @@ $config['SERVICE_HELPERS'] = array(
 );
 $config['PROJECT'] = 'Mast web';
 $config['PROJECT.html'] = '<abbr title="Multiple Auto-SSH Tunnels web" class="initialism">MAST</abbr>-web';
+
+define('MAST_SERVICE', '/etc/init.d/mast');
+define('MAST_UTILS', '/usr/sbin/mast-utils');

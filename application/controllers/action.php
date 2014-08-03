@@ -21,10 +21,10 @@ class Action extends CI_Controller {
         var_dump($_, $config);
 	// @todo: sanitize command's arguments!!
         if (array_key_exists($_, $this->config->item('SERVICE_ACTIONS'))) {
-            return $this->shell->run("/etc/init.d/mast $_ $config");
+            return $this->shell->run(MAST_SERVICE." $_ $config");
         }
         elseif (array_key_exists($_, $this->config->item('SERVICE_HELPERS'))) {
-            return $this->shell->run("/usr/sbin/mast-utils $_ $config");
+            return $this->shell->run(MAST_UTILS." $_ NAME=$config");
         } else {
             show_error('Invalid action'.basename(__FILE__), 500);
         }
