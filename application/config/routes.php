@@ -41,8 +41,8 @@
 $route['default_controller'] = "welcome";
 $route['default_controller'] = "home";
 $route['404_override'] = '';
-$route['api/(:any)/(:any)'] = 'service/action/$1/$2';
-$route['api/(:any)'] = 'service/action/$1';
+$route['api/(:any)/(:any)'] = 'action/invoke/$1/$2';
+$route['api/(:any)'] = 'action/invoke/$1';
 
 
 /* End of file routes.php */
