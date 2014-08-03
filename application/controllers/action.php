@@ -18,7 +18,6 @@ class Action extends CI_Controller {
 	 */
 	public function invoke($_, $config = null)
 	{
-        var_dump($_, $config);
 	// @todo: sanitize command's arguments!!
         if (array_key_exists($_, $this->config->item('SERVICE_ACTIONS'))) {
             return $this->shell->run(MAST_SERVICE." $_ $config");
