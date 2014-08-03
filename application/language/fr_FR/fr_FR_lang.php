@@ -6,6 +6,7 @@
 $lang['start'] = 'Démarrer';
 $lang['stop'] = 'Arrêter';
 $lang['restart'] = 'Redémarrer';
+$lang['status'] = 'Status';
 $lang['list'] = 'Lister';
 $lang['list-logs'] = 'Journaux';
 $lang['list-hosts'] = 'Machines';

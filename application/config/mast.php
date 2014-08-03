@@ -22,7 +22,9 @@ $config['SERVICE_ACTIONS'] = array(
         'class' => 'warning',
         'icon' => 'refresh',
     ),
+    'status' => array(
         'class' => 'info',
+        'icon' => 'search',
     ),
 );
 $config['SERVICE_HELPERS'] = array(
