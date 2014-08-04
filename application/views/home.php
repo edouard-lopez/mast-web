@@ -74,12 +74,6 @@
                                         </button>
                                     </li>
                                 <?php endforeach; ?>
-                                <li>
-                                    <button type="button" class="btn btn-default btn-xs btn-clear">
-                                        <i class="glyphicon glyphicon-ban-circle"></i>
-                                        <span><?= i18n($this, 'clear') ?></span>
-                                    </button>
-                                </li>
                             </ul>
                         </h4>
                     </div>
@@ -95,12 +89,12 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
+<!--         <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
             <li><a href="#tunnels" role="tab" data-toggle="tab">Tunnels</a></li>
-        </ul>
+        </ul> -->
 
         <!-- Tab panes -->
-        <div class="tab-content">
+        <!-- <div class="tab-content"> -->
             <div class="tab-pane" id="tunnels">
                 <ul class="nav nav-pills">
                     <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper => $props): ?>
@@ -119,11 +113,11 @@
                         </button>
                     </li>
                 </ul>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>
-
+<br/>
 <div class="container-fluid">
     <pre class="stdout"><?= $this->shell->run("/etc/init.d/mast status"); ?></pre>
 </div>
