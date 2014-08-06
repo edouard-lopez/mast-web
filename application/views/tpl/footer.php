@@ -16,20 +16,21 @@
                     var nodes = $('.remoteHost');
                     // console.log(nodes);
                     $.each( nodes, function( node ) {
-                        rmNode = $(this).data('rm');
+                        var currentThis=$(this);
+                        var rmNode = currentThis.data('rm');
                         // console.log(rmNode, './resources/ajax/touch-host.php?hosts='+rmNode['remoteHost']+':'+rmNode['remotePort']);
 
                         $.getJSON('./resources/ajax/touch-host.php?hosts='+rmNode['remoteHost']+':'+rmNode['remotePort'],
                             function(json){
-                                console.log(json, json[Object.keys(json)[0]]['status']);
-                                $(this).removeClass('btn-default');
-                                $(this).addClass('btn-'+json[Object.keys(json)[0]]['status']);
+                                currentThis.removeClass('btn-default');
+                                currentThis.addClass('btn-'+json[Object.keys(json)[0]]['status']);
+                                console.log(json);
                             });
                     });
                 }
             testEach_Rm();
             $(document).ready( function(){
-                setInterval(testEach_Rm ,10*1000);
+                setInterval(testEach_Rm ,60*1000);
             });
         </script>
     </body>
