@@ -60,7 +60,7 @@ Perform a system ping to a host
         return array(
                     'ping' => $ping,
                     'telnet' => $telnet,
-                    'status' => (is_numeric($ping) && is_numeric($telnet)) ? $levelClass['full-ok'] : (is_numeric($telnet) ? $levelClass['ok'] : (is_numeric($ping) ? (empty($port) ? $levelClass['full-ok'] : $levelClass['warning']) : $levelClass['mismatch']))
+                    'status' => (is_numeric($ping) && is_numeric($telnet)) ? $levelClass['full-ok'] : (is_numeric($telnet) ? $levelClass['ok'] : (is_numeric($ping) ? (empty($port) ? $levelClass['full-ok'] : $levelClass['partial']) : $levelClass['mismatch']))
                 );
     }
 

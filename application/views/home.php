@@ -45,10 +45,9 @@
 </div>
             <?php
                 $list = $this->shell->execute("/usr/sbin/mast-utils list-hosts");
-                $obj = array('test');
                 foreach ($list as $key => $tunnel){
                     preg_match(
-                        '/^(.*)[\s\t]+(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3})(\:([0-9]{1,5}))?/',
+                        '/^(.*\w)[\s\t]+(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3})(\:([0-9]{1,5}))?/',
                         trim(strip_tags($tunnel)),
                         $ConfSite);
                     $channels = $this->shell->list_channels($ConfSite[1]);
@@ -60,34 +59,31 @@
                             $ChannelSite);
                         $ChannelsSite[]=array(
                             'listenPort'=>$ChannelSite[2],
-                            'destHost'=>$ChannelSite[3],
-                            'destPort'=>$ChannelSite[4]
+                            'remoteHost'=>$ChannelSite[3],
+                            'remotePort'=>$ChannelSite[4]
                             );
                     }
 
                     $obj[$ConfSite[1]] = array(
                         // "nameSite" => $ConfSite[1];
-                        'ipSite' => $ConfSite[2],
-                        'portSite' => count($ConfSite)>=6?$ConfSite[6]:22,
+                        'remoteHost' => $ConfSite[2],
+                        'remotePort' => count($ConfSite)>=6?$ConfSite[6]:22,
                         'channels' => $ChannelsSite
                     );
                 }
-                echo "<pre>";
-                var_export($obj);
+                // echo "<pre>";
+                // var_export($obj);
             ?>
 
 <div class="container">
     <h2><?= i18n($this, 'dashboard') ?></h2>
-
     <div class="container-fluid">
-
-        <div class="panel-group" id="accordion" data-obj="<?=json_encode($obj)?>">
+        <div class="panel-group" id="accordion" data-obj='<?=json_encode($obj)?>'>
+            <?php foreach ($obj as $site => $siteConfig) {?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                <!--?= $tunnel ?-->
-                            </a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <?= $site ?></a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
                                     <li>
@@ -99,19 +95,30 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
+                            <button type="button" class="remoteHost btn btn-xs btn-default pull-left" data-rm='<?=json_encode($siteConfig)?>'>
+                                 <i class="glyphicon glyphicon-repeat"></i>
+                            </button>
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack">
-                                <!--?php foreach ($this->shell->list_channels($tunnelName) as $k => $host): ?-->
-                                    <li><!--?=$host?--></li>
-                                <!--?php endforeach; ?-->
+                                <?php
+                                // var_export($siteConfig['channels']);
+                                foreach ($siteConfig['channels'] as $channel){
+                                    echo "<li>";
+                                    echo "  <p>";
+                                    echo "<button type='button' class='remoteHost btn btn-xs btn-default pull-leftx' data-rm='".json_encode($channel)."'>";
+                                    echo "  <i class='glyphicon glyphicon-repeat'></i>";
+                                    echo "</button>";
+                                    echo "<a href='http://".$channel['remoteHost']."/'>".$channel['remoteHost']."</a> on port ".$channel['listenPort']."</p>";
+                                    echo "</li>";
+                                } ?>
                             </ul>
                         </div>
                     </div>
                 </div>
-            <!--?php endforeach; ?-->
+            <?php }; ?>
         </div>
 <!--         <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
             <li><a href="#tunnels" role="tab" data-toggle="tab">Tunnels</a></li>

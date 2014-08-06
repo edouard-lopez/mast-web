@@ -11,5 +11,26 @@
         <script src="resources/js/vendor/bootstrap.min.js"></script>
 
         <script src="resources/js/main.js"></script>
+        <script type="text/javascript">
+                var testEach_Rm = function(){
+                    var nodes = $('.remoteHost');
+                    // console.log(nodes);
+                    $.each( nodes, function( node ) {
+                        rmNode = $(this).data('rm');
+                        // console.log(rmNode, './resources/ajax/touch-host.php?hosts='+rmNode['remoteHost']+':'+rmNode['remotePort']);
+
+                        $.getJSON('./resources/ajax/touch-host.php?hosts='+rmNode['remoteHost']+':'+rmNode['remotePort'],
+                            function(json){
+                                console.log(json, json[Object.keys(json)[0]]['status']);
+                                $(this).removeClass('btn-default');
+                                $(this).addClass('btn-'+json[Object.keys(json)[0]]['status']);
+                            });
+                    });
+                }
+            testEach_Rm();
+            $(document).ready( function(){
+                setInterval(testEach_Rm ,10*1000);
+            });
+        </script>
     </body>
 </html>
