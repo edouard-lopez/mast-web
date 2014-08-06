@@ -43,26 +43,50 @@
         </h2>
     </div>
 </div>
+            <?php
+                $list = $this->shell->execute("/usr/sbin/mast-utils list-hosts");
+                $obj = array('test');
+                foreach ($list as $key => $tunnel){
+                    preg_match(
+                        '/^(.*)[\s\t]+(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3})(\:([0-9]{1,5}))?/',
+                        trim(strip_tags($tunnel)),
+                        $ConfSite);
+                    $channels = $this->shell->list_channels($ConfSite[1]);
+                    $ChannelsSite=array();
+                    foreach ($channels as $key => $channel){
+                        preg_match(
+                            '/^(.*):([0-9]{1,5}):(.*):([0-9]{1,5})$/',
+                            trim(strip_tags($channel)),
+                            $ChannelSite);
+                        $ChannelsSite[]=array(
+                            'listenPort'=>$ChannelSite[2],
+                            'destHost'=>$ChannelSite[3],
+                            'destPort'=>$ChannelSite[4]
+                            );
+                    }
+
+                    $obj[$ConfSite[1]] = array(
+                        // "nameSite" => $ConfSite[1];
+                        'ipSite' => $ConfSite[2],
+                        'portSite' => count($ConfSite)>=6?$ConfSite[6]:22,
+                        'channels' => $ChannelsSite
+                    );
+                }
+                echo "<pre>";
+                var_export($obj);
+            ?>
 
 <div class="container">
     <h2><?= i18n($this, 'dashboard') ?></h2>
 
     <div class="container-fluid">
 
-        <div class="panel-group" id="accordion">
-            <?php
-                $list = $this->shell->execute("/usr/sbin/mast-utils list-hosts");
-                foreach ($list as $key => $tunnel):
-                    $rawOutput = trim(strip_tags($tunnel));
-                    $output = preg_split('/[\s\t]+/', $rawOutput);
-                    $tunnelName = $output[0];
-                    $tunnelHost = $output[1];
-            ?>
+        <div class="panel-group" id="accordion" data-obj="<?=json_encode($obj)?>">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                <?= $tunnel ?>
+                                <!--?= $tunnel ?-->
                             </a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
@@ -80,14 +104,14 @@
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack">
-                                <?php foreach ($this->shell->list_channels($tunnelName) as $k => $host): ?>
-                                    <li><?=$host?></li>
-                                <?php endforeach; ?>
+                                <!--?php foreach ($this->shell->list_channels($tunnelName) as $k => $host): ?-->
+                                    <li><!--?=$host?--></li>
+                                <!--?php endforeach; ?-->
                             </ul>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <!--?php endforeach; ?-->
         </div>
 <!--         <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
             <li><a href="#tunnels" role="tab" data-toggle="tab">Tunnels</a></li>

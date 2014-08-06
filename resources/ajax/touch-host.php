@@ -1,4 +1,3 @@
-<pre>
 <?php
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
@@ -8,7 +7,7 @@ error_reporting(E_ALL);
     * @category AJAX TCP Module
     * @package  MAST-web
     * @author   alban LOPEZ <alban.lopez@gmail.com>
-    * @link     http://localhost.opt.dev/resources/ajax/touch-host.php?hosts=128.0.0.222:80,8.8.8.8:53,88.300.112.16:80,test.com,localhost:22,te@st.com,truc.fr:80,1.123.fr
+    * @link     ./resources/ajax/touch-host.php?hosts=128.0.0.222:80,8.8.8.8:53,88.300.112.16:80,test.com,localhost:22,te@st.com,truc.fr:80,1.123.fr
 #--------------------------------------------------------------------------
 */
 
