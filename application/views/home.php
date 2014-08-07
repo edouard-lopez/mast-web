@@ -43,37 +43,6 @@
         </h2>
     </div>
 </div>
-            <?php
-                $list = $this->shell->execute("/usr/sbin/mast-utils list-hosts");
-                foreach ($list as $key => $tunnel){
-                    preg_match(
-                        '/^(.*\w)[\s\t]+(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3})(\:([0-9]{1,5}))?/',
-                        trim(strip_tags($tunnel)),
-                        $ConfSite);
-                    $channels = $this->shell->list_channels($ConfSite[1]);
-                    $ChannelsSite=array();
-                    foreach ($channels as $key => $channel){
-                        preg_match(
-                            '/^(.*):([0-9]{1,5}):(.*):([0-9]{1,5})$/',
-                            trim(strip_tags($channel)),
-                            $ChannelSite);
-                        $ChannelsSite[]=array(
-                            'listenPort'=>$ChannelSite[2],
-                            'remoteHost'=>$ChannelSite[3],
-                            'remotePort'=>$ChannelSite[4]
-                            );
-                    }
-
-                    $obj[$ConfSite[1]] = array(
-                        // "nameSite" => $ConfSite[1];
-                        'remoteHost' => $ConfSite[2],
-                        'remotePort' => count($ConfSite)>=6?$ConfSite[6]:22,
-                        'channels' => $ChannelsSite
-                    );
-                }
-                // echo "<pre>";
-                // var_export($obj);
-            ?>
 
 <div class="container">
     <h2><?= i18n($this, 'dashboard') ?></h2>

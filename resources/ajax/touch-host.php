@@ -38,7 +38,7 @@ Perform a system ping to a host
     */
     function ping($host)
     {
-        exec(sprintf('ping -c 1 -W 2 %s', escapeshellarg($host)), $res, $rval);
+        exec(sprintf('ping -c 2 -W 2 %s', escapeshellarg($host)), $res, $rval);
         // on retourne la valeur d'average de la commande ping
         if ($rval === 0) {
             $res=explode(' = ',$res[count($res)-1]);
@@ -68,7 +68,7 @@ $result=array();
 $hosts=explode(',', $_GET['hosts']);
 $levelClass = array(
                 'full-ok'=>'btn-success glyphicon glyphicon-ok-circle',
-                'ok'=>'btn-info glyphicon glyphicon-ok-sign',
+                'ok'=>'btn-info glyphicon glyphicon-ok-circle',
                 'partial'=>'btn-warning glyphicon glyphicon-warning-sign',
                 'mismatch'=>'btn-danger glyphicon glyphicon-remove-circle',
                 'none'=>'btn-default glyphicon glyphicon-glyphicon-search'
