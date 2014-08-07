@@ -85,7 +85,7 @@
                         <h4 class="panel-title">
                             <button style='padding:4px 5px;margin:-4px 10px 0 -2px;' type="button" class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left" data-rm='<?=json_encode($siteConfig)?>'>
                             </button>
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <?= $site ?></a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <?= $site.' - '.$siteConfig['remoteHost'] ?></a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
                                     <li>
@@ -102,18 +102,21 @@
                             <ul class="service nav nav-stack">
                                 <?php
                                 // var_export($siteConfig['channels']);
-                                foreach ($siteConfig['channels'] as $channel){
-                                    echo "<li>";
-                                    echo "  <span>";
-                                    echo "      <button style='padding:2px 3px;margin:-6px 20px 0 0;' type='button' class='remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-leftx' data-rm='".json_encode($channel)."'>";
-                                    echo "      </button>";
-                                    echo "      <span class='glyphicon glyphicon-print' style='margin:0 10px 0 0;'></span>";
-                                    echo "<a href='http://".$channel['remoteHost']."/'>".$channel['remoteHost']."</a> by port ".$channel['listenPort']."</span>";
-                                    ?>
+                                foreach ($siteConfig['channels'] as $channel) {
+                                ?>
+                                    <li>
+                                      <span>
+                                          <button style='padding:2px 3px;margin:-6px 20px 0 0;' type='button' class='remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-leftx'
+                                          data-rm='<?=json_encode($channel)?>'>
+                                          </button>
+                                          <span class='glyphicon glyphicon-print' style='margin:0 10px 0 0;'></span>
+
+                                    <a href='http://".$channel['remoteHost']."/'><?=$channel['remoteHost']?></a> by port <?=$channel['listenPort']?></span>
                                     <ul class="service nav nav-pills pull-right">
                                         <?php foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): ?>
                                             <li>
-                                                <button type="button" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>">
+                                                <button type="button" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>"
+                                                        data-script='<?=json_encode(array('site'=>$site,'vps'=>$_SERVER['HTTP_HOST'],'port'=>$channel['listenPort'], 'channelComment'=>'Commemtaire HP'))?>'>
                                                     <span><?= ucfirst(i18n($this, $action)) ?></span>
                                                 </button>
                                             </li>

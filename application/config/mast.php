@@ -56,12 +56,12 @@ $config['SERVICE_HELPERS'] = array(
         'class' => 'btn-info',
         'icon' => 'glyphicon-info-sign',
     ),
+    'cp-logs' => array(
+        'class' => 'btn-info',
+        'icon' => 'glyphicon-floppy-save',
+    ),
 );
 $config['SERVICE_CH_HELPERS'] = array(
-    'remove-channel' => array(
-       'class' => 'btn-danger',
-       'icon' => 'glyphicon-remove-sign',
-    ),
     'deploy-code_dos' => array(
        'class' => 'btn-default',
        'icon' => 'glyphicon-comment',
@@ -69,6 +69,10 @@ $config['SERVICE_CH_HELPERS'] = array(
     'deploy-code_PS1' => array(
        'class' => 'btn-primary',
        'icon' => 'glyphicon-comment',
+    ),
+    'remove-channel' => array(
+       'class' => 'btn-danger',
+       'icon' => 'glyphicon-remove-sign',
     ),
 );
 $config['PROJECT'] = 'Mast web';
