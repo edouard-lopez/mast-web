@@ -25,6 +25,10 @@ class Action extends CI_Controller {
         elseif (array_key_exists($_, $this->config->item('SERVICE_HELPERS'))) {
             $config= ! is_null($config) ? "NAME=$config" : '' ;
             return $this->shell->run(sprintf("%s %s %s", MAST_UTILS, $_, $config));
+        }
+        elseif (array_key_exists($_, $this->config->item('SERVICE_CH_HELPERS'))) {
+            $config= ! is_null($config) ? "NAME=$config" : '' ;
+            return $this->shell->run(sprintf("%s %s %s", MAST_UTILS, $_, $config));
         } else {
             show_error('Invalid action'.basename(__FILE__), 500);
         }

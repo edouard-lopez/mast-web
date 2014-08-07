@@ -83,21 +83,18 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
+                            <button style='padding:4px 5px;margin:-4px 10px 0 -2px;' type="button" class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left" data-rm='<?=json_encode($siteConfig)?>'>
+                            </button>
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <?= $site ?></a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
                                     <li>
-                                        <button type="button" id="<?= $action ?>"
-                                                class="btn btn-<?= $props['class'] ?> btn-xs btn-action">
-                                            <i class="glyphicon glyphicon-<?= $props['icon'] ?>"></i>
+                                        <button type="button" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>">
                                             <span><?= ucfirst(i18n($this, $action)) ?></span>
                                         </button>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-                            <button type="button" class="remoteHost btn btn-xs btn-default pull-left" data-rm='<?=json_encode($siteConfig)?>'>
-                                 <i class="glyphicon glyphicon-repeat"></i>
-                            </button>
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in">
@@ -107,13 +104,23 @@
                                 // var_export($siteConfig['channels']);
                                 foreach ($siteConfig['channels'] as $channel){
                                     echo "<li>";
-                                    echo "  <p>";
-                                    echo "<button type='button' class='remoteHost btn btn-xs btn-default pull-leftx' data-rm='".json_encode($channel)."'>";
-                                    echo "  <i class='glyphicon glyphicon-repeat'></i>";
-                                    echo "</button>";
-                                    echo "<a href='http://".$channel['remoteHost']."/'>".$channel['remoteHost']."</a> on port ".$channel['listenPort']."</p>";
-                                    echo "</li>";
-                                } ?>
+                                    echo "  <span>";
+                                    echo "      <button style='padding:2px 3px;margin:-6px 20px 0 0;' type='button' class='remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-leftx' data-rm='".json_encode($channel)."'>";
+                                    echo "      </button>";
+                                    echo "      <span class='glyphicon glyphicon-print' style='margin:0 10px 0 0;'></span>";
+                                    echo "<a href='http://".$channel['remoteHost']."/'>".$channel['remoteHost']."</a> by port ".$channel['listenPort']."</span>";
+                                    ?>
+                                    <ul class="service nav nav-pills pull-right">
+                                        <?php foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): ?>
+                                            <li>
+                                                <button type="button" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>">
+                                                    <span><?= ucfirst(i18n($this, $action)) ?></span>
+                                                </button>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -131,15 +138,13 @@
                     <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper => $props): ?>
                         <li>
                             <button type="button" id="<?= $helper ?>"
-                                    class="btn btn-<?= $props['class'] ?> btn-sm btn-helper">
-                                <i class="glyphicon glyphicon-<?= $props['icon'] ?>"></i>
+                                    class="btn btn-sm <?= $props['class'] ?> btn-helper glyphicon <?= $props['icon'] ?>">
                                 <?= ucfirst(i18n($this, $helper)) ?>
                             </button>
                         </li>
                     <?php endforeach; ?>
                     <li>
-                        <button type="button" class="btn btn-default btn-sm btn-clear">
-                            <i class="glyphicon glyphicon-ban-circle"></i>
+                        <button type="button" class="btn btn-default btn-sm btn-clear glyphicon glyphicon-ban-circle">
                             <?= i18n($this, 'clear') ?>
                         </button>
                     </li>

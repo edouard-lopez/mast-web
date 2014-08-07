@@ -66,7 +66,13 @@ Perform a system ping to a host
 
 $result=array();
 $hosts=explode(',', $_GET['hosts']);
-$levelClass = array('full-ok'=>'success','ok'=>'info','partial'=>'warning','mismatch'=>'danger','none'=>'default');
+$levelClass = array(
+                'full-ok'=>'btn-success glyphicon glyphicon-ok-circle',
+                'ok'=>'btn-info glyphicon glyphicon-ok-sign',
+                'partial'=>'btn-warning glyphicon glyphicon-warning-sign',
+                'mismatch'=>'btn-danger glyphicon glyphicon-remove-circle',
+                'none'=>'btn-default glyphicon glyphicon-glyphicon-search'
+            );
 
 foreach ($hosts as $hostPort) {
     list($host, $port) = explode(':', $hostPort);

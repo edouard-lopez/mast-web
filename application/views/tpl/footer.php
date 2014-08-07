@@ -22,15 +22,16 @@
 
                         $.getJSON('./resources/ajax/touch-host.php?hosts='+rmNode['remoteHost']+':'+rmNode['remotePort'],
                             function(json){
-                                currentThis.removeClass('btn-default');
-                                currentThis.addClass('btn-'+json[Object.keys(json)[0]]['status']);
+                                currentThis.removeClass('btn-default btn-success btn-info btn-warning btn-danger');
+                                currentThis.addClass(json[Object.keys(json)[0]]['status']);
+                                currentThis.attr('title',Object.keys(json)[0]+' :\nPing='+json[Object.keys(json)[0]]['ping']+'ms\nTELNET='+json[Object.keys(json)[0]]['telnet']+'ms\n');
                                 console.log(json);
                             });
                     });
                 }
             testEach_Rm();
             $(document).ready( function(){
-                setInterval(testEach_Rm ,60*1000);
+                setInterval(testEach_Rm ,30*1000);
             });
         </script>
     </body>
