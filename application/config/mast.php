@@ -10,43 +10,69 @@
 * @param :{string} icon glyphicon class
 */
 $config['SERVICE_ACTIONS'] = array(
-    'start' => array(
-        'class' => 'success',
-        'icon' => 'play',
+//    'start' => array(
+//        'class' => 'btn-success',
+//        'icon' => 'glyphicon-play',
+//    ),
+//    'stop' => array(
+//        'class' => 'btn-danger',
+//        'icon' => 'glyphicon-stop',
+//    ),
+//    'restart' => array(
+//        'class' => 'btn-warning',
+//        'icon' => 'glyphicon-refresh',
+//    ),
+    'remove-host' => array(
+        'class' => 'btn-danger',
+        'icon' => 'glyphicon-remove-sign',
     ),
-    'stop' => array(
-        'class' => 'danger',
-        'icon' => 'stop',
+    'add-chanel' => array(
+        'class' => 'btn-success',
+        'icon' => 'glyphicon-print',
     ),
-    'restart' => array(
-        'class' => 'warning',
-        'icon' => 'refresh',
-    ),
-    'status' => array(
-        'class' => 'info',
-        'icon' => 'search',
-    ),
+//    'status' => array(
+//        'class' => 'btn-info',
+//        'icon' => 'glyphicon-search',
+//    ),
 );
 $config['SERVICE_HELPERS'] = array(
     'add-host' => array(
-        'class' => 'success',
-        'icon' => 'plus-sign',
+        'class' => 'btn-success',
+        'icon' => 'glyphicon-plus-sign',
     ),
-    'remove-host' => array(
-        'class' => 'danger',
-        'icon' => 'remove-sign',
-    ),
-    'list-channels' => array(
-        'class' => 'info',
-        'icon' => 'random',
-    ),
-    'list-hosts' => array(
-        'class' => 'info',
-        'icon' => 'list',
-    ),
+//    'remove-host' => array(
+//        'class' => 'btn-danger',
+//        'icon' => 'glyphicon-remove-sign',
+//    ),
+//    'list-channels' => array(
+//        'class' => 'btn-info',
+//        'icon' => 'glyphicon-random',
+//    ),
+//    'list-hosts' => array(
+//        'class' => 'btn-info',
+//        'icon' => 'glyphicon-list',
+//    ),
     'list-logs' => array(
-        'class' => 'info',
-        'icon' => 'info-sign',
+        'class' => 'btn-info',
+        'icon' => 'glyphicon-info-sign',
+    ),
+    'cp-logs' => array(
+        'class' => 'btn-info',
+        'icon' => 'glyphicon-floppy-save',
+    ),
+);
+$config['SERVICE_CH_HELPERS'] = array(
+    'deploy-code_dos' => array(
+       'class' => 'btn-default',
+       'icon' => 'glyphicon-comment',
+    ),
+    'deploy-code_PS1' => array(
+       'class' => 'btn-primary',
+       'icon' => 'glyphicon-comment',
+    ),
+    'remove-channel' => array(
+       'class' => 'btn-danger',
+       'icon' => 'glyphicon-remove-sign',
     ),
 );
 $config['PROJECT'] = 'Mast web';
