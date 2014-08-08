@@ -62,12 +62,12 @@ $config['SERVICE_HELPERS'] = array(
     ),
 );
 $config['SERVICE_CH_HELPERS'] = array(
-    'deploy-code_dos' => array(
-       'class' => 'btn-default',
+    'deploy-code_BAT' => array(
+       'class' => 'batCode btn-default',
        'icon' => 'glyphicon-comment',
     ),
     'deploy-code_PS1' => array(
-       'class' => 'btn-primary',
+       'class' => 'ps1Code btn-primary',
        'icon' => 'glyphicon-comment',
     ),
     'remove-channel' => array(
