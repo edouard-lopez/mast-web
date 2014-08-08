@@ -14,7 +14,7 @@ class Shell {
      */
     public static function execute($_ = null, $debug=true) {
         $_ = $debug ? $_." 2>&1"  : $_;
-        exec("TERM=screen-256color $_ | aha --word-wrap --no-header", $output, $exitCode);
+        exec("TERM=screen-256color $_ | aha --no-header", $output, $exitCode);
         return $output;
     }
 
