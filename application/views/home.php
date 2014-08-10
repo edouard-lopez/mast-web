@@ -84,10 +84,10 @@
                                     <ul class="service nav nav-pills pull-right">
                                         <?php foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): ?>
                                             <li>
-                                                <button type="button" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>"
-                                                        data-varConf='<?=json_encode(array('site'=>$site,'vps'=>$_SERVER['HTTP_HOST'],'port'=>$channel['listenPort'], 'imp'=>$channel['remoteHost'], 'channelComment'=>'NameInCommentConfig'))?>'>
+                                                <a type="button" style='padding:2px;' download="test.txt" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>"
+                                                        data-varconf='<?=json_encode(array('site'=>$site,'vps'=>$_SERVER['HTTP_HOST'],'port'=>$channel['listenPort'], 'imp'=>$channel['remoteHost'], 'channelComment'=>'NameInCommentConfig'))?>'>
                                                     <span><?= ucfirst(i18n($this, $action)) ?></span>
-                                                </button>
+                                                </a>
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
