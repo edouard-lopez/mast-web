@@ -40,18 +40,18 @@ $config['SERVICE_HELPERS'] = array(
         'class' => 'btn-success',
         'icon' => 'glyphicon-plus-sign',
     ),
-//    'remove-host' => array(
-//        'class' => 'btn-danger',
-//        'icon' => 'glyphicon-remove-sign',
-//    ),
-//    'list-channels' => array(
-//        'class' => 'btn-info',
-//        'icon' => 'glyphicon-random',
-//    ),
-//    'list-hosts' => array(
-//        'class' => 'btn-info',
-//        'icon' => 'glyphicon-list',
-//    ),
+    'remove-host' => array(
+        'class' => 'btn-danger',
+        'icon' => 'glyphicon-remove-sign',
+    ),
+    'list-channels' => array(
+        'class' => 'btn-info',
+        'icon' => 'glyphicon-random',
+    ),
+    'list-hosts' => array(
+        'class' => 'btn-info',
+        'icon' => 'glyphicon-list',
+    ),
     'list-logs' => array(
         'class' => 'btn-info',
         'icon' => 'glyphicon-info-sign',
