@@ -30,7 +30,7 @@ class Action extends CI_Controller {
             $config= ! is_null($config) ? "NAME=$config" : '' ;
             return $this->shell->run(sprintf("%s %s %s", MAST_UTILS, $_, $config));
         } else {
-            show_error('Invalid action'.basename(__FILE__), 500);
+            show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
         }
 	}
 }
