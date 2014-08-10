@@ -22,9 +22,27 @@ var instance = {
 		return false;
 	},
 
+    /**
+     * Don't block access if user is smart enough, i.e.
+     * require 'im=smart' string in hash :)
+     * @returns {instance}
+     */
+    overlay: function () {
+        var reSmart = /im=smart/;
+		var hash = window.location.hash;
+        console.log(hash);
+		if (hash !== '' && hash !== null && reSmart.exec(hash)) {
+            $('#dangerous-area').hide();
+        }
+
+        return this;
+    },
 
 	init: function () {
 		var self = this;
+
+        this.overlay()
+
         $('.service .btn-action').on( "click", function() {
             self.apiCall(this.id);
         });
@@ -34,6 +52,12 @@ var instance = {
         $('.btn-clear').on( "click", function() {
             $('.stdout').html('');
         });
+
+        $('#accept-danger').on( "click", function() {
+            $('#dangerous-area').hide();
+        });
+
+        return this;
     }
 };
 

@@ -16,3 +16,6 @@ $lang['remove-host'] = 'Supprimer un hôte';
 
 $lang['dashboard'] = 'Tableau de bord';
 $lang['clear'] = 'Effacer';
+$lang['dangerous-area'] = 'Zone dangereuse';
+$lang['dangerous-area.explain'] = "Vous etes sur une interface d'administration, vos actions peuvent <strong>impacter le réseau d'entreprise</strong>.";
+$lang['dangerous-area.accept'] = 'Je <b>comprends</b> les risques';

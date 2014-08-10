@@ -6,41 +6,17 @@
 ?>
 <?php require TPL_PATH . '/header.php'; ?>
 
-<style type="text/css">
-    .layerFull{
-        width: 100%;
-        height: 100%;
-        opacity: 0.7;
-        background-color: #eee;
-        position: absolute;
-    }
-
-    #parent {
-        z-index: 1000;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        display: table;
-        top: 0;
-        left: 0;
-    }
-
-    .child {
-        z-index: 1001;
-        opacity: 0.99;
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-    }
-</style>
-
-<div id="parent" onclick="javascript:$(this).hide();">
-    <div class="layerFull"></div>
-    <div class="child">
-        <h2 class="bg-danger">----------------<br/>
-            <strong>WARNING :</strong> Vous etes sur une interface d'administration,<br/>
-            <strong> manipuler avec precaution!</strong><br/>----------------
-        </h2>
+<div id="dangerous-area">
+    <div class="child jumbotron alert-danger">
+        <h1>
+            <i class="glyphicon glyphicon-exclamation-sign"></i>
+            <br/>
+            <?= i18n($this, 'dangerous-area') ?>
+        </h1>
+        <p>
+            <?= i18n($this, 'dangerous-area.explain') ?>
+        </p>
+        <button id="accept-danger" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> <?= i18n($this, 'dangerous-area.accept') ?></button>
     </div>
 </div>
 
