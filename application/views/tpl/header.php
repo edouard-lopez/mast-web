@@ -11,12 +11,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
         <!-- <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"> -->
          <link rel="stylesheet" href="resources/css/main.css">
 

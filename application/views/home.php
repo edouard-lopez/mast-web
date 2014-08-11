@@ -1,9 +1,3 @@
-<?
-/**
- * User: ed8
- * Date: 7/27/14
- */
-?>
 <?php require TPL_PATH . '/header.php'; ?>
 
 <div id="dangerous-area">
@@ -23,14 +17,15 @@
 <div class="container">
     <h2><?= i18n($this, 'dashboard') ?></h2>
     <div class="container-fluid">
-        <div class="panel-group" id="accordion" data-obj='<?=json_encode($obj)?>'>
-            <?php foreach ($obj as $site => $siteConfig) {?>
+        <div class="panel-group" id="accordion" data-configs='<?=json_encode($configs)?>'>
+            <?php foreach ($configs as $tunnel => $tunnelConfig) {?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <button style='padding:4px 5px;margin:-4px 10px 0 -2px;' type="button" class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left" data-rm='<?=json_encode($siteConfig)?>'>
+                            <button style='padding:4px 5px;margin:-4px 10px 0 -2px;' type="button" class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left"
+                                    data-rm='<?=json_encode($tunnelConfig)?>'>
                             </button>
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <?= $site.' - '.$siteConfig['remoteHost'] ?></a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <?= $tunnel.' - '.$tunnelConfig['remoteHost'] ?></a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
                                     <li>
@@ -47,7 +42,7 @@
                             <ul class="service nav nav-stack">
                                 <?php
                                 // var_export($siteConfig['channels']);
-                                foreach ($siteConfig['channels'] as $channel) {
+                                foreach ($tunnelConfig['channels'] as $channel) {
                                 ?>
                                     <li>
                                       <span>
@@ -56,12 +51,18 @@
                                           </button>
                                           <span class='glyphicon glyphicon-print' style='margin:0 10px 0 0;'></span>
 
-                                    <a href='http://".$channel['remoteHost']."/'><?=$channel['remoteHost']?></a> by port <?=$channel['listenPort']?></span>
+                                    <a href='http://<?=$channel['remoteHost']?>/'><?=$channel['remoteHost']?></a> by port <?=$channel['localPort']?></span>
                                     <ul class="service nav nav-pills pull-right">
                                         <?php foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): ?>
                                             <li>
                                                 <button type="button" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>"
-                                                        data-script='<?=json_encode(array('site'=>$site,'vps'=>$_SERVER['HTTP_HOST'],'port'=>$channel['listenPort'], 'imp'=>$channel['remoteHost'], 'channelComment'=>'NameInCommentConfig'))?>'>
+                                                        data-script='<?=json_encode(array(
+                                                            'site'=>$tunnel,
+                                                            'vps'=>$_SERVER['HTTP_HOST'],
+                                                            'port'=>$channel['localPort'],
+                                                            'imp'=>$channel['remoteHost'],
+                                                            'comment'=>$channel['comment']
+                                                        ))?>'>
                                                     <span><?= ucfirst(i18n($this, $action)) ?></span>
                                                 </button>
                                             </li>

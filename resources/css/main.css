@@ -2,6 +2,10 @@
  * User: ed8
  * Date: 7/27/14
  */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
 .stdout {
     width: 80%;
     min-height: 20em;
