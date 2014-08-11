@@ -60,12 +60,24 @@ Perform a system ping to a host
         return array(
                     'ping' => $ping,
                     'telnet' => $telnet,
-                    'status' => (is_numeric($ping) && is_numeric($telnet)) ? $levelClass['full-ok'] : (is_numeric($telnet) ? $levelClass['ok'] : (is_numeric($ping) ? (empty($port) ? $levelClass['full-ok'] : $levelClass['partial']) : $levelClass['mismatch']))
                 );
+    if (is_numeric($ping) && is_numeric($telnet)) {
+        $status = 'full-ok';
+    } elseif (is_numeric($telnet)) {
+        $status = 'ok';
+    } elseif (is_numeric($ping)) {
+        if (empty($port)) {
+            $status = 'full-ok';
+        } else {
+            $status = 'partial';
+        }
+    } else {
+        $status = 'mismatch';
     }
 
 $result=array();
 $hosts=explode(',', $_GET['hosts']);
+        'status' => $levelClass[$status]
 $levelClass = array(
                 'full-ok'=>'btn-success glyphicon glyphicon-ok-circle',
                 'ok'=>'btn-info glyphicon glyphicon-ok-circle',
