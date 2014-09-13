@@ -31,7 +31,7 @@
                             });
                     });
                 }
-            testEach_Rm();
+                setTimeout(testEach_Rm, 1000);
             $(document).ready( function(){
                 setInterval(testEach_Rm ,30*1000);
             });
