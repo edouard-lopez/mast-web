@@ -21,20 +21,56 @@
                         // console.log(rmNode, './resources/ajax/touch-host.php?hosts='+rmNode['remoteHost']+':'+rmNode['remotePort']);
 
                         currentThis.removeClass('btn-success btn-info btn-warning btn-danger glyphicon-search glyphicon-remove-circle glyphicon-warning-sign glyphicon-ok-sign glyphicon-ok-circle');
-                        // currentThis.addClass('btn-default glyphicon-repeat');
+                        currentThis.addClass('btn-default glyphicon-repeat');
                         $.getJSON('./resources/ajax/touch-host.php?hosts='+rmNode['remoteHost']+':'+rmNode['remotePort'],
                             function(json){
-                                // currentThis.removeClass('btn-default glyphicon-repeat');
+                                currentThis.removeClass('btn-default glyphicon-repeat');
                                 currentThis.addClass(json[Object.keys(json)[0]]['status']);
                                 currentThis.attr('title',Object.keys(json)[0]+'\nPing = '+json[Object.keys(json)[0]]['ping']+' ms\nTELNET = '+json[Object.keys(json)[0]]['telnet']+' ms\n');
                                 // console.log(json);
                             });
                     });
                 }
-            testEach_Rm();
+                setTimeout(testEach_Rm, 1000);
             $(document).ready( function(){
-                setInterval(testEach_Rm ,20*1000);
+                setInterval(testEach_Rm ,30*1000);
             });
         </script>
+
+
+
+        <script type="text/javascript">
+        var nodesCode = $('.batCode')
+        $.each( nodesCode, function( nodeCode ) {
+            var currentThis=$(this);
+            $(this)
+                .attr('href','./home/getBAT/'+encodeURIComponent(JSON.stringify(currentThis.data('varconf'))));
+
+            $(this).click(function(){
+                if (window.clipboardData) {
+                    //for IE ONLY!
+                    window.clipboardData.setData('BAT',$(this).data('code'));
+                }
+            });
+        });
+
+        var nodesCode = $('.ps1Code')
+        $.each( nodesCode, function( nodeCode ) {
+            var currentThis=$(this);
+            $(this)
+                .attr('href','./home/getPS1/'+encodeURIComponent(JSON.stringify(currentThis.data('varconf'))));
+
+            $(this).click(function(){
+                // console.log($(this).data('varconf'), $(this).data('code'));
+                if (window.clipboardData) {
+                    //for IE ONLY!
+                    window.clipboardData.setData('PS1',$(this).data('code'));
+                }
+            });
+        });
+
+
+</script>
+
     </body>
 </html>
