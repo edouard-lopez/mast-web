@@ -15,13 +15,13 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home', array('configs' => $this->configs));
 	}
-	
+
 	private function buildConfigs()
 	{
 	    $list = $this->shell->execute("/usr/sbin/mast-utils list-hosts");
 	    foreach ($list as $key => $tunnel){
             preg_match(
-	            '/^(.*\w)[\s\t]+(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3})(\:([0-9]{1,5}))?/',
+	            '/^(.*\w)[\s\t]+('.REGEX_IP_ADRESS.'|[\w]+)(\:([0-9]{1,5}))?/',
 	            trim(strip_tags($tunnel)),
 	            $tunnelConfig
             );
@@ -66,7 +66,7 @@ class Home extends CI_Controller {
 	    // var_export($configs);
 	    return $configs;
 	}
-	
+
 	public function getConfig () {
 		@ob_end_clean();
 		header_remove();

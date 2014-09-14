@@ -80,3 +80,4 @@ $config['PROJECT.html'] = '<abbr title="Multiple Auto-SSH Tunnels web" class="in
 
 define('MAST_SERVICE', '/etc/init.d/mast');
 define('MAST_UTILS', '/usr/sbin/mast-utils');
+define('REGEX_IP_ADRESS', '25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}');
