@@ -25,7 +25,7 @@
                             <button style='padding:4px 5px;margin:-4px 10px 0 -2px;' type="button" class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left"
                                     data-rm='<?=json_encode($tunnelConfig)?>'>
                             </button>
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <?= $tunnel.' - '.$tunnelConfig['remoteHost'] ?></a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse-<?=$tunnel;?>"> <?= $tunnel.' - '.$tunnelConfig['remoteHost'] ?></a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
                                     <li>
@@ -37,7 +37,7 @@
                             </ul>
                         </h4>
                     </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
+                    <div id="collapse-<?=$tunnel;?>" class="panel-collapse collapse in">
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack">
                                 <?php
