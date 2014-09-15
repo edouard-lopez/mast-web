@@ -7,18 +7,21 @@
             <br/>
             <?= i18n($this, 'dangerous-area') ?>
         </h1>
+
         <p>
             <?= i18n($this, 'dangerous-area.explain') ?>
         </p>
-        <button id="accept-danger" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> <?= i18n($this, 'dangerous-area.accept') ?></button>
+        <button id="accept-danger" class="btn btn-success"><i
+                class="glyphicon glyphicon-ok"></i> <?= i18n($this, 'dangerous-area.accept') ?></button>
     </div>
 </div>
 
 <div class="container">
     <h2><?= i18n($this, 'dashboard') ?></h2>
+
     <div class="container-fluid">
-        <div class="panel-group" id="accordion" data-configs='<?=json_encode($configs)?>'>
-            <?php foreach ($configs as $tunnel => $tunnelConfig) {?>
+        <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs) ?>'>
+            <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -26,6 +29,8 @@
 <!--                                    class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left"-->
 <!--                                    data-rm='--><?//= json_encode($tunnelConfig) ?><!--'>-->
 <!--                            </button>-->
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapse-<?= $tunnel; ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
                                     <li>
@@ -39,7 +44,7 @@
                             </ul>
                         </h4>
                     </div>
-                    <div id="collapse-<?=$tunnel;?>" class="panel-collapse collapse in">
+                    <div id="collapse-<?= $tunnel; ?>" class="panel-collapse collapse in">
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack">
                                 <?php
@@ -81,22 +86,15 @@
                 </div>
             <?php }; ?>
         </div>
-<!--         <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
-            <li><a href="#tunnels" role="tab" data-toggle="tab">Tunnels</a></li>
-        </ul> -->
+        <!--         <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
+                    <li><a href="#tunnels" role="tab" data-toggle="tab">Tunnels</a></li>
+                </ul> -->
 
         <!-- Tab panes -->
         <!-- <div class="tab-content"> -->
-            <div class="tab-pane" id="tunnels">
-                <ul class="nav nav-pills">
-                    <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper => $props): ?>
-                        <li>
-                            <button type="button" id="<?= $helper ?>"
-                                    class="btn btn-sm <?= $props['class'] ?> btn-helper glyphicon <?= $props['icon'] ?>">
-                                <?= ucfirst(i18n($this, $helper)) ?>
-                            </button>
-                        </li>
-                    <?php endforeach; ?>
+        <div class="tab-pane" id="tunnels">
+            <ul class="nav nav-pills">
+                <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper => $props): ?>
                     <li>
                         <button type="button" id="<?= $helper ?>"
                                 class="btn btn-sm <?= $props['class'] ?> btn-helper">
@@ -104,7 +102,13 @@
                             <?= ucfirst(i18n($this, $helper)) ?>
                         </button>
                     </li>
-                </ul>
+                <?php endforeach; ?>
+                <li>
+                    <button type="button" class="btn btn-default btn-sm btn-clear glyphicon glyphicon-ban-circle">
+                        <?= i18n($this, 'clear') ?>
+                    </button>
+                </li>
+            </ul>
             <!-- </div> -->
         </div>
     </div>
