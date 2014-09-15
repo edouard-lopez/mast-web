@@ -29,7 +29,9 @@
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
                                     <li>
-                                        <button type="button" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>">
+                                        <button type="button" id="<?= $action ?>"
+                                                class="btn btn-xs <?= $props['class'] ?>">
+                                            <i class="glyphicon <?= $props['icon'] ?>"></i>
                                             <span><?= ucfirst(i18n($this, $action)) ?></span>
                                         </button>
                                     </li>
@@ -93,8 +95,10 @@
                         </li>
                     <?php endforeach; ?>
                     <li>
-                        <button type="button" class="btn btn-default btn-sm btn-clear glyphicon glyphicon-ban-circle">
-                            <?= i18n($this, 'clear') ?>
+                        <button type="button" id="<?= $helper ?>"
+                                class="btn btn-sm <?= $props['class'] ?> btn-helper">
+                            <i class="glyphicon <?= $props['icon'] ?>"></i>
+                            <?= ucfirst(i18n($this, $helper)) ?>
                         </button>
                     </li>
                 </ul>
