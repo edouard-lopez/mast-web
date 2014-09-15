@@ -22,10 +22,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <button style='padding:4px 5px;margin:-4px 10px 0 -2px;' type="button" class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left"
-                                    data-rm='<?=json_encode($tunnelConfig)?>'>
-                            </button>
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse-<?=$tunnel;?>"> <?= $tunnel.' - '.$tunnelConfig['remoteHost'] ?></a>
+<!--                            <button type="button"-->
+<!--                                    class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left"-->
+<!--                                    data-rm='--><?//= json_encode($tunnelConfig) ?><!--'>-->
+<!--                            </button>-->
                             <ul class="service nav nav-pills pull-right">
                                 <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
                                     <li>
@@ -45,31 +45,34 @@
                                 <?php
                                 // var_export($siteConfig['channels']);
                                 foreach ($tunnelConfig['channels'] as $channel) {
-                                ?>
+                                    ?>
                                     <li>
-                                      <span>
-                                          <button style='padding:2px 3px;margin:-6px 20px 0 0;' type='button' class='remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-leftx'
-                                          data-rm='<?=json_encode($channel)?>'>
-                                          </button>
-                                          <span class='glyphicon glyphicon-print' style='margin:0 10px 0 0;'></span>
-
-                                    <a href='http://<?=$channel['remoteHost']?>/'><?=$channel['remoteHost']?></a> by port <?=$channel['localPort']?></span>
-                                    <ul class="service nav nav-pills pull-right">
-                                        <?php foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): ?>
-                                            <li>
-                                                <button type="button" id="<?= $action ?>" class="btn btn-xs <?= $props['class'] ?> glyphicon <?= $props['icon'] ?>"
-                                                        data-script='<?=json_encode(array(
-                                                            'site'=>$tunnel,
-                                                            'vps'=>$_SERVER['HTTP_HOST'],
-                                                            'port'=>$channel['localPort'],
-                                                            'imp'=>$channel['remoteHost'],
-                                                            'comment'=>$channel['comment']
-                                                        ))?>'>
-                                                    <span><?= ucfirst(i18n($this, $action)) ?></span>
-                                                </a>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
+<!--                                      <span>-->
+<!--                                          <button type='button' class='remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left'-->
+<!--                                                  data-rm='--><?//= json_encode($channel) ?><!--'>-->
+<!--                                          </button>-->
+<!--                                          <span class='glyphicon glyphicon-print' ></span>-->
+<!--                                      </span>-->
+                                        <span>
+                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?>
+                                        </span>
+<!--                                        <ul class="service nav nav-pills pull-right">
+                                            <?php /*foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): */?>
+                                                <li>
+                                                    <button id="<?/*= $action */?>" class="btn btn-xs <?/*= $props['class'] */?>
+                                                glyphicon <?/*= $props['icon'] */?>"
+                                                            data-script='<?/*= json_encode(array(
+                                                                'site' => $tunnel,
+                                                                'vps' => $_SERVER['HTTP_HOST'],
+                                                                'port' => $channel['localPort'],
+                                                                'imp' => $channel['remoteHost'],
+                                                                'comment' => $channel['comment']
+                                                            )) */?>'>
+                                                        <span><?/*= ucfirst(i18n($this, $action)) */?></span>
+                                                    </button>
+                                                </li>
+                                            <?php /*endforeach; */?>
+                                        </ul>-->
                                     </li>
                                 <?php } ?>
                             </ul>
