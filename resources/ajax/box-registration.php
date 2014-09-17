@@ -11,22 +11,27 @@ error_reporting(E_ALL);
 #--------------------------------------------------------------------------
 */
 
-echo '<pre>';
 $Box = array(
 	$_GET['MAC'] => array(
+		'LastUp' => time(),
 		'IP' => $_GET['IP'],
-		'Interface' => $_GET['interface']
+		'Gateway' => $_GET['gateway'],
+		'Interface' => $_GET['interface'],
+		'State' => 'Waiting Validation'
 		)
 	);
 $BoxListFile = './BoxList.json';
 
 if (file_exists($BoxListFile)) {
 	$BoxList=json_decode(file_get_contents($BoxListFile), true);
-	$BoxList[$_GET['MAC']] = $Box[$_GET['MAC']];
+	if ($Box['State']=='Waiting Validation') {
+		$BoxList[$_GET['MAC']] = $Box[$_GET['MAC']];
+	}
 } else {
 	$BoxList = $Box;
 }
-echo file_put_contents($BoxListFile, json_encode($BoxList));
+file_put_contents($BoxListFile, json_encode($BoxList));
 
+echo '<pre>';
 echo file_get_contents($BoxListFile);
 ?>
