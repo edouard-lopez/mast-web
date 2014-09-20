@@ -17,7 +17,10 @@
 </div>
 
 <div class="container">
-    <h2><?= i18n($this, 'dashboard') ?></h2>
+    <h3 id="dashboard" class="anchor">
+        <?=i18n($this, 'dashboard')?>
+        <small><a href="#dashboard" class="text-muted">#dashboard</a></small>
+    </h3>
 
     <?php
         $action = 'add-channel';
@@ -99,6 +102,10 @@
 
         <!-- Tab panes -->
         <!-- <div class="tab-content"> -->
+        <h3 id="cnc" class="anchor">
+            <?=i18n($this, 'command-and-control')?>
+            <small><a href="#cnc" class="text-muted">#cnc</a></small>
+        </h3>
         <div class="tab-pane" id="tunnels">
             <ul class="nav nav-pills">
                 <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper => $props): ?>
