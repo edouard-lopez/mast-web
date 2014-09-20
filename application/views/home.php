@@ -49,10 +49,14 @@
                                 );
                                 foreach ($host_actions as $action => $props):?>
                                     <li>
-                                        <button type="button" id="<?= $action ?>"
-                                                class="btn btn-xs <?= $props['class'] ?>">
-                                            <i class="glyphicon <?= $props['icon'] ?>"></i>
-                                            <span><?= ucfirst(i18n($this, $action)) ?></span>
+                                        <button type="button"
+                                                data-name="<?=$tunnel?>"
+                                                data-action="<?=$action?>"
+                                                class="action btn btn-xs <?=$props['class']?>"
+                                                data-target="#modal-<?=$action?>"
+                                        >
+                                            <i class="glyphicon <?=$props['icon']?>"></i>
+                                            <span><?=ucfirst(i18n($this, $action))?></span>
                                         </button>
                                     </li>
                                 <?php endforeach; ?>
