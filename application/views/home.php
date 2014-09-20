@@ -117,7 +117,13 @@
         </h3>
         <div class="tab-pane" id="tunnels">
             <ul class="nav nav-pills">
-                <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper => $props): ?>
+                <?php
+                $buttons = array(
+                    'list-channels' => $this->config->item('SERVICE_HELPERS')['list-channels'],
+                    'list-hosts' => $this->config->item('SERVICE_HELPERS')['list-hosts'],
+                );
+                ?>
+                <?php foreach ($buttons as $helper => $props):?>
                     <li>
                         <button type="button" id="<?= $helper ?>"
                                 class="btn btn-sm <?= $props['class'] ?> btn-helper">
