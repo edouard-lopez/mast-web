@@ -2,7 +2,7 @@
 # Registration of this box on OPT-WebServer
 # location : /etc/network/if-up.d/
 # By alban.lopez@gmail.com
-# Version 1.0
+# Version 1.1
 
 # Arrete le code en ca d'erreur meme simple
 # set -e
@@ -40,8 +40,9 @@ fi
 
 my_mac=$(ifconfig $IFACE | grep 'HWaddr ' | cut -f 1 | awk '{ print $5}')
 my_ip=$(ifconfig $IFACE | grep 'inet addr:' | cut -d ':' -f 2 | awk '{ print $1}')
+gateway=$(route -n | grep "^0.0.0.0" | tr -s " " | cut -f 2 -d " ")
 
-echo "$my_mac $my_ip" >> $log_file
+echo "$my_mac $my_ip > $route" >> $log_file
 
 lease="/var/lib/dhcp/dhclient*$IFACE.lease*"
 
@@ -56,6 +57,7 @@ do
 		echo "#	OPT Print Server" >> /etc/hosts
 		echo "$IP	$IP.opt" >> /etc/hosts
 	fi
-	echo "http://$IP.opt/resources/ajax/box-registration.php?MAC=$my_mac&IP=$my_ip&interface=$IFACE" >> $log_file
-	curl -f -m 3 "http://$IP.opt/resources/ajax/box-registration.php?MAC=$my_mac&IP=$my_ip&interface=$IFACE" 1> /dev/null 2> /dev/null &
+	echo "http://$IP.opt/resources/ajax/box-registration.php?MAC=$my_mac&IP=$my_ip&interface=$IFACE&gateway=$gateway" >> $log_file
+	curl -f -m 3 "http://$IP.opt/resources/ajax/box-registration.php?MAC=$my_mac&IP=$my_ip&interface=$IFACE&gateway=$gateway" 1> /dev/null 2> /dev/null &
 done
+
