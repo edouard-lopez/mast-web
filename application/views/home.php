@@ -42,7 +42,12 @@
                             <a data-toggle="collapse" data-parent="#accordion"
                                href="#collapse-<?= $tunnel; ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
                             <ul class="service nav nav-pills pull-right">
-                                <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
+                                <?php
+                                $host_actions = array(
+                                    'remove-host' => $this->config->item('SERVICE_ACTIONS')['remove-host'],
+                                    'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
+                                );
+                                foreach ($host_actions as $action => $props):?>
                                     <li>
                                         <button type="button" id="<?= $action ?>"
                                                 class="btn btn-xs <?= $props['class'] ?>">
