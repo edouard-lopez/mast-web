@@ -19,6 +19,13 @@
 <div class="container">
     <h2><?= i18n($this, 'dashboard') ?></h2>
 
+    <?php
+        $action = 'add-channel';
+        require TPL_PATH . "action-form.php";?>
+    <?php
+        $action = 'add-host';
+        require TPL_PATH . "action-form.php";?>
+
     <div class="container-fluid">
         <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs) ?>'>
             <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>

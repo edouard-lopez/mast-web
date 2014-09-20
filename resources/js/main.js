@@ -38,6 +38,10 @@ var instance = {
         return this;
     },
 
+    /**
+     * Attach event listener
+     * @returns {instance}
+     */
 	init: function () {
 		var self = this;
 
@@ -55,6 +59,42 @@ var instance = {
 
         $('#accept-danger').on( "click", function() {
             $('#dangerous-area').hide();
+        });
+
+        $('.action').on('click', function() {
+            console.log(this);
+            if (! $(this).data('action') ) { console.error('no action'); return; }
+
+            var action =  $(this).data('action') || '';
+            var params = new Array();
+            var desc, host, id, name, printer;
+
+            switch (action) {
+                case 'add-host':
+                    params.push($(this).data('name') || '' );
+                    params.push($(this).data('host') || '' );
+                    $('#modal-add-host').modal();
+                    break;
+                case 'remove-host':
+                    params.push($(this).data('name') || '' );
+                    break;
+                case 'add-channel':
+                    params.push($(this).data('name') || '' );
+                    params.push($(this).data('printer') || '' );
+                    params.push($(this).data('desc') || '' );
+                    $('#modal-add-channel').modal();
+                    break;
+                case 'remove-channel':
+                    params.push($(this).data('name'));
+                    params.push($(this).data('id'));
+                    break;
+                default:
+                    console.error('invalid action: '+action);
+                    return
+            }
+            var q = action+'/'+params.join(',');
+            console.log(q);
+            self.apiCall(q);
         });
 
         return this;
