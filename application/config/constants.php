@@ -38,5 +38,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
 define('TPL_PATH', APPPATH.'/views/tpl/');
+define('REGEX_NAME', '[a-zA-Z0-9_:\-\s]+');
+define('REGEX_HOST', '((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

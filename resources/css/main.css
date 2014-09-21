@@ -52,3 +52,11 @@ p:last-child {
     vertical-align: middle;
     text-align: center;
 }
+
+.anchor small a {
+    color: #fff;
+    transition: color ease .5s;
+}
+.anchor:hover small a {
+    color: #999;
+}

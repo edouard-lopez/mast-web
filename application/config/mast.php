@@ -25,10 +25,9 @@ $config['SERVICE_ACTIONS'] = array(
     'remove-host' => array(
         'class' => 'btn-danger',
         'icon' => 'glyphicon-remove-sign',
-    ),
-    'add-chanel' => array(
-        'class' => 'btn-success',
-        'icon' => 'glyphicon-print',
+        'form-fields' => array(
+            'NAME',
+        )
     ),
 //    'status' => array(
 //        'class' => 'btn-info',
@@ -39,18 +38,38 @@ $config['SERVICE_HELPERS'] = array(
     'add-host' => array(
         'class' => 'btn-success',
         'icon' => 'glyphicon-plus-sign',
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+            'REMOTE_HOST' => array('pattern' => REGEX_HOST),
+        )
     ),
     'remove-host' => array(
         'class' => 'btn-danger',
         'icon' => 'glyphicon-remove-sign',
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
     ),
     'list-channels' => array(
         'class' => 'btn-info',
         'icon' => 'glyphicon-random',
     ),
-    'list-hosts' => array(
-        'class' => 'btn-info',
-        'icon' => 'glyphicon-list',
+    'add-channel' => array(
+        'class' => 'btn-success',
+        'icon' => 'glyphicon-print',
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+            'PRINTER' => array('pattern' => REGEX_HOST),
+            'DESC' => array(),
+        )
+    ),
+    'remove-channel' => array(
+        'class' => 'btn-danger',
+        'icon' => 'glyphicon-remove-sign',
+        'form-fields' => array(
+            'ID' => array(),
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
     ),
     'list-logs' => array(
         'class' => 'btn-info',
@@ -71,8 +90,12 @@ $config['SERVICE_CH_HELPERS'] = array(
        'icon' => 'glyphicon-comment',
     ),
     'remove-channel' => array(
-       'class' => 'btn-danger',
-       'icon' => 'glyphicon-remove-sign',
+        'class' => 'btn-danger',
+        'icon' => 'glyphicon-remove-sign',
+        'form-fields' => array(
+            'ID' => array(),
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
     ),
 );
 $config['PROJECT'] = 'Mast web';

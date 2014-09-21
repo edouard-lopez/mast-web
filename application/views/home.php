@@ -17,7 +17,17 @@
 </div>
 
 <div class="container">
-    <h2><?= i18n($this, 'dashboard') ?></h2>
+    <h3 id="dashboard" class="anchor">
+        <?=i18n($this, 'dashboard')?>
+        <small><a href="#dashboard" class="text-muted">#dashboard</a></small>
+    </h3>
+
+    <?php
+        $action = 'add-channel';
+        require TPL_PATH . "action-form.php";?>
+    <?php
+        $action = 'add-host';
+        require TPL_PATH . "action-form.php";?>
 
     <div class="container-fluid">
         <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs) ?>'>
@@ -32,12 +42,21 @@
                             <a data-toggle="collapse" data-parent="#accordion"
                                href="#collapse-<?= $tunnel; ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
                             <ul class="service nav nav-pills pull-right">
-                                <?php foreach ($this->config->item('SERVICE_ACTIONS') as $action => $props): ?>
+                                <?php
+                                $host_actions = array(
+                                    'remove-host' => $this->config->item('SERVICE_ACTIONS')['remove-host'],
+                                    'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
+                                );
+                                foreach ($host_actions as $action => $props):?>
                                     <li>
-                                        <button type="button" id="<?= $action ?>"
-                                                class="btn btn-xs <?= $props['class'] ?>">
-                                            <i class="glyphicon <?= $props['icon'] ?>"></i>
-                                            <span><?= ucfirst(i18n($this, $action)) ?></span>
+                                        <button type="button"
+                                                data-name="<?=$tunnel?>"
+                                                data-action="<?=$action?>"
+                                                class="action btn btn-xs <?=$props['class']?>"
+                                                data-target="#modal-<?=$action?>"
+                                        >
+                                            <i class="glyphicon <?=$props['icon']?>"></i>
+                                            <span><?=ucfirst(i18n($this, $action))?></span>
                                         </button>
                                     </li>
                                 <?php endforeach; ?>
@@ -92,9 +111,19 @@
 
         <!-- Tab panes -->
         <!-- <div class="tab-content"> -->
+        <h3 id="cnc" class="anchor">
+            <?=i18n($this, 'command-and-control')?>
+            <small><a href="#cnc" class="text-muted">#cnc</a></small>
+        </h3>
         <div class="tab-pane" id="tunnels">
             <ul class="nav nav-pills">
-                <?php foreach ($this->config->item('SERVICE_HELPERS') as $helper => $props): ?>
+                <?php
+                $buttons = array(
+                    'list-channels' => $this->config->item('SERVICE_HELPERS')['list-channels'],
+                    'list-hosts' => $this->config->item('SERVICE_HELPERS')['list-hosts'],
+                );
+                ?>
+                <?php foreach ($buttons as $helper => $props):?>
                     <li>
                         <button type="button" id="<?= $helper ?>"
                                 class="btn btn-sm <?= $props['class'] ?> btn-helper">
