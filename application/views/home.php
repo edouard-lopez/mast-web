@@ -59,7 +59,7 @@
 <!--                                          <span class='glyphicon glyphicon-print' ></span>-->
 <!--                                      </span>-->
                                         <span>
-                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?>
+                                            <a href='http://<?= $channel['remoteHost'] ?>/' target="_blank"><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?>
                                         </span>
 <!--                                        <ul class="service nav nav-pills pull-right">
                                             <?php /*foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): */?>
