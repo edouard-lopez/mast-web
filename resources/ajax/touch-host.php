@@ -101,6 +101,7 @@ foreach ($hosts as $hostPort) {
                                         'status' => $levelClass['none']
                                     );
         }
+        // s'il s'agit d'un nom DNS ou HOSTS valide
         elseif (preg_match('/^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$/', $host)) {
                 $result[$hostPort] = buildArray($host, $port, $levelClass);
         }
