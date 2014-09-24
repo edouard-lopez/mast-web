@@ -19,6 +19,7 @@ class Home extends CI_Controller {
 	private function buildConfigs()
 	{
 	    $list = $this->shell->execute("/usr/sbin/mast-utils list-hosts");
+	    var_export($list);
 	    foreach ($list as $key => $tunnel){
             preg_match(
 	            '/^(.*\w)[\s\t]+('.REGEX_IP_ADRESS.'|[\w]+)(\:([0-9]{1,5}))?/',
@@ -26,6 +27,7 @@ class Home extends CI_Controller {
 	            $tunnelConfig
             );
             $channels = $this->shell->list_channels($tunnelConfig[1]);
+            var_export($channels );
             $channelsConfigs=array();
 
             foreach ($channels as $key => $config){
@@ -46,6 +48,8 @@ class Home extends CI_Controller {
 	                trim(strip_tags($config)),
 	                $channel
                 );
+                // var_export($channel );
+                // var_export($channelsConfigs );
                 $channelsConfigs[$channel['cid']] = array(
                     'localHost' => $channel['localHost'],
 	                'localPort' => $channel['localPort'], # listening port
