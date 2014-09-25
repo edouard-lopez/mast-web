@@ -60,3 +60,8 @@ p:last-child {
 .anchor:hover small a {
     color: #999;
 }
+
+.list-striped > li:nth-child(2n+1)
+ {
+    background-color: hsl(0, 0%, 98%);
+}
