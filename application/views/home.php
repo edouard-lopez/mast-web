@@ -40,27 +40,45 @@
                             <!--                            </button>-->
                             <a data-toggle="collapse" data-parent="#accordion"
                                href="#collapse-<?= $tunnel ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
-                            <ul class="service nav nav-pills pull-right">
-                                <?php
-                                $host_actions = array(
-                                    'remove-host' => $this->config->item('SERVICE_ACTIONS')['remove-host'],
-                                    'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
-                                );
-                                foreach ($host_actions as $action => $props):?>
-                                    <li>
-                                        <button type="button"
-                                                data-name="<?= $tunnel ?>"
-                                                data-action="<?= $action ?>"
-                                                class="action btn btn-xs <?= $props['class'] ?>"
-                                                data-target="#modal-<?= $action ?>"
-                                            >
-                                            <i class="glyphicon <?= $props['icon'] ?>"></i>
-                                            <span><?= ucfirst(i18n($this, $action)) ?></span>
-                                        </button>
-                                    </li>
-                                <?php endforeach ?>
+                            <ul class="nav nav-pills pull-right">
+                                <li>
+                                    <ul class="service nav nav-pills pull-left">
+                                        <?php
+                                        $host_actions = array(
+                                            'status' => $this->config->item('SERVICE_ACTIONS')['status'],
+                                            'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
+                                        );
+                                        foreach ($host_actions as $action => $props):
+                                            require TPL_PATH . "action-button.php";
+                                        endforeach
+                                        ?>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <ul class="service btn-toolbar nav nav-pills">
+                                        <?php
+                                        $host_actions = array(
+                                            'restart' => $this->config->item('SERVICE_ACTIONS')['restart'],
+                                            'start' => $this->config->item('SERVICE_ACTIONS')['start'],
+                                            'stop' => $this->config->item('SERVICE_ACTIONS')['stop'],
+                                            'remove-host' => $this->config->item('SERVICE_HELPERS')['remove-host'],
+                                        );
+                                        ?>
+                                        <?php
+                                        foreach ($host_actions as $action => $props):
+                                            if ($action == 'remove-host'): ?>
+                                                <li class="divider"></li>
+                                            <?php
+                                            endif;
+                                            require TPL_PATH . "action-button.php";
+                                        endforeach
+                                        ?>
+                                    </ul>
+                                </li>
                             </ul>
                         </h4>
+
                     </div>
                     <div id="collapse-<?= $tunnel ?>" class="panel-collapse collapse in">
                         <div class="panel-body channels">
@@ -119,7 +137,7 @@
             <small><a href="#cnc" class="text-muted">#cnc</a></small>
         </h3>
         <div class="tab-pane" id="tunnels">
-            <ul class="nav nav-pills">
+            <ul class="cnc nav nav-pills">
                 <?php
                 $buttons = array(
                     'list-channels' => $this->config->item('SERVICE_HELPERS')['list-channels'],
@@ -128,17 +146,18 @@
                 ?>
                 <?php foreach ($buttons as $helper => $props): ?>
                     <li>
-                        <button type="button" id="<?= $helper ?>"
-                                class="btn btn-sm <?= $props['class'] ?> btn-helper">
-                            <i class="glyphicon <?= $props['icon'] ?>"></i>
+                        <a role="button" id="<?= $helper ?>"
+                                class="btn btn-default btn-xs <?= $props['class'] ?> btn-helper">
+                            <i class="<?= $props['icon'] ?>"></i>
                             <?= ucfirst(i18n($this, $helper)) ?>
-                        </button>
+                        </a>
                     </li>
                 <?php endforeach ?>
                 <li>
-                    <button type="button" class="btn btn-default btn-sm btn-clear glyphicon glyphicon-ban-circle">
+                    <a href="#" role="button" class="btn btn-default btn-xs btn-clear">
+                        <i class="glyphicon glyphicon-ban-circle"></i>
                         <?= i18n($this, 'clear') ?>
-                    </button>
+                    </a>
                 </li>
             </ul>
             <!-- </div> -->

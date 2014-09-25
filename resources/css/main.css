@@ -24,16 +24,29 @@ p:last-child {
     margin-top: 0;
 }
 
-.btn-action span,
+.btn-toolbar .btn-action span,
 .btn-clear span
 {
-    /*display: none;*/
+    display: none;
 }
-.btn-action:hover span,
+.btn-toolbar .btn-action:hover span,
 .btn-clear:hover span
 {
     display: inline;
 }
+.service {
+    padding-left: 1.5em;
+}
+.service > li + li {
+    margin-left: .2em;
+}
+.service .btn-xs, .cnc .btn-xs {
+    padding: 1px 5px;
+}
+.service .glyphicon+span {
+    padding-left: .25em;
+}
+
 
 #dangerous-area {
     z-index: 1000;

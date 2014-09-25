@@ -47,12 +47,6 @@ var instance = {
 
         this.overlay();
 
-        $('.service .btn-action').on( "click", function() {
-            self.apiCall(this.id);
-        });
-        $('#tunnels .btn-action').on( "click", function() {
-            self.apiCall(this.id);
-        });
         $('.btn-clear').on( "click", function() {
             $('.stdout').html('');
         });
@@ -61,9 +55,9 @@ var instance = {
             $('#dangerous-area').hide();
         });
 
-        $('.action').on('click', function() {
-            console.log(this);
+        $('.btn-action').on('click', function() {
             data = $(this).data();
+            delete data.target;
             if (! data.action ) { console.error('no action'); return; }
 
             var action =  data.action;
@@ -72,11 +66,17 @@ var instance = {
             var target_form = '#modal-' + action;
 
             switch (action) {
+                //no special behavior, fallback to simple api call
+                case 'start':
+                case 'stop':
+                case 'restart':
+                case 'status':
                 case 'list-hosts':
                 case 'list-channels':
                 case 'remove-host':
                 case 'remove-channel':
                     break;
+                // form in modal
                 case 'add-host':
                     $(target_form)
                         .on('show.bs.modal', function (e) {
