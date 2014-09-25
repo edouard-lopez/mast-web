@@ -1,24 +1,27 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
  * User: ed8
  * Date: 7/27/14
  */
+class Action extends CI_Controller
+{
 
-class Action extends CI_Controller {
+    /**
+     *
+     */
+    public function index()
+    {
+        $this->load->view('home');
+    }
 
-	public function index()
-	{
-		$this->load->view('home');
-	}
-
-	/**
-	 * Start
-	 * @return array [description]
-	 * @param string _ action to request on the service (start|stop|restart|…)
-	 */
 	public function invoke($_, $config = null)
-	{
-	// @todo: sanitize command's arguments!!
+    /**
+     * Start
+     * @return array [description]
+     * @param string _ action to request on the service (start|stop|restart|…)
+     */
+    // @todo: sanitize command's arguments!!
         if (array_key_exists($_, $this->config->item('SERVICE_ACTIONS'))) {
             return $this->shell->run(MAST_SERVICE." $_ $config");
         }
@@ -35,5 +38,5 @@ class Action extends CI_Controller {
 	}
 }
 
-	/* End of file welcome.php */
+/* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

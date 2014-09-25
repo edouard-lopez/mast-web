@@ -102,12 +102,12 @@ $config['SERVICE_HELPERS'] = array(
 );
 $config['SERVICE_CH_HELPERS'] = array(
     'deploy-code_BAT' => array(
-       'class' => 'batCode btn-default',
-       'icon' => 'glyphicon-comment',
+        'class' => 'batCode btn-default',
+        'icon' => 'glyphicon-comment',
     ),
     'deploy-code_PS1' => array(
-       'class' => 'ps1Code btn-primary',
-       'icon' => 'glyphicon-comment',
+        'class' => 'ps1Code btn-primary',
+        'icon' => 'glyphicon-comment',
     ),
     'remove-channel' => array(
         'class' => 'btn-danger',

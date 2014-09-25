@@ -45,7 +45,7 @@ var instance = {
 	init: function () {
 		var self = this;
 
-        this.overlay()
+        this.overlay();
 
         $('.service .btn-action').on( "click", function() {
             self.apiCall(this.id);

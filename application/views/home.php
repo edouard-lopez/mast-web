@@ -1,18 +1,18 @@
-<?php require TPL_PATH . '/header.php'; ?>
+<?php require TPL_PATH . '/header.php'?>
 
 <div id="dangerous-area">
     <div class="child jumbotron alert-danger">
         <h1>
             <i class="glyphicon glyphicon-exclamation-sign"></i>
             <br/>
-            <?= i18n($this, 'dangerous-area') ?>
+            <?=i18n($this, 'dangerous-area')?>
         </h1>
 
         <p>
-            <?= i18n($this, 'dangerous-area.explain') ?>
+            <?=i18n($this, 'dangerous-area.explain')?>
         </p>
         <button id="accept-danger" class="btn btn-success"><i
-                class="glyphicon glyphicon-ok"></i> <?= i18n($this, 'dangerous-area.accept') ?></button>
+                class="glyphicon glyphicon-ok"></i> <?=i18n($this, 'dangerous-area.accept')?></button>
     </div>
 </div>
 
@@ -30,8 +30,8 @@
         require TPL_PATH . "action-form.php";?>
 
     <div class="container-fluid">
-        <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs) ?>'>
-            <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
+        <div class="panel-group" id="accordion" data-configs='<?=json_encode($configs)?>'>
+            <?php foreach ($configs as $tunnel => $tunnelConfig) {?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -40,7 +40,7 @@
 <!--                                    data-rm='--><?//= json_encode($tunnelConfig) ?><!--'>-->
 <!--                            </button>-->
                             <a data-toggle="collapse" data-parent="#accordion"
-                               href="#collapse-<?= $tunnel; ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
+                               href="#collapse-<?=$tunnel?>"> <?=$tunnel . ' - ' . $tunnelConfig['remoteHost']?></a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php
                                 $host_actions = array(
@@ -59,17 +59,14 @@
                                             <span><?=ucfirst(i18n($this, $action))?></span>
                                         </button>
                                     </li>
-                                <?php endforeach; ?>
+                                <?php endforeach?>
                             </ul>
                         </h4>
                     </div>
-                    <div id="collapse-<?= $tunnel; ?>" class="panel-collapse collapse in">
+                    <div id="collapse-<?=$tunnel?>" class="panel-collapse collapse in">
                         <div class="panel-body channels">
-                            <ul class="service nav nav-stack">
-                                <?php
-                                // var_export($siteConfig['channels']);
-                                foreach ($tunnelConfig['channels'] as $channel) {
-                                    ?>
+                            <ul class="service nav nav-stack list-striped">
+                                <?php foreach ($tunnelConfig['channels'] as $channel) {?>
                                     <li>
 <!--                                      <span>-->
 <!--                                          <button type='button' class='remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left'-->
@@ -78,7 +75,7 @@
 <!--                                          <span class='glyphicon glyphicon-print' ></span>-->
 <!--                                      </span>-->
                                         <span>
-                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?>
+                                            <a href='http://<?=$channel['remoteHost']?>/'><?=$channel['remoteHost']?></a> by port <?=$channel['localPort']?>
                                         </span>
 <!--                                        <ul class="service nav nav-pills pull-right">
                                             <?php /*foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): */?>
@@ -98,12 +95,12 @@
                                             <?php /*endforeach; */?>
                                         </ul>-->
                                     </li>
-                                <?php } ?>
+                                <?php }?>
                             </ul>
                         </div>
                     </div>
                 </div>
-            <?php }; ?>
+            <?php }?>
         </div>
         <!--         <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
                     <li><a href="#tunnels" role="tab" data-toggle="tab">Tunnels</a></li>
@@ -131,10 +128,10 @@
                             <?= ucfirst(i18n($this, $helper)) ?>
                         </button>
                     </li>
-                <?php endforeach; ?>
+                <?php endforeach?>
                 <li>
                     <button type="button" class="btn btn-default btn-sm btn-clear glyphicon glyphicon-ban-circle">
-                        <?= i18n($this, 'clear') ?>
+                        <?=i18n($this, 'clear')?>
                     </button>
                 </li>
             </ul>
@@ -144,8 +141,8 @@
 </div>
 <br/>
 <div class="container-fluid">
-    <pre class="stdout"><?= $this->shell->run("/etc/init.d/mast status"); ?></pre>
+    <pre class="stdout"><?=$this->shell->run("/etc/init.d/mast status")?></pre>
 </div>
 </div>
 
-<?php require TPL_PATH . '/footer.php'; ?>
+<?php require TPL_PATH . '/footer.php'?>

@@ -29,13 +29,14 @@ $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
                             </div>
                         </div>
                     <?php endforeach ?>
+                </div>
+                <div class="modal-footer">
                     <input type="text" name="target-action" value="replaced-with-js" class="target-action">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?=i18n($this, 'close')?></button>
                 <button type="submit" class="btn btn-primary btn-sm action"> <?= i18n($this, 'add') ?> </button>
-            </div>
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal"><?= i18n($this, 'close') ?></button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
