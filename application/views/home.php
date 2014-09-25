@@ -97,6 +97,11 @@
                                     </li>
                                 <?php }?>
                             </ul>
+                            <div>
+                                <?php
+                                $action = 'add-channel';
+                                require TPL_PATH . "action-form.php"?>
+                            </div>
                         </div>
                     </div>
                 </div>
