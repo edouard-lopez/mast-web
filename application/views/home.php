@@ -120,12 +120,14 @@
                     'list-hosts' => $this->config->item('SERVICE_HELPERS')['list-hosts'],
                 );
                 ?>
-                <?php foreach ($buttons as $helper => $props):?>
+                <?php foreach ($buttons as $action => $props):?>
                     <li>
-                        <button type="button" id="<?= $helper ?>"
-                                class="btn btn-sm <?= $props['class'] ?> btn-helper">
-                            <i class="glyphicon <?= $props['icon'] ?>"></i>
-                            <?= ucfirst(i18n($this, $helper)) ?>
+                        <button type="button" id="<?=$action?>"
+                                class="action btn btn-xs <?=$props['class']?> btn-helper"
+                                data-action="<?=$action?>"
+                        >
+                            <i class="glyphicon <?=$props['icon']?>"></i>
+                            <?=ucfirst(i18n($this, $action))?>
                         </button>
                     </li>
                 <?php endforeach?>
