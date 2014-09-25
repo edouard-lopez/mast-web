@@ -72,7 +72,7 @@ $config['SERVICE_HELPERS'] = array(
         'form-fields' => array(
             'NAME' => array('pattern' => REGEX_NAME),
             'PRINTER' => array('pattern' => REGEX_HOST),
-            'DESC' => array(),
+            'DESC' => array('pattern' => REGEX_DESC),
         )
     ),
     'remove-channel' => array(
