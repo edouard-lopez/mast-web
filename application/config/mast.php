@@ -4,6 +4,18 @@
  * Date: 7/27/14
  */
 
+
+define('MAST_SERVICE', '/etc/init.d/mast');
+define('MAST_UTILS', '/usr/sbin/mast-utils');
+
+define('TPL_PATH', APPPATH.'/views/tpl/');
+
+define('REGEX_IP_ADRESS', '25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}');
+define('REGEX_NAME', '[a-zA-Z0-9_:\-\s]+');
+define('REGEX_HOST', '((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$');
+define('REGEX_DESC', '.*');
+
+
 /**
 * Whitelist service actions
 * @param :{string} class HTML class for the button
@@ -100,7 +112,3 @@ $config['SERVICE_CH_HELPERS'] = array(
 );
 $config['PROJECT'] = 'Mast web';
 $config['PROJECT.html'] = '<abbr title="Multiple Auto-SSH Tunnels web" class="initialism">MAST</abbr>-web';
-
-define('MAST_SERVICE', '/etc/init.d/mast');
-define('MAST_UTILS', '/usr/sbin/mast-utils');
-define('REGEX_IP_ADRESS', '25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}');
