@@ -46,7 +46,13 @@ $config['SERVICE_ACTIONS'] = array(
 //        'icon' => 'glyphicon-search',
 //    ),
 );
+
 $config['SERVICE_HELPERS'] = array(
+    'list-hosts' => array(
+        'class' => 'btn-info',
+        'icon' => 'glyphicon-list',
+    ),
+
     'add-host' => array(
         'class' => 'btn-success',
         'icon' => 'glyphicon-plus-sign',
@@ -62,6 +68,7 @@ $config['SERVICE_HELPERS'] = array(
             'NAME' => array('pattern' => REGEX_NAME),
         )
     ),
+
     'list-channels' => array(
         'class' => 'btn-info',
         'icon' => 'glyphicon-random',
@@ -83,6 +90,7 @@ $config['SERVICE_HELPERS'] = array(
             'NAME' => array('pattern' => REGEX_NAME),
         )
     ),
+
     'list-logs' => array(
         'class' => 'btn-info',
         'icon' => 'glyphicon-info-sign',
