@@ -17,10 +17,11 @@ define('REGEX_DESC', '.*');
 
 
 /**
-* Whitelist service actions
-* @param :{string} class HTML class for the button
-* @param :{string} icon glyphicon class
-*/
+ * Whitelist service actions
+ * @param :{string} class HTML class for the button
+ * @param :{string} icon glyphicon class
+ * @param :{array} form-fields list of expected fields. Each field must have a validating pattern
+ */
 $config['SERVICE_ACTIONS'] = array(
 //    'start' => array(
 //        'class' => 'btn-success',
@@ -100,6 +101,7 @@ $config['SERVICE_HELPERS'] = array(
         'icon' => 'glyphicon-floppy-save',
     ),
 );
+# todo: what is SERVICE_CH_HELPERS?
 $config['SERVICE_CH_HELPERS'] = array(
     'deploy-code_BAT' => array(
         'class' => 'batCode btn-default',
