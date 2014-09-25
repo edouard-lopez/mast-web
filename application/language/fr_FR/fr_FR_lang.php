@@ -14,7 +14,7 @@ $lang['list-channels'] = 'Lister les canaux';
 $lang['add-channel'] = 'Ajouter un <strong>canal</strong>';
 $lang['add-host'] = 'Ajouter un <strong>hôte</strong>';
 $lang['remove-host'] = 'Supprimer cet <strong>hôte</strong>';
-$lang['NAME:label'] = 'nom';
+$lang['NAME:label'] = 'nom de l\'hôte';
 $lang['NAME:placeholder'] = 'ex. client-one';
 $lang['PRINTER:label'] = 'imprimante';
 $lang['PRINTER:placeholder'] = "ex. 10.1.4.1 (IP de l'imprimante)";
@@ -27,7 +27,7 @@ $lang['dashboard'] = 'Tableau de bord';
 $lang['command-and-control'] = 'Centre de Contrôle';
 $lang['clear'] = 'Effacer';
 $lang['dangerous-area'] = 'Zone dangereuse';
-$lang['dangerous-area.explain'] = "Vous etes sur une interface d'administration, vos actions peuvent <strong>impacter le réseau d'entreprise</strong>.";
+$lang['dangerous-area.explain'] = "Vous êtes sur une interface d'administration, vos actions peuvent <strong>impacter le réseau d'entreprise</strong>.";
 $lang['dangerous-area.accept'] = 'Je <b>comprends</b> les risques';
 
 # UI
