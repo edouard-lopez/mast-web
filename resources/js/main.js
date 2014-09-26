@@ -45,14 +45,8 @@ var instance = {
 	init: function () {
 		var self = this;
 
-        this.overlay()
+        this.overlay();
 
-        $('.service .btn-action').on( "click", function() {
-            self.apiCall(this.id);
-        });
-        $('#tunnels .btn-action').on( "click", function() {
-            self.apiCall(this.id);
-        });
         $('.btn-clear').on( "click", function() {
             $('.stdout').html('');
         });
@@ -61,36 +55,50 @@ var instance = {
             $('#dangerous-area').hide();
         });
 
-        $('.action').on('click', function() {
-            console.log(this);
-            if (! $(this).data('action') ) { console.error('no action'); return; }
+        $('.btn-action').on('click', function() {
+            data = $(this).data();
+            delete data.target;
+            if (! data.action ) { console.error('no action'); return; }
 
-            var action =  $(this).data('action') || '';
+            var action =  data.action;
             var params = new Array();
             var desc, host, id, name, printer;
+            var target_form = '#modal-' + action;
 
             switch (action) {
-                case 'add-host':
-                    params.push($(this).data('name') || '' );
-                    params.push($(this).data('host') || '' );
-                    $('#modal-add-host').modal();
-                    break;
+                //no special behavior, fallback to simple api call
+                case 'start':
+                case 'stop':
+                case 'restart':
+                case 'status':
+                case 'list-hosts':
+                case 'list-channels':
                 case 'remove-host':
-                    params.push($(this).data('name') || '' );
-                    break;
-                case 'add-channel':
-                    params.push($(this).data('name') || '' );
-                    params.push($(this).data('printer') || '' );
-                    params.push($(this).data('desc') || '' );
-                    $('#modal-add-channel').modal();
-                    break;
                 case 'remove-channel':
-                    params.push($(this).data('name'));
-                    params.push($(this).data('id'));
                     break;
+                // form in modal
+                case 'add-host':
+                    $(target_form)
+                        .on('show.bs.modal', function (e) {
+                            $(target_form+' .modal-title > string')[0].textContent = data.name;
+                        })
+                        .modal();
+                    return;
+                case 'add-channel':
+                    $(target_form)
+                        .on('show.bs.modal', function (e) {
+                            $(target_form+' .modal-title > .name')[0].textContent = data.name;
+                        })
+                        .modal();
+                    return;
                 default:
-                    console.error('invalid action: '+action);
+                    console.error('invalid action: ' + action);
                     return
+            }
+            for (key in data) {
+                if (key != 'action') {
+                    params.push(key+':'+data[key]);
+                }
             }
             var q = action+'/'+params.join(',');
             console.log(q);
