@@ -1,5 +1,5 @@
 <?php
-$fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
+// $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
 ?>
 
 <div class="modal fade" id="modal-<?= $action ?>">

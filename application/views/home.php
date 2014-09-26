@@ -24,13 +24,13 @@
 
     <?php
         $action = 'add-channel';
-        require TPL_PATH . "action-form.php";?>
-    <?php
+        require TPL_PATH . "action-form.php";
         $action = 'add-host';
-        require TPL_PATH . "action-form.php";?>
+        require TPL_PATH . "action-form.php";
+    ?>
 
     <div class="container-fluid">
-        <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs) ?>'>
+        <div class="panel-group" id="accordion" data-configs='<?=json_encode($configs)?>'>
             <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -43,11 +43,14 @@
                                href="#collapse-<?= $tunnel; ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
                             <ul class="service nav nav-pills pull-right">
                                 <?php
-                                $host_actions = array(
-                                    'remove-host' => $this->config->item('SERVICE_ACTIONS')['remove-host'],
-                                    'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
-                                );
-                                foreach ($host_actions as $action => $props):?>
+var_export($this->config->item('SERVICE_ACTIONS'));
+                                // $host_actions = array(
+                                //     'remove-host' => $this->config->item('SERVICE_ACTIONS')['remove-host'],
+                                //     'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
+                                // );
+                                foreach ($host_actions as $action => $props)
+                                {
+                                ?>
                                     <li>
                                         <button type="button"
                                                 data-name="<?=$tunnel?>"
@@ -59,7 +62,9 @@
                                             <span><?=ucfirst(i18n($this, $action))?></span>
                                         </button>
                                     </li>
-                                <?php endforeach; ?>
+                                <?php
+                                }
+                                ?>
                             </ul>
                         </h4>
                     </div>
@@ -118,10 +123,10 @@
         <div class="tab-pane" id="tunnels">
             <ul class="nav nav-pills">
                 <?php
-                $buttons = array(
-                    'list-channels' => $this->config->item('SERVICE_HELPERS')['list-channels'],
-                    'list-hosts' => $this->config->item('SERVICE_HELPERS')['list-hosts'],
-                );
+                // $buttons = array(
+                //     'list-channels' => $this->config->item('SERVICE_HELPERS')['list-channels'],
+                //     'list-hosts' => $this->config->item('SERVICE_HELPERS')['list-hosts'],
+                // );
                 ?>
                 <?php foreach ($buttons as $helper => $props):?>
                     <li>
