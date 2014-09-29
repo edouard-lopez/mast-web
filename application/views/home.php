@@ -93,8 +93,16 @@
                                         <!--                                          <span class='glyphicon glyphicon-print' ></span>-->
                                         <!--                                      </span>-->
                                         <span>
-                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?>
+                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> <b><?= $channel['comment'] ?></b> by port <?= $channel['localPort'] ?>
                                         </span>
+                                        <a id="<?= ?>" class="btn btn-xs btn-default right glyphicon glyphicon-comment" href="./home/getScript/BAT/<?=urldecode(json_encode(array(
+                                                                'site' => $tunnel,
+                                                                'vps' => $_SERVER['HTTP_HOST'],
+                                                                'port' => $channel['localPort'],
+                                                                'imp' => $channel['remoteHost'],
+                                                                'comment' => $channel['comment']
+                                                            )))?>">x</a>
+
                                         <!--                                        <ul class="service nav nav-pills pull-right">
                                             <?php /*foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): */ ?>
                                                 <li>
