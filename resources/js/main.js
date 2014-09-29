@@ -111,5 +111,6 @@ var instance = {
 
 
 (function (window, document, _) {
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
 	_.init();
 }(window, document, instance));

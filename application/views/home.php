@@ -85,14 +85,11 @@
                             <ul class="service nav nav-stack list-striped">
                                 <?php foreach ($tunnelConfig['channels'] as $channel) { ?>
                                     <li>
-                                        <!--                                      <span>-->
-                                        <!--                                          <button type='button' class='remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left'-->
-                                        <!--                                                  data-rm='-->
-                                        <? //= json_encode($channel) ?><!--'>-->
-                                        <!--                                          </button>-->
-                                        <!--                                          <span class='glyphicon glyphicon-print' ></span>-->
-                                        <!--                                      </span>-->
+<!--                                        <i data-rm='--><?//= json_encode($channel) ?><!--' class='remoteHost glyphicon glyphicon-repeat'> </i>-->
                                         <span>
+                                            <i class='glyphicon glyphicon-exclamation-sign status-danger '
+                                               data-toggle="tooltip" data-placement="top" title="Tooltip on top"
+                                                ></i>
                                             <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?>
                                         </span>
                                         <!--                                        <ul class="service nav nav-pills pull-right">
