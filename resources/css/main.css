@@ -76,5 +76,8 @@ p:last-child {
 
 .list-striped > li:nth-child(2n+1)
  {
-    background-color: hsl(0, 0%, 98%);
+    background-color: hsl(0, 0%, 96%);
+}
+.list-striped > li:hover {
+    background-color: hsl(200, 65%, 91%);
 }
