@@ -45,7 +45,7 @@ class Home extends CI_Controller {
 	                .'(?P<localHost>.*):(?P<localPort>[0-9]{1,5}):'
                     .'(?P<remoteHost>.*):(?P<remotePort>[0-9]{1,5})'
                     .'[\s]+(?P<cid>\d+)'
-                    .'([\s]+#(?P<comment>.*)?)?$/',
+                    .'([\s]+#(?P<comment>.*))?$/',
 	                trim(strip_tags($config)),
 	                $channel
                 );
