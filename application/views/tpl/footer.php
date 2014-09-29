@@ -44,7 +44,7 @@
         $.each( nodesCode, function( nodeCode ) {
             var currentThis=$(this);
             $(this)
-                .attr('href','./home/getBAT/'+encodeURIComponent(JSON.stringify(currentThis.data('varconf'))));
+                .attr('href','./home/getScript/BAT/'+encodeURIComponent(JSON.stringify(currentThis.data('varconf'))));
 
             $(this).click(function(){
                 if (window.clipboardData) {
@@ -58,7 +58,7 @@
         $.each( nodesCode, function( nodeCode ) {
             var currentThis=$(this);
             $(this)
-                .attr('href','./home/getPS1/'+encodeURIComponent(JSON.stringify(currentThis.data('varconf'))));
+                .attr('href','./home/getScript/PS1/'+encodeURIComponent(JSON.stringify(currentThis.data('varconf'))));
 
             $(this).click(function(){
                 // console.log($(this).data('varconf'), $(this).data('code'));
