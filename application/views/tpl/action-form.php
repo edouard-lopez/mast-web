@@ -1,5 +1,5 @@
 <?php
-// $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
+ $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
 ?>
 
 <div class="modal fade" id="modal-<?= $action ?>">
@@ -21,15 +21,17 @@
                             </label>
 
                             <div>
-                                <input type="text" class="form-control input-sm"
+                                <input type="text" class="<?=$field=='NAME'?'name': '' ;?> form-control input-sm"
                                        id="<?= $fid ?>"
                                        name="<?= $field ?>"
                                        placeholder="<?= i18n($this, $field . ':placeholder') ?>"
                                        pattern="<?= @$field_args['pattern'] ?>"
                                        required
                                     <?php if ($action == 'add-channel' && $field == 'NAME'): ?>
-                                        value="<?= $tunnel ?>"
+                                        value="replaced-with-js"
                                         readonly
+                                    <?php else: ?>
+
                                     <?php endif ?>
                                     >
                             </div>

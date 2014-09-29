@@ -80,7 +80,8 @@ var instance = {
                 case 'add-host':
                     $(target_form)
                         .on('show.bs.modal', function (e) {
-                            $(target_form+' .modal-title > string')[0].textContent = data.name;
+                            $(target_form+' .modal-title > .name')[0].textContent = data.name;
+                            $(target_form+' .modal-body .name').val(data.name);
                         })
                         .modal();
                     return;
@@ -88,6 +89,7 @@ var instance = {
                     $(target_form)
                         .on('show.bs.modal', function (e) {
                             $(target_form+' .modal-title > .name')[0].textContent = data.name;
+                            $(target_form+' .modal-body .name').val(data.name);
                         })
                         .modal();
                     return;
