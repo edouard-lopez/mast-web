@@ -28,12 +28,12 @@
     ?>
 
     <div class="container-fluid">
-        <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs) ?>'>
+        <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs,JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
             <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
-                <div id="tun_<?=md5($tunnel)?>" class="panel panel-default tunnel" data-tunnel='<?= json_encode($tunnelConfig) ?>'>
+                <div id="tunnel_<?=md5($tunnel)?>" class="panel panel-default tunnel" data-tunnel='<?= json_encode($tunnelConfig,JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <i class='glyphicon glyphicon-exclamation-sign status-warning' data-toggle="tooltip" data-placement="top" title="Tooltip on top test"> </i>
+                            <i id="x<?=md5($tunnelConfig['remoteHost'].':'.$tunnelConfig['remotePort'])?>" class='glyphicon glyphicon-exclamation-sign status-warning' data-toggle="tooltip" data-placement="top" title="Tooltip on top test"> </i>
                             <a data-toggle="collapse" data-parent="#accordion"
                                href="#collapse-<?= $tunnel ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
                             <ul class="nav nav-pills pull-right">
@@ -80,9 +80,9 @@
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack list-striped">
                                 <?php foreach ($tunnelConfig['channels'] as $channel) { ?>
-                                    <li id="cha_<?=md5($channel['remoteHost'])?>" data-channel='<?= json_encode($configs) ?>' class='channel'>
+                                    <li id="channel_<?=md5($channel['remoteHost'])?>" data-channel='<?= json_encode($channel,JSON_HEX_APOS | JSON_HEX_QUOT) ?>' class='channel'>
                                         <span>
-                                            <i class='hide_ glyphicon glyphicon-exclamation-sign status-danger'
+                                            <i id="x<?=md5($channel['remoteHost'].':'.$channel['remotePort'])?>" class='hide_ glyphicon glyphicon-exclamation-sign status-danger'
                                                data-toggle="tooltip" data-placement="top" title="Tooltip on top<?="\n"?> test"
                                                 ></i>
                                             <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?> - <b><?= $channel['comment']?></b>

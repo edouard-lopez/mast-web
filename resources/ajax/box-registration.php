@@ -8,7 +8,7 @@ error_reporting(E_ALL);
     * @package  MAST-web
     * @author   alban LOPEZ <alban.lopez@gmail.com>
     * @link     ./resources/ajax/box-registration.php?MAC=00.11.22.33.44.55&IP=10.48.1.125&interface=eth1
-    * @version 0.2
+    * @version 0.3
 #--------------------------------------------------------------------------
 */
 $BoxListFile = './BoxList.json';
