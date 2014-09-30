@@ -22,7 +22,7 @@ class Home extends CI_Controller {
 	    // var_dump($list);
 	    foreach ($list as $key => $tunnel){
             preg_match(
-	            '/^(.*\w)[\s\t]+('.REGEX_IP_ADRESS.'|[\w]+)(\:([0-9]{1,5}))?/',
+	            '/^(.*\\w)[\\s\\t]+('.REGEX_IP_ADRESS.'|[\\w]+)(\\:([0-9]{1,5}))?/',
 	            trim(strip_tags($tunnel)),
 	            $tunnelConfig
             );
@@ -41,11 +41,11 @@ class Home extends CI_Controller {
                 );
 
                 preg_match(
-	                '/^.*\w+'
+	                '/^.*\\w+'
 	                .'(?P<localHost>.*):(?P<localPort>[0-9]{1,5}):'
                     .'(?P<remoteHost>.*):(?P<remotePort>[0-9]{1,5})'
-                    .'[\s]+(?P<cid>\d+)'
-                    .'([\s]+#(?P<comment>.*))?$/',
+                    .'[\\s]+(?P<cid>\\d+)'
+                    .'([\\s]+#(?P<comment>.*))?$/',
 	                trim(strip_tags($config)),
 	                $channel
                 );
@@ -85,7 +85,7 @@ Prepare et lance le telechargement du script d'install
    * @ http://localhost.opt.dev/home/getScript/BAT/
    */
    	public function getScript ($type, $confNode) {
-	$confNode=json_decode(urldecode ($confNode), true);
+	$confNode=json_decode(base64_decode(urldecode($confNode)), true);
 		// $type=($type=='PS1')?'PS1':'BAT';
 
 $install_code = array(
@@ -112,15 +112,15 @@ EOD
 
 # DOS – Batch XP+
 # Creaton du port GZ
-	cscript C:\Windows\System32\Printing_Admin_Scripts\fr-FR\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%_%port%" -n %port%
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%_%port%" -n %port%
 # Creaton du port de secour en direct
-	cscript C:\Windows\System32\Printing_Admin_Scripts\fr-FR\prnport.vbs -a -o raw -h %imp% -r "DIRECT_%imp%_%port%"
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %imp% -r "DIRECT_%imp%_%port%"
 # Install du driver
-	cscript C:\Windows\System32\Printing_Admin_Scripts\fr-FR\Prndrvr.vbs -a -m "MS Publisher Color Printer"
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prndrvr.vbs -a -m "MS Publisher Color Printer"
 # Creation de l’objet imprimante
-	cscript C:\Windows\System32\Printing_Admin_Scripts\fr-FR\Prnmngr.vbs -a -p "%name%" -r "GZ_%vps%_%port%" -m "MS Publisher Color Printer"
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prnmngr.vbs -a -p "%name%" -r "GZ_%vps%_%port%" -m "MS Publisher Color Printer"
 # ajout des infos : emplacement et commentaire
-	cscript C:\Windows\System32\Printing_Admin_Scripts\fr-FR\Prncnfg.vbs -t -p "%name%" -l "%site%" -m "GZ par tunnel SSH (%UTC%)`n%imp% par le canal %port%"
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prncnfg.vbs -t -p "%name%" -l "%site%" -m "GZ par tunnel SSH (%UTC%), %imp% par le canal %port%"
 
 EOD
 );
@@ -129,7 +129,12 @@ EOD
 		$replace=array($confNode['vps'], $confNode['imp'], $confNode['port'], $confNode['site'], $confNode['channelComment'], date("Y-m-d H:i:s")) ;
 		@ob_end_clean();
 		header_remove();
-		force_download($confNode['channelComment'].' ('.$confNode['imp'].'-'.$confNode['port'].').ps1', str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']));
+		echo(str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']) );
+exit;
+		// force_download(
+		// 		$confNode['channelComment'].' ('.$confNode['imp'].'-'.$confNode['port'].').x'.($type=='PS1')?'PS1':'BAT',
+		// 		str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT'])
+		// 		);
 	}
 }
 

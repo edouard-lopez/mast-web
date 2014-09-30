@@ -11,6 +11,7 @@
         <script src="resources/js/vendor/bootstrap.min.js"></script>
 
         <script src="resources/js/main.js"></script>
+
         <script type="text/javascript">
                 var testEach_Rm = function(){
                     var nodes = $('.remoteHost');
@@ -37,40 +38,6 @@
             });
         </script>
 
-
-
-        <script type="text/javascript">
-        var nodesCode = $('.batCode')
-        $.each( nodesCode, function( nodeCode ) {
-            var currentThis=$(this);
-            $(this)
-                .attr('href','./home/getScript/BAT/'+encodeURIComponent(JSON.stringify(currentThis.data('varconf'))));
-
-            $(this).click(function(){
-                if (window.clipboardData) {
-                    //for IE ONLY!
-                    window.clipboardData.setData('BAT',$(this).data('code'));
-                }
-            });
-        });
-
-        var nodesCode = $('.ps1Code')
-        $.each( nodesCode, function( nodeCode ) {
-            var currentThis=$(this);
-            $(this)
-                .attr('href','./home/getScript/PS1/'+encodeURIComponent(JSON.stringify(currentThis.data('varconf'))));
-
-            $(this).click(function(){
-                // console.log($(this).data('varconf'), $(this).data('code'));
-                if (window.clipboardData) {
-                    //for IE ONLY!
-                    window.clipboardData.setData('PS1',$(this).data('code'));
-                }
-            });
-        });
-
-
-</script>
 
     </body>
 </html>

@@ -30,14 +30,10 @@
     <div class="container-fluid">
         <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs) ?>'>
             <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
-                <div class="panel panel-default">
+                <div id="tun_<?=md5($tunnel)?>" class="panel panel-default tunnel" data-tunnel='<?= json_encode($tunnelConfig) ?>'>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <!--                            <button type="button"-->
-                            <!--                                    class="remoteHost glyphicon glyphicon-repeat btn btn-xs btn-default pull-left"-->
-                            <!--                                    data-rm='-->
-                            <? //= json_encode($tunnelConfig) ?><!--'>-->
-                            <!--                            </button>-->
+                            <i class='glyphicon glyphicon-exclamation-sign status-warning' data-toggle="tooltip" data-placement="top" title="Tooltip on top test"> </i>
                             <a data-toggle="collapse" data-parent="#accordion"
                                href="#collapse-<?= $tunnel ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
                             <ul class="nav nav-pills pull-right">
@@ -84,32 +80,21 @@
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack list-striped">
                                 <?php foreach ($tunnelConfig['channels'] as $channel) { ?>
-                                    <li>
-<!--                                        <i data-rm='--><?//= json_encode($channel) ?><!--' class='remoteHost glyphicon glyphicon-repeat'> </i>-->
+                                    <li id="cha_<?=md5($channel['remoteHost'])?>" data-channel='<?= json_encode($configs) ?>' class='channel'>
                                         <span>
-                                            <i class='glyphicon glyphicon-exclamation-sign status-danger '
-                                               data-toggle="tooltip" data-placement="top" title="Tooltip on top"
+                                            <i class='hide_ glyphicon glyphicon-exclamation-sign status-danger'
+                                               data-toggle="tooltip" data-placement="top" title="Tooltip on top<?="\n"?> test"
                                                 ></i>
-                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?>
+                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?> - <b><?= $channel['comment']?></b>
+                                            <a id="" class="btn btn-xs btn-default right glyphicon glyphicon-comment pull-right" href="./home/getScript/BAT/<?=urlencode(base64_encode(json_encode(array(
+                                                    'site' => $tunnel,
+                                                    'vps' => $_SERVER['HTTP_HOST'],
+                                                    'port' => $channel['localPort'],
+                                                    'imp' => $channel['remoteHost'],
+                                                    'channelComment' => $channel['comment']
+                                                ))))?>"
+                                                download="<?= trim($channel['comment'].' ('.$channel['remoteHost'].'-'.$channel['localPort'].').BAT') ?>"></a>
                                         </span>
-                                        <!--                                        <ul class="service nav nav-pills pull-right">
-                                            <?php /*foreach ($this->config->item('SERVICE_CH_HELPERS') as $action => $props): */ ?>
-                                                <li>
-                                                    <button id="<? /*= $action */ ?>" class="btn btn-xs <? /*= $props['class'] */ ?>
-                                                glyphicon <? /*= $props['icon'] */ ?>"
-                                                            data-script='<?/*= json_encode(array(
-                                                                'site' => $tunnel,
-                                                                'vps' => $_SERVER['HTTP_HOST'],
-                                                                'port' => $channel['localPort'],
-                                                                'imp' => $channel['remoteHost'],
-                                                                'comment' => $channel['comment']
-                                                            )) */
-                                        ?>'>
-                                                        <span><? /*= ucfirst(i18n($this, $action)) */ ?></span>
-                                                    </button>
-                                                </li>
-                                            <?php /*endforeach; */ ?>
-                                        </ul>-->
                                     </li>
                                 <?php } ?>
                             </ul>
@@ -123,9 +108,6 @@
                 </div>
             <?php }; ?>
         </div>
-        <!--         <ul class="nav nav-tabs" role="tablist" id="dashboard-panes">
-                    <li><a href="#tunnels" role="tab" data-toggle="tab">Tunnels</a></li>
-                </ul> -->
 
         <!-- Tab panes -->
         <!-- <div class="tab-content"> -->

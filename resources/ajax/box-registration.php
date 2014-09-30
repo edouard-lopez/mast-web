@@ -36,5 +36,5 @@ if (isset($_GET['MAC'])) {
 	file_put_contents($BoxListFile, json_encode($BoxList));
 }
 echo '<pre>';
-echo file_get_contents($BoxListFile);
+echo @file_get_contents($BoxListFile);
 ?>
