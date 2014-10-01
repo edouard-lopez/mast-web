@@ -1,11 +1,16 @@
 <li>
     <a href="#" role="button"
+            class="btn btn-xs <?= $props['class'] ?>"
             data-name="<?= $tunnel ?>"
             data-action="<?= $action ?>"
-            class="btn btn-xs <?= $props['class'] ?>"
             data-target="#modal-<?= $action ?>"
+
+            title="<?= ucfirst(i18n($this, $action)) ?>"
+            data-placement="bottom"
+            data-toggle="tooltip"
+            data-trigger="hover"
+            data-html="true"
         >
         <i class="<?= $props['icon'] ?>"></i>
-        <span><?= ucfirst(i18n($this, $action)) ?></span>
     </a>
 </li>
