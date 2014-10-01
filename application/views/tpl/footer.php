@@ -20,8 +20,13 @@
                     var currentThis = $(this);
                     var tunnelContents = currentThis.data('tunnel');
                     var ch_str = $.map(tunnelContents.channels, function (channel,i) {
-                            return channel.remoteHost+':'+channel.remotePort;
+                            var key = channel.remoteHost+':'+channel.remotePort;
+                            $('#x'+MD5(key))
+                                .attr('class', 'glyphicon glyphicon-flash text-warning')
+                                .attr('data-original-title', 'Test in progress...');
+                            return key;
                         }).join(',');
+
                     ch_str = tunnelContents.remoteHost+':'+tunnelContents.remotePort+','+ch_str;
                     // console.log('./resources/ajax/touch-host.php?hosts='+ch_str);
                     $.getJSON('./resources/ajax/touch-host.php?hosts='+ch_str,
@@ -29,11 +34,8 @@
                             console.log(jsonTouch);
                             $.each(jsonTouch, function(key, value) {
                                 $('#x'+MD5(key))
-                                    .tooltip({html: true})
                                     .attr('class', value.status)
-                                    .attr('title', 'ping: '+value.ping+' ms<br> telnet: '+value.telnet+' ms')
                                     .attr('data-original-title', 'ping: '+value.ping+' ms<br> telnet: '+value.telnet+' ms');
-                                    // .data('original-title', value.ping+'<br>'+value.telnet);
                         });
                     });
                 });
