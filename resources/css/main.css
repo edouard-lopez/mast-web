@@ -90,3 +90,6 @@ p:last-child {
 .status-danger {
     color: #d9534f;
 }
+.status-in-progress {
+    color: hsl(35, 84%, 62%)
+}

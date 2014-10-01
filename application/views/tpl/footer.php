@@ -22,7 +22,7 @@
                     var ch_str = $.map(tunnelContents.channels, function (channel,i) {
                             var key = channel.remoteHost+':'+channel.remotePort;
                             $('#x'+MD5(key))
-                                .attr('class', 'glyphicon glyphicon-flash text-warning')
+                                .attr('class', 'glyphicon glyphicon-flash status-in-progress')
                                 .attr('data-original-title', 'Test in progress...');
                             return key;
                         }).join(',');
