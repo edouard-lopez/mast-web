@@ -10,7 +10,7 @@
         <script>window.jQuery || document.write('<script src="resources/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
         <script src="resources/js/vendor/bootstrap.min.js"></script>
         <script src="resources/js/main.js"></script>
-        <script type="resources/js/touch-host.js"></script>
-        <script type="resources/js/MD5.js"></script>
+        <script src="resources/js/touch-host.js"></script>
+        <script src="resources/js/MD5.js"></script>
     </body>
 </html>
