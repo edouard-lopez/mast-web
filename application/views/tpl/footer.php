@@ -23,13 +23,17 @@
                             return channel.remoteHost+':'+channel.remotePort;
                         }).join(',');
                     ch_str = tunnelContents.remoteHost+':'+tunnelContents.remotePort+','+ch_str;
-                    console.log('./resources/ajax/touch-host.php?hosts='+ch_str);
+                    // console.log('./resources/ajax/touch-host.php?hosts='+ch_str);
                     $.getJSON('./resources/ajax/touch-host.php?hosts='+ch_str,
                         function (jsonTouch) {
+                            console.log(jsonTouch);
                             $.each(jsonTouch, function(key, value) {
-                                $('#x'.md5(key))
+                                $('#x'+MD5(key))
+                                    .tooltip({html: true})
                                     .attr('class', value.status)
-                                    .attr('title', value.ping+'<br>'+value.telnet);
+                                    .attr('title', 'ping: '+value.ping+' ms<br> telnet: '+value.telnet+' ms')
+                                    .attr('data-original-title', 'ping: '+value.ping+' ms<br> telnet: '+value.telnet+' ms');
+                                    // .data('original-title', value.ping+'<br>'+value.telnet);
                         });
                     });
                 });

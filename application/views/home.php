@@ -33,7 +33,7 @@
                 <div id="tunnel_<?=md5($tunnel)?>" class="panel panel-default tunnel" data-tunnel='<?= json_encode($tunnelConfig,JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <i id="x<?=md5($tunnelConfig['remoteHost'].':'.$tunnelConfig['remotePort'])?>" class='glyphicon glyphicon-exclamation-sign status-warning' data-toggle="tooltip" data-placement="top" title="Tooltip on top test"> </i>
+                            <i id="x<?=md5($tunnelConfig['remoteHost'].':'.$tunnelConfig['remotePort'])?>" class='hide' data-toggle="tooltip" data-placement="top"> </i>
                             <a data-toggle="collapse" data-parent="#accordion"
                                href="#collapse-<?= $tunnel ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
                             <ul class="nav nav-pills pull-right">
@@ -82,9 +82,8 @@
                                 <?php foreach ($tunnelConfig['channels'] as $channel) { ?>
                                     <li id="channel_<?=md5($channel['remoteHost'])?>" data-channel='<?= json_encode($channel,JSON_HEX_APOS | JSON_HEX_QUOT) ?>' class='channel'>
                                         <span>
-                                            <i id="x<?=md5($channel['remoteHost'].':'.$channel['remotePort'])?>" class='hide_ glyphicon glyphicon-exclamation-sign status-danger'
-                                               data-toggle="tooltip" data-placement="top" title="Tooltip on top<?="\n"?> test"
-                                                ></i>
+                                            <i id="x<?=md5($channel['remoteHost'].':'.$channel['remotePort'])?>" class='hide'
+                                               data-toggle="tooltip" data-placement="top"></i>
                                             <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?> - <b><?= $channel['comment']?></b>
                                             <a id="" class="btn btn-xs btn-default right glyphicon glyphicon-comment pull-right" href="./home/getScript/BAT/<?=urlencode(base64_encode(json_encode(array(
                                                     'site' => $tunnel,
@@ -93,7 +92,7 @@
                                                     'imp' => $channel['remoteHost'],
                                                     'channelComment' => $channel['comment']
                                                 ))))?>"
-                                                download="<?= trim($channel['comment'].' ('.$channel['remoteHost'].'-'.$channel['localPort'].').BAT') ?>"></a>
+                                                down_load="<?= trim($channel['comment'].' ('.$channel['remoteHost'].'-'.$channel['localPort'].').BAT') ?>"></a>
                                         </span>
                                     </li>
                                 <?php } ?>

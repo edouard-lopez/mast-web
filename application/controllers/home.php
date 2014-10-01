@@ -129,14 +129,35 @@ EOD
 
 		$search=array('%vps%','%imp%','%port%','%site%','%name%','%UTC%');
 		$replace=array($confNode['vps'], $confNode['imp'], $confNode['port'], $confNode['site'], $confNode['channelComment'], date("Y-m-d H:i:s")) ;
+		$output = str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']);
+		$filename = str_replace(' ', '_', trim($confNode['channelComment'].' ('.$confNode['imp'].'-'.$confNode['port'].').'.($type=='PS1'?'PS1':'BAT') ));
 		@ob_end_clean();
 		header_remove();
-		echo(str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']) );
-exit;
-		// force_download(
-		// 		$confNode['channelComment'].' ('.$confNode['imp'].'-'.$confNode['port'].').x'.($type=='PS1')?'PS1':'BAT',
-		// 		str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT'])
-		// 		);
+		// echo( $output );
+		// exit;
+
+   if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
+	{
+		header('Content-Disposition: attachment; filename="' . urlencode ( $filename ) . '"');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header("Content-Type: application/force-download");
+		header("Content-Type: application/octet-stream");
+		header("Content-Type: application/download");
+		header("Content-Transfer-Encoding: binary");
+		header('Pragma: public');
+		header("Content-Length: ".strlen($output));
+	}
+	else
+	{
+		header('Content-Type: "application/octet-stream"');
+		header('Content-Disposition: attachment; filename="' . ( $filename ) . '"');
+		header("Content-Transfer-Encoding: binary");
+		header('Expires: 0');
+		header('Pragma: no-cache');
+		header("Content-Length: ".strlen($output));
+	}
+	echo($output);
 	}
 }
 

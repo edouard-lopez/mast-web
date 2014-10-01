@@ -124,5 +124,5 @@ Test each host on the network
 
 
 
-echo '<pre>'.json_encode($result);
+echo json_encode($result);
 ?>
