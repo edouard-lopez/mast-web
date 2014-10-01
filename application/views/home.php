@@ -85,7 +85,9 @@
                                         <span>
                                             <i id="x<?=md5($channel['remoteHost'].':'.$channel['remotePort'])?>" class='glyphicon glyphicon-print text-muted' title="Host Unreachable!"
                                                data-html="true" data-toggle="tooltip" data-placement="top"></i>
-                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a> by port <?= $channel['localPort'] ?> - <b><?= $channel['comment']?></b>
+                                            <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a>
+                                            <span> by port <?= $channel['localPort'] ?></span>
+                                            <i class="text-muted"> – <?= $channel['comment'] ?></i>
                                             <a id="" class="btn btn-xs btn-default glyphicon glyphicon-comment pull-right" href="./home/getScript/BAT/<?=urlencode(base64_encode(json_encode(array(
                                                     'site' => $tunnel,
                                                     'vps' => $_SERVER['HTTP_HOST'],
