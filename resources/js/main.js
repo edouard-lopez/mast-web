@@ -105,6 +105,8 @@ var instance = {
             var q = action+'/'+params.join(',');
             console.log(q);
             self.apiCall(q);
+
+            return false;
         });
 
         return this;
