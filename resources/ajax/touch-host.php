@@ -12,8 +12,8 @@ error_reporting(E_ALL);
 #--------------------------------------------------------------------------
 */
 $levelClass = array(
-        'full-ok'=>'hide',
-        'ok'=>'hide',
+        'full-ok'=>'glyphicon glyphicon-print text-muted',
+        'ok'=>'glyphicon glyphicon-print text-muted',
         'partial'=>'glyphicon glyphicon-exclamation-sign status-danger',
         'mismatch'=>'glyphicon glyphicon-exclamation-sign status-danger',
         'none'=>'glyphicon glyphicon-exclamation-sign'
