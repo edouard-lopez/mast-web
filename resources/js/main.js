@@ -55,9 +55,10 @@ var instance = {
             $('#dangerous-area').hide();
         });
 
-        $('.btn-action').on('click', function() {
+        $('.btn-action').on('click', function(e) {
             data = $(this).data();
-            delete data.target;
+            unsafe_data_attr = ['placement', 'toggle','trigger','html','bs.tooltip', 'target'];
+            for (i in unsafe_data_attr ) { delete data[unsafe_data_attr[i]]; }
             if (! data.action ) { console.error('no action'); return; }
 
             var action =  data.action;
