@@ -42,11 +42,11 @@ class Home extends CI_Controller {
                 );
                 // var_export(trim(strip_tags($config)));
                 preg_match(
-	                '/^.*\\w+'
+	                '/^.*\\w+[\\s]?'
 	                .'(?P<localHost>.*):(?P<localPort>[0-9]{1,5}):'
                     .'(?P<remoteHost>.*):(?P<remotePort>[0-9]{1,5})'
                     .'[\\s]+(?P<cid>\\d+)'
-                    .'([\\s]+#(?P<comment>.*))?$/',
+                    .'([\\s]+#[\\s]?(?P<comment>.*))?$/',
 	                trim(strip_tags($config)),
 	                $channel
                 );
