@@ -1,7 +1,9 @@
 <li>
     <a href="#" role="button"
             class="btn btn-xs <?= $props['class'] ?>"
-            data-name="<?= $tunnel ?>"
+            <?php if (isset($name)):?>
+                data-name="<?= $name ?>"
+            <?php endif ?>
             data-action="<?= $action ?>"
             data-target="#modal-<?= $action ?>"
 
@@ -11,6 +13,9 @@
             data-trigger="hover"
             data-html="true"
         >
+        <?php if (isset($text_content)): ?>
+            <?= $text_content ?>
+        <?php endif ?>
         <i class="<?= $props['icon'] ?>"></i>
     </a>
 </li>

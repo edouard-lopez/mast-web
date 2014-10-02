@@ -23,10 +23,12 @@
     </h3>
 
     <?php
-    $action = 'add-host';
-    require TPL_PATH . "action-form.php";
+        $action = 'add-host';
+        $props = $this->config->item('SERVICE_HELPERS')[$action];
+        $text_content = i18n($this, 'add-host');
+        require TPL_PATH . "action-form.php";
+        require TPL_PATH . "action-button.php";
     ?>
-
     <div class="container-fluid">
         <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs,JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
             <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
@@ -46,6 +48,8 @@
                                             'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
                                         );
                                         foreach ($host_actions as $action => $props):
+                                            $name = $tunnel;
+                                            $text_content = null;
                                             require TPL_PATH . "action-button.php";
                                         endforeach
                                         ?>
