@@ -19,7 +19,7 @@ class Home extends CI_Controller {
 	private function buildConfigs()
 	{
 	    $list = $this->shell->execute("/usr/sbin/mast-utils list-hosts");
-	    // var_export($list);
+	    $configs = array();
 	    foreach ($list as $key => $tunnel){
 	    	// var_export(trim(strip_tags($tunnel)));
             preg_match(
