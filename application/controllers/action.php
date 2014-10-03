@@ -37,18 +37,23 @@ class Action extends CI_Controller
     }
 
     /**
-     * @param $args
+     * @param $params
      * @return string
      */
-    public function prepare($args)
+    public function prepare($params)
     {
+
         $args = '';
         if (!empty($_POST)) {
             foreach ($_POST as $arg => $value) {
-                $args .= sprintf('%s=%s ', $arg, escapeshellarg($value));
+                $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
+            }
+        } else {
+            foreach (explode(',', $params) as $param) {
+                list($arg, $value) = explode(':', $param);
+                $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
             }
         }
-
         return $args;
     }
 

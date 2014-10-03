@@ -4,6 +4,18 @@
  */
 
 var instance = {
+    /**
+     * list of data-* attributes transmitted to the api
+     */
+    args_whitelist: [
+        'id',
+        'name',
+        'action',
+        'remote_host',
+        'printer',
+        'desc'
+    ],
+
 	apiCall: function (action) {
 		console.info('x'+action);
 		var request = $.ajax({
@@ -57,12 +69,16 @@ var instance = {
 
         $('.btn-action').on('click', function(e) {
             data = $(this).data();
-            unsafe_data_attr = ['placement', 'toggle','trigger','html','bs.tooltip', 'target'];
-            for (i in unsafe_data_attr ) { delete data[unsafe_data_attr[i]]; }
             if (! data.action ) { console.error('no action'); return; }
 
+            args = []; // only process whitelisted data-attributes
+            for (attr in data ) {
+                if (attr !== 'action' && $.inArray(attr, self.args_whitelist) !== -1) {
+                    args.push(attr+':'+data[attr]);
+                }
+            }
+
             var action =  data.action;
-            var params = new Array();
             var desc, host, id, name, printer;
             var target_form = '#modal-' + action;
 
@@ -98,12 +114,8 @@ var instance = {
                     console.error('invalid action: ' + action);
                     return
             }
-            for (key in data) {
-                if (key != 'action') {
-                    params.push(key+':'+data[key]);
-                }
-            }
-            var q = action+'/'+params.join(',');
+
+            var q = action+'/'+args.join(',');
             console.log(q);
             self.apiCall(q);
 
