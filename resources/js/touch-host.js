@@ -15,7 +15,6 @@ var touch_host = function () {
                         return ','+key;
                     }).join();
             }
-
             $.getJSON('./resources/ajax/touch-host.php?hosts='+tunnelContents.remoteHost+':'+tunnelContents.remotePort+ch_str,
                 function (jsonTouch) {
                     console.log(jsonTouch);

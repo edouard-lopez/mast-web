@@ -35,6 +35,7 @@ test TCP connexion over specified TCP Port to a host
         if (empty($Port)) return "Invalid Port : empty()";
         elseif ($Port>65535 or $Port<1) return "Invalid Port : $Port";
         $socket = @socket_create (AF_INET, SOCK_STREAM, 0);
+        socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => TIMEOUT, 'usec' => 0));
 
         if ($socket) {
             $start = microtime(true);
@@ -126,7 +127,7 @@ Perform a system ping to a host
     function buildArray($host, $port, $levelClass)
     {
         $ping = ping($host);
-        $telnet = socket($host, $port);
+        $telnet = telnet($host, $port);
 
         if (is_numeric($ping) && is_numeric($telnet)) {
             $status = 'full-ok';

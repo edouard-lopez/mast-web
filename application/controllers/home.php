@@ -125,6 +125,10 @@ EOD
 	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prncnfg.vbs -t -p "%name%" -l "%site%" -m "GZ par tunnel SSH (%UTC%), %imp% par le canal %port%"
 
 EOD
+,
+'PORTS' => <<<EOD
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%_%port%" -n %port%
+EOD
 );
 
 		$search=array('%vps%','%imp%','%port%','%site%','%name%','%UTC%');
