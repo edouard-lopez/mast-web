@@ -39,8 +39,6 @@
                             data-html="true" data-toggle="tooltip" data-placement="top" title="Host Unreachable!"> </i>
                             <a data-toggle="collapse" data-parent="#accordion"
                                href="#collapse-<?= $tunnel ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
-                            <ul class="nav nav-pills pull-right">
-                                <li>
                                     <ul class="service nav nav-pills pull-left">
                                         <?php
                                         $host_actions = array(
@@ -54,10 +52,7 @@
                                         endforeach
                                         ?>
                                     </ul>
-                                </li>
                                 <li class="divider"></li>
-                                <li>
-                                    <ul class="service btn-toolbar nav nav-pills">
                                         <?php
                                         $host_actions = array(
                                             'restart' => $this->config->item('SERVICE_ACTIONS')['restart'],
@@ -75,9 +70,6 @@
                                             require TPL_PATH . "action-button.php";
                                         endforeach
                                         ?>
-                                    </ul>
-                                </li>
-                            </ul>
                         </h4>
 
                     </div>
