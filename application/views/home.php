@@ -23,16 +23,18 @@
     </h3>
 
     <?php
-        $action = 'add-host';
-        $props = $this->config->item('SERVICE_HELPERS')[$action];
-        $text_content = i18n($this, 'add-host');
-        require TPL_PATH . "action-form.php";
-        require TPL_PATH . "action-button.php";
+    $action = 'add-host';
+    $props = $this->config->item('SERVICE_HELPERS')[$action];
+    $text_content = i18n($this, $action);
+    require TPL_PATH . "action-form.php";
+    require TPL_PATH . "action-button.php";
     ?>
     <div class="container-fluid">
-        <div class="panel-group" id="accordion" data-configs='<?= json_encode($configs,JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
+        <div class="panel-group" id="accordion"
+             data-configs='<?= json_encode($configs, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
             <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
-                <div id="tunnel_<?=md5($tunnel)?>" class="panel panel-default tunnel" data-tunnel='<?= json_encode($tunnelConfig,JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
+                <div id="tunnel_<?= md5($tunnel) ?>" class="panel panel-default tunnel"
+                     data-tunnel='<?= json_encode($tunnelConfig, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
                     <div class="panel-heading">
                         <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $tunnel ?>">
                             <i id="x<?= md5($tunnelConfig['remoteHost'] . ':' . $tunnelConfig['remotePort']) ?>"
@@ -110,7 +112,7 @@
                 <?php foreach ($buttons as $helper => $props): ?>
                     <li>
                         <a role="button" id="<?= $helper ?>"
-                                class="btn btn-default btn-xs <?= $props['class'] ?> btn-helper">
+                           class="btn btn-default btn-xs <?= $props['class'] ?> btn-helper">
                             <i class="<?= $props['icon'] ?>"></i>
                             <?= ucfirst(i18n($this, $helper)) ?>
                         </a>
