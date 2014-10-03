@@ -42,38 +42,33 @@
                             <span class="tunnel-name"> <?= $tunnel ?> </span>
                             <span class="divider"> – </span>
                             <span class="tunnel-fqdn"> <?= $tunnelConfig['remoteHost'] ?> </span>
-                                    <ul class="service nav nav-pills pull-left">
-                                        <?php
-                                        $host_actions = array(
-                                            'status' => $this->config->item('SERVICE_ACTIONS')['status'],
-                                            'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
-                                        );
-                                        foreach ($host_actions as $action => $props):
-                                            $name = $tunnel;
-                                            $text_content = null;
                                             require TPL_PATH . "action-button.php";
-                                        endforeach
-                                        ?>
-                                    </ul>
-                                <li class="divider"></li>
-                                        <?php
-                                        $host_actions = array(
-                                            'restart' => $this->config->item('SERVICE_ACTIONS')['restart'],
-                                            'start' => $this->config->item('SERVICE_ACTIONS')['start'],
-                                            'stop' => $this->config->item('SERVICE_ACTIONS')['stop'],
                                             'remove-host' => $this->config->item('SERVICE_HELPERS')['remove-host'],
-                                        );
-                                        ?>
-                                        <?php
-                                        foreach ($host_actions as $action => $props):
-                                            if ($action == 'remove-host'): ?>
-                                                <li class="divider"></li>
-                                            <?php
-                                            endif;
                                             require TPL_PATH . "action-button.php";
-                                        endforeach
-                                        ?>
                         </h4>
+                        <ul class="nav nav-pills nav-action pull-right">
+                                    <?php
+                                    $host_actions = array(
+                                        'status' => $this->config->item('SERVICE_ACTIONS')['status'],
+                                        'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
+                                    );
+                                    foreach ($host_actions as $action => $props):
+                                        $name = $tunnel;
+                                        $text_content = null;
+                                    ?>
+                                    <?php endforeach ?>
+                            <li class="divider"></li>
+                            <?php
+                            $host_actions = array(
+                                'restart' => $this->config->item('SERVICE_ACTIONS')['restart'],
+                                'start' => $this->config->item('SERVICE_ACTIONS')['start'],
+                                'stop' => $this->config->item('SERVICE_ACTIONS')['stop'],
+                            );
+                            ?>
+                            <?php foreach ($host_actions as $action => $props):?>
+                            <?php endforeach; ?>
+                            <li class="divider"></li>
+                        </ul>
 
                     </div>
                     <div id="collapse-<?= $tunnel ?>" class="panel-collapse collapse in">
@@ -86,7 +81,11 @@
                             <div>
                                 <?php
                                 $action = 'add-channel';
-                                require TPL_PATH . "action-form.php"?>
+                                $props = $this->config->item('SERVICE_HELPERS')[$action];
+                                $text_content = i18n($this, $action);
+                                require TPL_PATH . "action-button.php";
+                                require TPL_PATH . "action-form.php"
+                                ?>
                             </div>
                         </div>
                     </div>

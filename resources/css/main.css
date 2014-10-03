@@ -79,6 +79,14 @@ p:last-child {
     color: #999;
 }
 
+.nav-action {
+    margin-top: -1.4em;
+}
+.nav-action > .divider {
+    border: thin solid transparent;
+    width: 1em;
+}
+
 .list-striped > li:nth-child(2n+1)
  {
     background-color: hsl(0, 0%, 96%);
