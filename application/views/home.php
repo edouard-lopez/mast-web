@@ -44,9 +44,6 @@
                             <span class="tunnel-name"> <?= $tunnel ?> </span>
                             <span class="divider"> – </span>
                             <span class="tunnel-fqdn"> <?= $tunnelConfig['remoteHost'] ?> </span>
-                                            require TPL_PATH . "action-button.php";
-                                            'remove-host' => $this->config->item('SERVICE_HELPERS')['remove-host'],
-                                            require TPL_PATH . "action-button.php";
                         </h4>
                         <ul class="nav nav-pills nav-action pull-right">
                                     <?php
@@ -58,6 +55,9 @@
                                         $name = $tunnel;
                                         $text_content = null;
                                     ?>
+                                        <li>
+                                            <?php require TPL_PATH . "action-button.php"; ?>
+                                        </li>
                                     <?php endforeach ?>
                             <li class="divider"></li>
                             <?php
@@ -68,8 +68,18 @@
                             );
                             ?>
                             <?php foreach ($host_actions as $action => $props):?>
+                            <li>
+                                <?php require TPL_PATH . "action-button.php"; ?>
+                            </li>
                             <?php endforeach; ?>
                             <li class="divider"></li>
+                            <li>
+                            <?php
+                                $action = 'remove-host';
+                                $props = $this->config->item('SERVICE_HELPERS')[$action];
+                                require TPL_PATH . "action-button.php";
+                            ?>
+                            </li>
                         </ul>
 
                     </div>
