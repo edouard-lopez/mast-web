@@ -34,11 +34,14 @@
             <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
                 <div id="tunnel_<?=md5($tunnel)?>" class="panel panel-default tunnel" data-tunnel='<?= json_encode($tunnelConfig,JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <i id="x<?=md5($tunnelConfig['remoteHost'].':'.$tunnelConfig['remotePort'])?>" class='hide'
-                            data-html="true" data-toggle="tooltip" data-placement="top" title="Host Unreachable!"> </i>
-                            <a data-toggle="collapse" data-parent="#accordion"
-                               href="#collapse-<?= $tunnel ?>"> <?= $tunnel . ' - ' . $tunnelConfig['remoteHost'] ?></a>
+                        <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $tunnel ?>">
+                            <i id="x<?= md5($tunnelConfig['remoteHost'] . ':' . $tunnelConfig['remotePort']) ?>"
+                               class='hide'
+                               data-html="true" data-toggle="tooltip" data-placement="top"
+                               title="Host Unreachable!"> </i>
+                            <span class="tunnel-name"> <?= $tunnel ?> </span>
+                            <span class="divider"> – </span>
+                            <span class="tunnel-fqdn"> <?= $tunnelConfig['remoteHost'] ?> </span>
                                     <ul class="service nav nav-pills pull-left">
                                         <?php
                                         $host_actions = array(
