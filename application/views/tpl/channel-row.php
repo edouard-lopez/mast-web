@@ -5,13 +5,12 @@
         <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a>
         <span> by port <?= $channel['localPort'] ?></span>
         <i class="text-muted"> – <?= $channel['comment'] ?></i>
-        <a id="" class="btn btn-xs btn-default glyphicon glyphicon-comment pull-right" href="./home/getScript/BAT/<?=urlencode(base64_encode(json_encode(array(
+        <a id="" class="btn btn-xs btn-default glyphicon glyphicon-comment pull-right" href="./home/getScript/BAT/<?= urlencode(base64_encode(json_encode(array(
                 'site' => $tunnel,
                 'vps' => $_SERVER['HTTP_HOST'],
                 'port' => $channel['localPort'],
                 'imp' => $channel['remoteHost'],
                 'channelComment' => $channel['comment']
-            ))))?>"
-            down_load="<?= trim($channel['comment'].' ('.$channel['remoteHost'].'-'.$channel['localPort'].').BAT') ?>"></a>
+            ))))?>"> </a>
     </span>
 </li>

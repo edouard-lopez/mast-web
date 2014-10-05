@@ -86,18 +86,35 @@
                     <div id="collapse-<?= $tunnel ?>" class="panel-collapse collapse in">
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack list-striped">
+
                                 <?php foreach ($tunnelConfig['channels'] as $channel) {
                                     require TPL_PATH . 'channel-row.php';
                                 } ?>
+
                             </ul>
                             <div>
-                                <?php
-                                $action = 'add-channel';
-                                $props = $this->config->item('SERVICE_HELPERS')[$action];
-                                $text_content = i18n($this, $action);
-                                require TPL_PATH . "action-button.php";
-                                require TPL_PATH . "action-form.php"
-                                ?>
+                                <ul class="nav pull-right">
+                                    <li class="pull-right">
+                                    <?php
+                                        $action = 'download All port script';
+                                        $props = $this->config->item('SERVICE_ACTIONS')['port'];
+                                        $text_content = null;
+                                        echo "<a style='padding:0;' href='./home/getScript/PORTS/".urlencode(base64_encode(json_encode(array())))."'>";
+                                        require TPL_PATH . "action-button.php"; 
+                                        echo "</a>";
+                                    ?>
+                                    </li>
+                                    <!-- <li class="divider"></li> -->
+                                    <li>
+                                    <?php
+                                        $action = 'add-channel';
+                                        $props = $this->config->item('SERVICE_HELPERS')[$action];
+                                        $text_content = i18n($this, $action);
+                                        require TPL_PATH . "action-button.php";
+                                        require TPL_PATH . "action-form.php"
+                                    ?>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

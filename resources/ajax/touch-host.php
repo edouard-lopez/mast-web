@@ -11,6 +11,7 @@ error_reporting(E_ALL);
     * @version  1.0
 #--------------------------------------------------------------------------
 */
+define("TIMEOUT", 1);
 $levelClass = array(
         'full-ok'=>'glyphicon glyphicon-ok text-muted',
         'ok'=>'glyphicon glyphicon-ok text-muted',
@@ -18,6 +19,43 @@ $levelClass = array(
         'mismatch'=>'glyphicon glyphicon-exclamation-sign status-danger',
         'none'=>'glyphicon glyphicon-exclamation-sign'
     );
+
+
+
+
+
+
+/**
+test TCP connexion over specified TCP Port to a host
+   * @
+   * @param IP : Hostname or IP Adress
+   * @param Port : TCP Port number
+   */
+   function socket($IP, $Port){
+        if (empty($Port)) return "Invalid Port : empty()";
+        elseif ($Port>65535 or $Port<1) return "Invalid Port : $Port";
+        $socket = @socket_create (AF_INET, SOCK_STREAM, 0);
+        socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => TIMEOUT, 'usec' => 0));
+
+        if ($socket) {
+            $start = microtime(true);
+            $result = @socket_connect ($socket, $IP, $Port);
+            $stop = microtime(true);
+            socket_close ($socket);
+
+            if ($result) {
+                $time = round((($stop - $start) * 1000), 3); 
+                return $time;            } 
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+
+   }
+
 
 /**
 test TCP connexion over specified TCP Port to a host
@@ -29,12 +67,12 @@ test TCP connexion over specified TCP Port to a host
         if (empty($Port)) return "Invalid Port : empty()";
         elseif ($Port>65535 or $Port<1) return "Invalid Port : $Port";
         $start = microtime(true);
-        $socket = @fsockopen ($IP, $Port, $errno, $errstr, 2); // timeOut court de 2sec
+        $socket = @fsockopen ($IP, $Port, $errno, $errstr, TIMEOUT); // timeOut court de TIMEOUT sec
         $stop = microtime(true);
         if (!$socket) return false;  // Site is down
         else {
+            fclose($socket);
             $time = round((($stop - $start) * 1000), 3); 
-            @fclose($socket);
             return $time;
         }
    }
@@ -46,7 +84,7 @@ Perform a system ping to a host
     */
     function ping($host)
     {
-        exec(sprintf('ping -c1 -W 1 %s', escapeshellarg($host)), $res, $rval);
+        exec(sprintf('ping -c1 -W '.TIMEOUT.' %s', escapeshellarg($host)), $res, $rval);
         // on retourne la valeur d'average de la commande ping
         if ($rval === 0) {
             $res=explode(' = ',$res[count($res)-1]);
@@ -55,6 +93,31 @@ Perform a system ping to a host
         }
         return false;
     }
+
+
+
+/**
+Perform a system ping to a host
+    * @
+    * @param data structure array()
+    */
+    // function phpPing($host) {
+    //     /* ICMP ping packet with a pre-calculated checksum */
+    //     $package = "\x08\x00\x7d\x4b\x00\x00\x00\x00PingHost";
+    //     $socket  = socket_create(AF_INET, SOCK_RAW, 1);
+    //     socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => TIMEOUT, 'usec' => 0));
+    //     socket_connect($socket, $host, null);
+
+    //     $ts = microtime(true);
+    //     socket_send($socket, $package, strLen($package), 0);
+    //     if (socket_read($socket, 255))
+    //         $result = microtime(true) - $ts;
+    //     else
+    //         $result = false;
+    //     socket_close($socket);
+
+    //     return $result;
+    // }
 
 /**
 Perform a system ping to a host
@@ -82,7 +145,9 @@ Perform a system ping to a host
 
         return array(
                     'ping' => $ping,
+                    // 'phpPing' => phpPing($host),
                     'telnet' => $telnet,
+                    // 'socket' => socket($host, $port),
                     'status' => $levelClass[$status]
                 );
     }

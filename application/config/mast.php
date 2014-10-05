@@ -39,6 +39,10 @@ $config['SERVICE_ACTIONS'] = array(
         'class' => 'btn-info btn-action',
         'icon' => 'glyphicon glyphicon-search',
     ),
+    'port' => array(
+        'class' => 'btn-default btn-action',
+        'icon' => 'glyphicon glyphicon-comment',
+    ),
 );
 
 $config['SERVICE_HELPERS'] = array(
