@@ -1,7 +1,3 @@
-<?php
- $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
-?>
-
 <div class="modal fade" id="modal-<?= $action ?>">
     <div class="modal-dialog">
         <div class="modal-content">

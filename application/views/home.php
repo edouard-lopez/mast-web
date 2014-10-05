@@ -25,9 +25,10 @@
     <?php
     $action = 'add-host';
     $props = $this->config->item('SERVICE_HELPERS')[$action];
-    $text_content = i18n($this, $action);
-    require TPL_PATH . "action-form.php";
-    require TPL_PATH . "action-button.php";
+    $props['text-content'] = i18n($this, $action);
+    $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
+    action_form($this, $action, $fields);
+    action_button($this, $action, $props);
     ?>
     <div class="container-fluid">
         <div class="panel-group" id="accordion"
@@ -52,11 +53,10 @@
                                         'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
                                     );
                                     foreach ($host_actions as $action => $props):
-                                        $name = $tunnel;
-                                        $text_content = null;
+                                        $props['name'] = $tunnel;
                                     ?>
                                         <li>
-                                            <?php require TPL_PATH . "action-button.php"; ?>
+                                            <?php action_button($this, $action, $props); ?>
                                         </li>
                                     <?php endforeach ?>
                             <li class="divider"></li>
@@ -69,7 +69,7 @@
                             ?>
                             <?php foreach ($host_actions as $action => $props):?>
                             <li>
-                                <?php require TPL_PATH . "action-button.php"; ?>
+                                <?php action_button($this, $action, $props); ?>
                             </li>
                             <?php endforeach; ?>
                             <li class="divider"></li>
@@ -77,7 +77,7 @@
                             <?php
                                 $action = 'remove-host';
                                 $props = $this->config->item('SERVICE_HELPERS')[$action];
-                                require TPL_PATH . "action-button.php";
+                                action_button($this, $action, $props);
                             ?>
                             </li>
                         </ul>
@@ -98,9 +98,8 @@
                                     <?php
                                         $action = 'download All port script';
                                         $props = $this->config->item('SERVICE_ACTIONS')['port'];
-                                        $text_content = null;
                                         echo "<a style='padding:0;' href='./home/getScript/PORTS/".urlencode(base64_encode(json_encode(array())))."'>";
-                                        require TPL_PATH . "action-button.php"; 
+                                        action_button($this, $action, $props);
                                         echo "</a>";
                                     ?>
                                     </li>
@@ -109,9 +108,10 @@
                                     <?php
                                         $action = 'add-channel';
                                         $props = $this->config->item('SERVICE_HELPERS')[$action];
-                                        $text_content = i18n($this, $action);
-                                        require TPL_PATH . "action-button.php";
-                                        require TPL_PATH . "action-form.php"
+                                        $props['text-content'] = i18n($this, $action);
+                                        action_button($this, $action, $props);
+                                        $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
+                                        action_form($this, $action, $fields);
                                     ?>
                                     </li>
                                 </ul>
@@ -138,7 +138,7 @@
                 ?>
                 <?php foreach ($buttons as $action => $props): ?>
                     <li>
-                        <?php require TPL_PATH . "action-button.php"; ?>
+                        <?php action_button($this, $action, $props, false); ?>
                     </li>
                 <?php endforeach ?>
                 <li>
@@ -154,11 +154,10 @@
 </div>
 <br/>
 <div class="container-fluid">
-    <pre class="stdout">
-        <?php
+    <pre class="stdout"><?php
             require_once APPPATH . "/controllers/action.php";
             $console = new Action();
-            $console->invoke("status");
+            $console->invoke("status", null, false);
         ?>
     </pre>
 </div>
