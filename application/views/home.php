@@ -103,7 +103,6 @@
                                         echo "</a>";
                                     ?>
                                     </li>
-                                    <!-- <li class="divider"></li> -->
                                     <li>
                                     <?php
                                         $action = 'add-channel';

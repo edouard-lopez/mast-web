@@ -38,7 +38,6 @@
 |
 */
 
-$route['default_controller'] = "welcome";
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 $route['api/(:any)/(:any)'] = 'action/invoke/$1/$2';

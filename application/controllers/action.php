@@ -20,7 +20,6 @@ class Action extends CI_Controller
      * @return array [description]
      * @param string _ action to request on the service (start|stop|restart|…)
      */
-    // @todo: sanitize command's arguments!!
     public function invoke($_, $args = null)
     {
         $args = $this->prepare($args);
