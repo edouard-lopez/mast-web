@@ -15,6 +15,7 @@ define('REGEX_NAME', '[a-zA-Z0-9_:\-\s]+');
 define('REGEX_HOST', '((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$');
 define('REGEX_DESC', '.*');
 
+$config['cheat-code'] = '#im=smart';
 
 /**
  * Whitelist service actions

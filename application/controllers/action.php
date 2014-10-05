@@ -20,8 +20,10 @@ class Action extends CI_Controller
      * @return array [description]
      * @param string _ action to request on the service (start|stop|restart|…)
      */
-    public function invoke($_, $args = null)
+    public function invoke($_, $args = null, $redirect=true)
     {
+        $this->load->helper('url');
+
         $args = $this->prepare($args);
 
         if ($this->is_valid($_, 'SERVICE_ACTIONS')) {
@@ -32,7 +34,12 @@ class Action extends CI_Controller
             show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
             exit;
         }
-        return $this->shell->run($cmd);
+        if ($redirect) {
+            $this->shell->run($cmd);
+            redirect($this->config->base_url().$this->config->item('cheat-code'), 301);
+        } else {
+            return $this->shell->run($cmd);
+        }
     }
 
     /**
