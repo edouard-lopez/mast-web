@@ -22,6 +22,7 @@
         <small><a href="#dashboard" class="text-muted">#dashboard</a></small>
     </h3>
 
+    <div class="repulse">
     <?php
     $action = 'add-host';
     $props = $this->config->item('SERVICE_HELPERS')[$action];
@@ -30,6 +31,7 @@
     action_form($this, $action, $fields);
     action_button($this, $action, $props);
     ?>
+    </div>
     <div class="container-fluid">
         <div class="panel-group" id="accordion"
              data-configs='<?= json_encode($configs, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
@@ -93,7 +95,7 @@
 
                             </ul>
                             <div>
-                                <ul class="nav pull-right">
+                                <ul class="nav">
                                     <li class="pull-right">
                                     <?php
                                         $action = 'download All port script';
@@ -103,7 +105,7 @@
                                         echo "</a>";
                                     ?>
                                     </li>
-                                    <li>
+                                    <li class="text-center repulse">
                                     <?php
                                         $action = 'add-channel';
                                         $props = $this->config->item('SERVICE_HELPERS')[$action];

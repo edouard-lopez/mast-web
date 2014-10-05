@@ -38,7 +38,7 @@ $config['SERVICE_ACTIONS'] = array(
     ),
     'status' => array(
         'class' => 'btn-info btn-action',
-        'icon' => 'glyphicon glyphicon-search',
+        'icon' => 'glyphicon glyphicon-info-sign',
     ),
     'port' => array(
         'class' => 'btn-default btn-action',
@@ -62,7 +62,7 @@ $config['SERVICE_HELPERS'] = array(
     ),
     'remove-host' => array(
         'class' => 'btn-danger btn-action',
-        'icon' => 'glyphicon glyphicon-remove',
+        'icon' => 'glyphicon glyphicon-trash',
         'form-fields' => array(
             'NAME' => array('pattern' => REGEX_NAME),
         )
@@ -74,7 +74,7 @@ $config['SERVICE_HELPERS'] = array(
     ),
     'add-channel' => array(
         'class' => 'btn-success btn-action',
-        'icon' => 'glyphicon glyphicon-print',
+        'icon' => 'glyphicon glyphicon-plus-sign glyphicon-print',
         'form-fields' => array(
             'NAME' => array('pattern' => REGEX_NAME),
             'PRINTER' => array('pattern' => REGEX_HOST),
@@ -83,7 +83,7 @@ $config['SERVICE_HELPERS'] = array(
     ),
     'remove-channel' => array(
         'class' => 'btn-danger btn-action',
-        'icon' => 'glyphicon glyphicon-remove',
+        'icon' => 'glyphicon glyphicon-trash',
         'form-fields' => array(
             'ID' => array(),
             'NAME' => array('pattern' => REGEX_NAME),

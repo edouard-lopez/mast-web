@@ -102,3 +102,6 @@ p:last-child {
     transform: rotate(90deg);
     color: hsl(35, 84%, 62%)
 }
+.repulse {
+    margin: .5em;
+}
