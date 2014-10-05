@@ -6,10 +6,8 @@ var touch_host = function () {
             var ch_str = $.map(tunnelContents.channels, function (channel,i) {
                     var key = channel.remoteHost+':'+channel.remotePort;
                     $('#x'+MD5(key))
-                        .removeClass('glyphicon-ok glyphicon-exclamation-sign')
-                        .addClass('glyphicon-transfer')
-                        // .addClass('glyphicon-flash')
-                        // .attr('class', 'glyphicon glyphicon-flash status-in-progress')
+                        .removeClass('glyphicon-ok glyphicon-exclamation-sign status-danger')
+                        .addClass('glyphicon-transfer status-in-progress')
                         .attr('data-original-title', 'Test in progress...');
                     return key;
                 }).join(',');

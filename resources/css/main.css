@@ -99,5 +99,6 @@ p:last-child {
     color: #d9534f;
 }
 .status-in-progress {
+    transform: rotate(90deg);
     color: hsl(35, 84%, 62%)
 }
