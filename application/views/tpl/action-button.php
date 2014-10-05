@@ -15,3 +15,4 @@
     <i class="<?= $props['icon'] ?>"></i>
     <?= isset($text_content) ? $text_content: i18n($this, $action); ?>
 </button>
+<?php unset($text_content); ?>
