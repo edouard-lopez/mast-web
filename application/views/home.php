@@ -136,13 +136,9 @@
                     'list-hosts' => $this->config->item('SERVICE_HELPERS')['list-hosts'],
                 );
                 ?>
-                <?php foreach ($buttons as $helper => $props): ?>
+                <?php foreach ($buttons as $action => $props): ?>
                     <li>
-                        <a role="button" id="<?= $helper ?>"
-                           class="btn btn-default btn-xs <?= $props['class'] ?> btn-helper">
-                            <i class="<?= $props['icon'] ?>"></i>
-                            <?= ucfirst(i18n($this, $helper)) ?>
-                        </a>
+                        <?php require TPL_PATH . "action-button.php"; ?>
                     </li>
                 <?php endforeach ?>
                 <li>
