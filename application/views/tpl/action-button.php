@@ -13,7 +13,5 @@
         data-html="true"
     >
     <i class="<?= $props['icon'] ?>"></i>
-    <?php if (isset($text_content)): ?>
-        <?= $text_content ?>
-    <?php endif ?>
+    <?= isset($text_content) ? $text_content: i18n($this, $action); ?>
 </button>
