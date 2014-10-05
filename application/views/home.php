@@ -141,7 +141,13 @@
 </div>
 <br/>
 <div class="container-fluid">
-    <pre class="stdout"><?= $this->shell->run("/etc/init.d/mast status") ?></pre>
+    <pre class="stdout">
+        <?php
+            require_once APPPATH . "/controllers/action.php";
+            $console = new Action();
+            $console->invoke("status");
+        ?>
+    </pre>
 </div>
 </div>
 
