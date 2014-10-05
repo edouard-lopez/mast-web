@@ -40,7 +40,7 @@ class Action extends CI_Controller
      * @param $params
      * @return string
      */
-    public function prepare($params)
+    public function prepare($params=null)
     {
 
         $args = '';
@@ -48,11 +48,12 @@ class Action extends CI_Controller
             foreach ($_POST as $arg => $value) {
                 $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
             }
-        } else {
+        } elseif (is_array($params)) {
             foreach (explode(',', $params) as $param) {
                 list($arg, $value) = explode(':', $param);
                 $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
             }
+        } else {
         }
         return $args;
     }
@@ -68,6 +69,3 @@ class Action extends CI_Controller
         return array_key_exists($_, $this->config->item($check_in));
     }
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
