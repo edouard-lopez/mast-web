@@ -17,13 +17,13 @@ var instance = {
     ],
 
 	apiCall: function (action) {
-		console.info('x'+action);
+        console.info(action);
 		var request = $.ajax({
 				url: "/api/"+action,
 				cache: false
 		});
 		request.done(function(_) {
-				console.log(_);
+				console.log('response: ', _);
 				$(".stdout").append(_);
 		});
 
@@ -42,7 +42,7 @@ var instance = {
     overlay: function () {
         var reSmart = /im=smart/;
 		var hash = window.location.hash;
-        console.log(hash);
+
 		if (hash !== '' && hash !== null && reSmart.exec(hash)) {
             $('#dangerous-area').hide();
         }
@@ -69,7 +69,7 @@ var instance = {
 
         $('.btn-action').on('click', function(e) {
             data = $(this).data();
-            if (! data.action ) { console.error('no action'); return; }
+            if (! data.action ) { console.warn('no action'); return; }
 
             args = []; // only process whitelisted data-attributes
             for (attr in data ) {
@@ -117,7 +117,7 @@ var instance = {
             }
 
             var q = action+'/'+args.join(',')+'/'+redirect;
-            console.log(q);
+            console.info(q);
             self.apiCall(q);
 
             return false;
