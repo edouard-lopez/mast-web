@@ -53,6 +53,7 @@
                                     $host_actions = array(
                                         'status' => $this->config->item('SERVICE_ACTIONS')['status'],
                                         'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
+                                        // 'ports-script' => $this->config->item('SERVICE_CH_HELPERS')['ports-script']
                                     );
                                     foreach ($host_actions as $action => $props):
                                         $props['name'] = $tunnel;
@@ -62,6 +63,30 @@
                                             <?php action_button($this, $action, $props); ?>
                                         </li>
                                     <?php endforeach ?>
+                            <!-- <li>
+                            <?php
+                                // $action = 'download All port script';
+                                // $props = $this->config->item('SERVICE_ACTIONS')['port'];
+                                // $props['name'] = $tunnel;
+                                // echo "<a href='./home/getScript/PORTS/".urlencode(base64_encode(json_encode(array())))."'>";
+                                // action_button($this, $action, $props);
+                                // echo "</a>";
+                            ?>
+                            </li> -->
+                            <li>
+                                <button role="button" class="btn btn-xs btn-default btn-action"
+                                    data-name="Ville"
+                                    data-action="ports-script"
+                                    data-redirect="./home/getScript/PORTS/<?=urlencode(base64_encode(json_encode($tunnel)))?>"
+                                    data-target="#modal-ports-script" title=""
+                                    data-placement="left"
+                                    data-toggle="tooltip"
+                                    data-trigger="hover"
+                                    data-html="true"
+                                    data-original-title="">
+                                    <i class="glyphicon glyphicon-comment"></i>
+                                </button>
+                            </li>
                             <li class="divider"></li>
                             <?php
                             $host_actions = array(
@@ -97,17 +122,17 @@
                                 <?php foreach ($tunnelConfig['channels'] as $cid => $channel) {
                                     require TPL_PATH . 'channel-row.php';
                                 } ?>
-                                    <li class="text-center repulse">
-                                    <?php
-                                        $action = 'add-channel';
-                                        $props = $this->config->item('SERVICE_HELPERS')[$action];
-                                        $props['name'] = $tunnel;
-                                        $props['text-content'] = i18n($this, $action);
-                                        action_button($this, $action, $props);
-                                        $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
-                                        action_form($this, $action, $fields);
-                                    ?>
-                                    </li>
+                                <li class="text-center repulse">
+                                <?php
+                                    $action = 'add-channel';
+                                    $props = $this->config->item('SERVICE_HELPERS')[$action];
+                                    $props['name'] = $tunnel;
+                                    $props['text-content'] = i18n($this, $action);
+                                    action_button($this, $action, $props);
+                                    $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
+                                    action_form($this, $action, $fields);
+                                ?>
+                                </li>
                             </ul>
                         </div>
                     </div>

@@ -9,23 +9,13 @@
     </span>
     <ul class="nav-action list-inline pull-right">
         <li>
-        <?php
-            $action = 'download All port script';
-            $props = $this->config->item('SERVICE_ACTIONS')['port'];
-            $props['name'] = $tunnel;
-            echo "<a href='./home/getScript/PORTS/".urlencode(base64_encode(json_encode(array())))."'>";
-            action_button($this, $action, $props);
-            echo "</a>";
-        ?>
-        </li>
-        <li>
         <a id="" class="btn btn-xs btn-default glyphicon glyphicon-comment " href="./home/getScript/BAT/<?= urlencode(base64_encode(json_encode(array(
                 'site' => $tunnel,
                 'vps' => $_SERVER['HTTP_HOST'],
                 'port' => $channel['localPort'],
                 'imp' => $channel['remoteHost'],
                 'channelComment' => $channel['comment']
-            ))))?>">
+            ))))?>" target="_blank">
         </a>
         </li>
         <li class="divider"></li>
