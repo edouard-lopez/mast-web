@@ -56,6 +56,7 @@
                                     );
                                     foreach ($host_actions as $action => $props):
                                         $props['name'] = $tunnel;
+                                        $props['redirect'] = false;
                                     ?>
                                         <li>
                                             <?php action_button($this, $action, $props); ?>
@@ -69,7 +70,9 @@
                                 'stop' => $this->config->item('SERVICE_ACTIONS')['stop'],
                             );
                             ?>
-                            <?php foreach ($host_actions as $action => $props):?>
+                            <?php foreach ($host_actions as $action => $props):
+                                $props['redirect'] = false;
+                            ?>
                             <li>
                                 <?php action_button($this, $action, $props); ?>
                             </li>

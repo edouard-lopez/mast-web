@@ -34,9 +34,12 @@ class Action extends CI_Controller
             show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
             exit;
         }
-        if ($redirect) {
+
+        log_message('info', "cmd: \t\t$cmd < < < < < < < < < ");
+        if ($redirect===true) {
             $this->shell->run($cmd);
             redirect($this->config->base_url().$this->config->item('cheat-code'), 301);
+            return true;
         } else {
             return $this->shell->run($cmd);
         }

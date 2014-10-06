@@ -4,6 +4,7 @@
             data-name="<?= $name ?>"
         <?php endif ?>
         data-action="<?= $action ?>"
+        data-redirect="<?= $props['redirect'] ?>"
         data-target="#modal-<?= $action ?>"
 
         title="<?= ucfirst(i18n($this, $action)) ?>"

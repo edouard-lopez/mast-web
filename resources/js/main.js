@@ -79,6 +79,7 @@ var instance = {
             }
 
             var action =  data.action;
+            var redirect =  Boolean(data.redirect);
             var desc, host, id, name, printer;
             var target_form = '#modal-' + action;
 
@@ -115,7 +116,7 @@ var instance = {
                     return
             }
 
-            var q = action+'/'+args.join(',');
+            var q = action+'/'+args.join(',')+'/'+redirect;
             console.log(q);
             self.apiCall(q);
 
