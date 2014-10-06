@@ -72,6 +72,7 @@
                             ?>
                             <?php foreach ($host_actions as $action => $props):
                                 $props['redirect'] = false;
+                                $props['name'] = $tunnel;
                             ?>
                             <li>
                                 <?php action_button($this, $action, $props); ?>
