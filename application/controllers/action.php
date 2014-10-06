@@ -24,11 +24,11 @@ class Action extends CI_Controller
     {
         $this->load->helper('url');
 
-        $args = $this->prepare($args);
-
         if ($this->is_valid($_, 'SERVICE_ACTIONS')) {
+            $args = $this->prepare_action($args);
             $cmd = sprintf('%s %s %s', MAST_SERVICE, $_, $args);
         } elseif ($this->is_valid($_, 'SERVICE_HELPERS') or $this->is_valid($_, 'SERVICE_CH_HELPERS')) {
+            $args = $this->prepare_helper($args);
             $cmd = sprintf('%s %s %s', MAST_UTILS, $_, $args);
         } else {
             show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
@@ -42,25 +42,45 @@ class Action extends CI_Controller
         }
     }
 
+
     /**
+     * Prepare arguments for the SERVICE
      * @param $params
      * @return string
      */
-    public function prepare($params=null)
+    public function prepare_action($param=null)
+    {
+        $arg = '';
+        if (!is_null($param)) {
+            list($arg, $value) = explode(':', $param);
+            $arg = escapeshellarg($value);
+        }
+
+        return $arg;
+    }
+
+    /**
+     * Prepare arguments for the MAKEFILE
+     * @param $params
+     * @return string
+     */
+    public function prepare_helper($params=null)
     {
 
         $args = '';
+        $params = explode(',', $params);
         if (!empty($_POST)) {
             foreach ($_POST as $arg => $value) {
                 $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
             }
         } elseif (is_array($params)) {
-            foreach (explode(',', $params) as $param) {
+            foreach ($params as $param) {
                 list($arg, $value) = explode(':', $param);
                 $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
             }
         } else {
         }
+
         return $args;
     }
 
