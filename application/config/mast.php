@@ -27,22 +27,42 @@ $config['SERVICE_ACTIONS'] = array(
     'start' => array(
         'class' => 'btn-success btn-action',
         'icon' => 'glyphicon glyphicon-play',
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
+
     ),
     'stop' => array(
         'class' => 'btn-danger btn-action',
         'icon' => 'glyphicon glyphicon-stop',
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
+
     ),
     'restart' => array(
         'class' => 'btn-warning btn-action',
         'icon' => 'glyphicon glyphicon-refresh',
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
+
     ),
     'status' => array(
         'class' => 'btn-info btn-action',
         'icon' => 'glyphicon glyphicon-info-sign',
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
+
     ),
     'port' => array(
         'class' => 'btn-default btn-action',
         'icon' => 'glyphicon glyphicon-comment',
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
+
     ),
 );
 
