@@ -37,6 +37,11 @@ p:last-child {
 .btn-action + .tooltip .tooltip-inner {
     white-space: nowrap;
 }
+.btn-danger-disabled:hover {
+    color: #FFF;
+    background-color: #D2322D;
+    border-color: #AC2925;
+}
 
 .service {
     padding-left: 1.5em;
@@ -79,7 +84,7 @@ p:last-child {
     color: #999;
 }
 
-.nav-action {
+.panel-heading .nav-action {
     margin-top: -1.4em;
 }
 .nav-action > .divider {
@@ -87,6 +92,10 @@ p:last-child {
     width: 1em;
 }
 
+.list-striped {
+    line-height: 2em;
+    height: 2em;
+}
 .list-striped > li:nth-child(2n+1)
  {
     background-color: hsl(0, 0%, 96%);

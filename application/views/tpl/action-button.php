@@ -1,8 +1,7 @@
 <button role="button"
         class="btn btn-xs <?= $props['class'] ?>"
-        <?php if (isset($name)):?>
-            data-name="<?= $name ?>"
-        <?php endif ?>
+        <?= isset($props['id']) ? 'data-id="'.$props['id'].'"' : ''; ?>
+        data-name="<?= $props['name'] ?>"
         data-action="<?= $action ?>"
         data-redirect="<?= $props['redirect'] ?>"
         data-target="#modal-<?= $action ?>"

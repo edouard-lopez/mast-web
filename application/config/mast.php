@@ -81,7 +81,7 @@ $config['SERVICE_HELPERS'] = array(
         )
     ),
     'remove-host' => array(
-        'class' => 'btn-danger btn-action',
+        'class' => 'btn-danger-disabled btn-action',
         'icon' => 'glyphicon glyphicon-trash',
         'form-fields' => array(
             'NAME' => array('pattern' => REGEX_NAME),
@@ -102,7 +102,7 @@ $config['SERVICE_HELPERS'] = array(
         )
     ),
     'remove-channel' => array(
-        'class' => 'btn-danger btn-action',
+        'class' => 'btn-danger-disabled btn-action',
         'icon' => 'glyphicon glyphicon-trash',
         'form-fields' => array(
             'ID' => array(),

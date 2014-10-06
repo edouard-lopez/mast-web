@@ -2,6 +2,7 @@
 function action_button($this=null, $action=null, $props)
 {
     $props['name'] = isset($props['name']) ? $props['name']: '';
+    $props['id'] = isset($props['id']) ? $props['id']: null;
     $props['redirect'] = isset($props['redirect']) ? (string)$props['redirect']: 'true';
     $props['text-content'] = isset($props['text-content']) ? $props['text-content']: '';
 

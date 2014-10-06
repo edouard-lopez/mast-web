@@ -11,6 +11,19 @@
                 'port' => $channel['localPort'],
                 'imp' => $channel['remoteHost'],
                 'channelComment' => $channel['comment']
-            ))))?>"> </a>
-    </span>
+            ))))?>">
+        </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <?php
+                $action = 'remove-channel';
+                $props = $this->config->item('SERVICE_HELPERS')[$action];
+                $props['id'] = $cid;
+                $props['name'] = $tunnel;
+                action_button($this, $action, $props);
+            ?>
+        </li>
+    </ul>
+
 </li>

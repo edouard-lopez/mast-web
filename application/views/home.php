@@ -82,6 +82,7 @@
                             <?php
                                 $action = 'remove-host';
                                 $props = $this->config->item('SERVICE_HELPERS')[$action];
+                                $props['name'] = $tunnel;
                                 action_button($this, $action, $props);
                             ?>
                             </li>
@@ -92,10 +93,9 @@
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack list-striped">
 
-                                <?php foreach ($tunnelConfig['channels'] as $channel) {
+                                <?php foreach ($tunnelConfig['channels'] as $cid => $channel) {
                                     require TPL_PATH . 'channel-row.php';
                                 } ?>
-
                             </ul>
                             <div>
                                 <ul class="nav">
@@ -112,6 +112,7 @@
                                     <?php
                                         $action = 'add-channel';
                                         $props = $this->config->item('SERVICE_HELPERS')[$action];
+                                        $props['name'] = $tunnel;
                                         $props['text-content'] = i18n($this, $action);
                                         action_button($this, $action, $props);
                                         $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];

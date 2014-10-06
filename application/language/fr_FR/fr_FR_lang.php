@@ -12,6 +12,7 @@ $lang['list-logs'] = 'Journaux';
 $lang['list-hosts'] = 'Lister les machines';
 $lang['list-channels'] = 'Lister les canaux';
 $lang['add-channel'] = 'Ajouter un <strong>canal</strong>';
+$lang['remove-channel'] = 'Supprimer ce <strong>canal</strong>';
 $lang['add-host'] = 'Ajouter un <strong>hôte</strong>';
 $lang['remove-host'] = 'Supprimer cet <strong>hôte</strong>';
 $lang['NAME:label'] = 'nom de l\'hôte';
