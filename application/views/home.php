@@ -96,18 +96,6 @@
                                 <?php foreach ($tunnelConfig['channels'] as $cid => $channel) {
                                     require TPL_PATH . 'channel-row.php';
                                 } ?>
-                            </ul>
-                            <div>
-                                <ul class="nav">
-                                    <li class="pull-right">
-                                    <?php
-                                        $action = 'download All port script';
-                                        $props = $this->config->item('SERVICE_ACTIONS')['port'];
-                                        echo "<a style='padding:0;' href='./home/getScript/PORTS/".urlencode(base64_encode(json_encode(array())))."'>";
-                                        action_button($this, $action, $props);
-                                        echo "</a>";
-                                    ?>
-                                    </li>
                                     <li class="text-center repulse">
                                     <?php
                                         $action = 'add-channel';
@@ -119,8 +107,7 @@
                                         action_form($this, $action, $fields);
                                     ?>
                                     </li>
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
