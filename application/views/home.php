@@ -39,7 +39,7 @@
                 <div id="tunnel_<?= md5($tunnel) ?>" class="panel panel-default tunnel"
                      data-tunnel='<?= json_encode($tunnelConfig, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
                     <div class="panel-heading">
-                        <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $tunnel ?>">
+                        <h4 class="panel-title collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $tunnel ?>">
                             <i id="x<?= md5($tunnelConfig['remoteHost'] . ':' . $tunnelConfig['remotePort']) ?>"
                                class='hide'
                                data-html="true" data-toggle="tooltip" data-placement="top"
@@ -90,7 +90,7 @@
                         </ul>
 
                     </div>
-                    <div id="collapse-<?= $tunnel ?>" class="panel-collapse collapse in">
+                    <div id="collapse-<?= $tunnel ?>" class="panel-collapse collapse">
                         <div class="panel-body channels">
                             <ul class="service nav nav-stack list-striped">
 
