@@ -92,6 +92,10 @@ p:last-child {
     width: 1em;
 }
 
+
+.channels-list {
+    margin-bottom: 0;
+}
 .list-striped {
     line-height: 2em;
     height: 2em;
@@ -110,6 +114,9 @@ p:last-child {
 .status-in-progress {
     transform: rotate(90deg);
     color: hsl(35, 84%, 62%)
+}
+.greedy-fit { /* fix for add-channel buttun in channels list */
+    width: 100%;
 }
 .repulse {
     margin: .5em;

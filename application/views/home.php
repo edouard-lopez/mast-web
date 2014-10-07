@@ -91,24 +91,26 @@
 
                     </div>
                     <div id="collapse-<?= $tunnel ?>" class="panel-collapse collapse in">
-                        <div class="panel-body channels">
+                        <div class="panel-body channels-list">
                             <ul class="service nav nav-stack list-striped">
 
                                 <?php foreach ($tunnelConfig['channels'] as $cid => $channel) {
                                     require TPL_PATH . 'channel-row.php';
                                 } ?>
-                                    <li class="text-center repulse">
+                                    <li class="greedy-fit text-center pull-right">
                                     <?php
                                         $action = 'add-channel';
                                         $props = $this->config->item('SERVICE_HELPERS')[$action];
                                         $props['name'] = $tunnel;
                                         $props['text-content'] = i18n($this, $action);
                                         action_button($this, $action, $props);
-                                        $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
-                                        action_form($this, $action, $fields);
                                     ?>
                                     </li>
                             </ul>
+                                    <?php
+                                        $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
+                                        action_form($this, $action, $fields);
+                                    ?>
                         </div>
                     </div>
                 </div>
