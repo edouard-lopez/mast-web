@@ -68,6 +68,8 @@ var instance = {
         });
 
         $('.btn-action').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             data = $(this).data();
             if (! data.action ) { console.warn('no action'); return; }
 
@@ -106,7 +108,7 @@ var instance = {
                             $(target_form+' .modal-body .name').val(data.name);
                         })
                         .modal();
-                    return;
+                    return true;
                 case 'add-channel':
                     $(target_form)
                         .on('show.bs.modal', function (e) {
@@ -114,17 +116,17 @@ var instance = {
                             $(target_form+' .modal-body .name').val(data.name);
                         })
                         .modal();
-                    return;
+                    return true;
                 default:
                     console.error('invalid action: ' + action);
-                    return
+                    return true;
             }
 
             var q = action+'/'+args.join(',')+'/'+redirect;
             console.info(q);
             self.apiCall(q);
 
-            return false;
+            return true;
         });
 
         return this;
