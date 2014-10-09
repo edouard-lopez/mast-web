@@ -17,10 +17,10 @@
 </div>
 
 <div class="container">
-    <h3 id="dashboard" class="anchor">
+    <h1 id="dashboard" class="anchor">
         <?= i18n($this, 'dashboard') ?>
         <small><a href="#dashboard" class="text-muted">#dashboard</a></small>
-    </h3>
+    </h1>
 
     <div class="repulse">
     <?php
@@ -39,7 +39,7 @@
                 <div id="tunnel_<?= md5($tunnel) ?>" class="panel panel-default tunnel"
                      data-tunnel='<?= json_encode($tunnelConfig, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
                     <div class="panel-heading">
-                        <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $tunnel ?>">
+                        <h2 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $tunnel ?>">
                             <i id="x<?= md5($tunnelConfig['remoteHost'] . ':' . $tunnelConfig['remotePort']) ?>"
                                class='hide'
                                data-html="true" data-toggle="tooltip" data-placement="top"
@@ -47,7 +47,7 @@
                             <span class="tunnel-name"> <b><?= $tunnel ?></b> </span>
                             <span class="divider"> – </span>
                             <span class="tunnel-fqdn text-muted"> <?= $tunnelConfig['remoteHost'] ?> </span>
-                        </h4>
+                        </h2>
                         <ul class="nav nav-pills nav-action pull-right">
                                     <?php
                                     $host_actions = array(
