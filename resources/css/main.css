@@ -42,6 +42,15 @@ p:last-child {
     background-color: #D2322D;
     border-color: #AC2925;
 }
+.hide-btn-content .btn-content {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
 
 .service {
     padding-left: 1.5em;

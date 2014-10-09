@@ -13,5 +13,5 @@
         data-html="true"
     >
     <i class="<?= $props['icon'] ?>"></i>
-    <?= $props['text-content'] ?>
+    <span class="btn-content"><?= $props['text-content'] ?></span>
 </button>
