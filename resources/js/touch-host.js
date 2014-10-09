@@ -4,7 +4,7 @@ var touch_host = function () {
             var currentThis = $(this);
             var tunnelContents = currentThis.data('tunnel');
             var ch_str = '';
-            if ( !($(".collapsed", currentThis)[0])) {
+            if ( !($("div:first h2:first.collapsed", currentThis)[0])) {
                 // only if channels are visible
                 ch_str = $.map(tunnelContents.channels, function (channel,i) {
                         var key = channel.remoteHost+':'+channel.remotePort;
@@ -17,6 +17,7 @@ var touch_host = function () {
             }
             $.getJSON('./resources/ajax/touch-host.php?hosts='+tunnelContents.remoteHost+':'+tunnelContents.remotePort+ch_str,
                 function (jsonTouch) {
+                    console.log(jsonTouch);
                     $.each(jsonTouch, function(key, value) {
                         $('#x'+MD5(key))
                             .attr('class', value.status)
@@ -28,5 +29,8 @@ var touch_host = function () {
 
 $(document).ready( function(){
     touch_host();
-    setInterval(touch_host ,15*1000);
+    $('.container-fluid div div h2')
+        .addClass('collapsed');
+    // console.log ('start', $('.container-fluid div div h2'));
+    setInterval(touch_host ,20*1000);
 });
