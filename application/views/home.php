@@ -90,7 +90,7 @@
                         </ul>
 
                     </div>
-                    <div id="collapse-<?= $tunnel ?>" class="panel-collapse collapse in">
+                    <div id="collapse-<?= $tunnel ?>" class="panel-collapse collapse">
                         <div class="panel-body channels-list">
                             <ul class="service nav nav-stack list-striped">
 
