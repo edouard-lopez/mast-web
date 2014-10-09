@@ -44,9 +44,9 @@
                                class='hide'
                                data-html="true" data-toggle="tooltip" data-placement="top"
                                title="Host Unreachable!"> </i>
-                            <span class="tunnel-name"> <?= $tunnel ?> </span>
+                            <span class="tunnel-name"> <b><?= $tunnel ?></b> </span>
                             <span class="divider"> – </span>
-                            <span class="tunnel-fqdn"> <?= $tunnelConfig['remoteHost'] ?> </span>
+                            <span class="tunnel-fqdn text-muted"> <?= $tunnelConfig['remoteHost'] ?> </span>
                         </h4>
                         <ul class="nav nav-pills nav-action pull-right">
                                     <?php
