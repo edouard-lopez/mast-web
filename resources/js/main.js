@@ -91,8 +91,12 @@ var instance = {
                 case 'status':
                 case 'list-hosts':
                 case 'list-channels':
+                    break;
                 case 'remove-host':
                 case 'remove-channel':
+                    if (! window.confirm("Êtes vous sur de vouloir supprimer cet élément ?")) {
+                         return false;
+                    }
                     break;
                 // form in modal
                 case 'add-host':
