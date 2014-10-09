@@ -31,6 +31,11 @@
     action_form($this, $action, $fields);
     action_button($this, $action, $props);
     ?>
+    <?php
+        $action = 'add-channel';
+        $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
+        action_form($this, $action, $fields);
+    ?>
     </div>
     <div class="container-fluid">
         <div class="panel-group" id="accordion"
@@ -107,10 +112,6 @@
                                     ?>
                                     </li>
                             </ul>
-                                    <?php
-                                        $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
-                                        action_form($this, $action, $fields);
-                                    ?>
                         </div>
                     </div>
                 </div>
