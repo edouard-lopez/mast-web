@@ -128,14 +128,24 @@ EOD
 EOD
 ,
 'PORTS' => <<<EOD
+
 	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%_%port%" -n %port%
 EOD
 );
 
 		$search=array('%vps%','%imp%','%port%','%site%','%name%','%UTC%');
-		$replace=array($confNode['vps'], $confNode['imp'], $confNode['port'], $confNode['site'], $confNode['channelComment'], date("Y-m-d H:i:s")) ;
-		$output = str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']);
-		$filename = str_replace(' ', '_', trim($confNode['channelComment'].' ('.$confNode['imp'].'-'.$confNode['port'].').'.($type=='PS1'?'PS1':'BAT') ));
+		if ($type=='PORTS') {
+			// foreach ($confNode as $key => $value) {
+				$output = '# Config de tous les ports pour : '.$confNode;
+				$replace=array($confNode['vps'], $confNode['imp'], $confNode['port'], $confNode, '', date("Y-m-d H:i:s")) ;
+				$output .= str_replace($search, $replace, $install_code[$type]);
+			// }
+			$filename = str_replace(' ', '_', trim($confNode.' (ports Only).BAT'));
+		} else {
+			$replace=array($confNode['vps'], $confNode['imp'], $confNode['port'], $confNode['site'], $confNode['channelComment'], date("Y-m-d H:i:s")) ;
+			$output = str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']);
+			$filename = str_replace(' ', '_', trim($confNode['channelComment'].' ('.$confNode['imp'].'-'.$confNode['port'].').'.($type=='PS1'?'PS1':'BAT') ));
+		}
 		@ob_end_clean();
 		header_remove();
 		// echo( $output );

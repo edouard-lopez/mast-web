@@ -15,7 +15,6 @@
                             <label for="<?= $fid ?>" class="control-label">
                                 <?= i18n($this, $field . ':label') ?>
                             </label>
-
                             <div>
                                 <input type="text" class="<?=$field=='NAME'?'name': '' ;?> form-control input-sm"
                                        id="<?= $fid ?>"
