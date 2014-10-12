@@ -25,10 +25,10 @@ class Action extends CI_Controller
         $this->load->helper('url');
 
         if ($this->is_valid($_, 'SERVICE_ACTIONS')) {
-            $args = $this->prepare_action($args);
+            $args = $this->prepare_service($args);
             $cmd = sprintf('%s %s %s', MAST_SERVICE, $_, $args);
         } elseif ($this->is_valid($_, 'SERVICE_HELPERS') or $this->is_valid($_, 'SERVICE_CH_HELPERS')) {
-            $args = $this->prepare_helper($args);
+            $args = $this->prepare_makefile($args);
             $cmd = sprintf('%s %s %s', MAST_UTILS, $_, $args);
         } else {
             show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
@@ -51,7 +51,7 @@ class Action extends CI_Controller
      * @param $params
      * @return string
      */
-    public function prepare_action($param=null)
+    public function prepare_service($param=null)
     {
         $arg = '';
         if (!is_null($param)) {
@@ -67,7 +67,7 @@ class Action extends CI_Controller
      * @param $params
      * @return string
      */
-    public function prepare_helper($params=null)
+    public function prepare_makefile($params=null)
     {
 
         $args = '';
