@@ -152,6 +152,7 @@
         <div class="tab-pane" id="tunnels">
             <ul class="cnc nav nav-pills">
                 <?php
+                unset($props['name']);
                 $buttons = array(
                     'list-channels' => $this->config->item('SERVICE_HELPERS')['list-channels'],
                     'list-hosts' => $this->config->item('SERVICE_HELPERS')['list-hosts'],

@@ -74,12 +74,16 @@ class Action extends CI_Controller
         $params = explode(',', $params);
         if (!empty($_POST)) {
             foreach ($_POST as $arg => $value) {
-                $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
+                if (!empty(trim($value))) {
+                    $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
+                }
             }
         } elseif (is_array($params)) {
             foreach ($params as $param) {
                 list($arg, $value) = explode(':', $param);
-                $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
+                if (!empty(trim($value))) {
+                    $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
+                }
             }
         } else {
         }
