@@ -22,7 +22,7 @@ $lang['PRINTER:placeholder'] = "ex. 10.1.4.1 (IP de l'imprimante)";
 $lang['DESC:label'] = 'description';
 $lang['DESC:placeholder'] = "ex. localisation de l'imprimante";
 $lang['REMOTE_HOST:label'] = 'hôte distant';
-$lang['REMOTE_HOST:placeholder'] = "ex. serveur d'impression";
+$lang['REMOTE_HOST:placeholder'] = "ex. 10.0.254.1";
 
 $lang['dashboard'] = 'Tableau de bord';
 $lang['command-and-control'] = 'Centre de Contrôle';
