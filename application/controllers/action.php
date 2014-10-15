@@ -36,8 +36,9 @@ class Action extends CI_Controller
         }
 
         log_message('info', "cmd: \t\t$cmd < < < < < < < < < ");
-        if ($redirect===true) {
+        if ($redirect===true or $redirect=='true') {
             $this->shell->run($cmd);
+
             redirect($this->config->base_url().$this->config->item('cheat-code'), 301);
             return true;
         } else {
