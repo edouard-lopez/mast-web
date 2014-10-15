@@ -25,6 +25,7 @@
                 $props = $this->config->item('SERVICE_HELPERS')[$action];
                 $props['id'] = $cid;
                 $props['name'] = $tunnel;
+                $props['redirect'] = false;
                 action_button($this, $action, $props);
             ?>
         </li>

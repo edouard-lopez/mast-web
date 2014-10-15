@@ -114,6 +114,7 @@
                                 $action = 'remove-host';
                                 $props = $this->config->item('SERVICE_HELPERS')[$action];
                                 $props['name'] = $tunnel;
+                                $props['redirect'] = false;
                                 action_button($this, $action, $props);
                             ?>
                             </li>
