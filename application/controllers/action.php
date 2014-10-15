@@ -81,7 +81,7 @@ class Action extends CI_Controller
         } elseif (is_array($params)) {
             foreach ($params as $param) {
                 list($arg, $value) = explode(':', $param);
-                if (!empty(trim($value))) {
+                if (strlen(trim($value)) > 0) {
                     $args .= sprintf('%s=%s ', strtoupper($arg), escapeshellarg($value));
                 }
             }
