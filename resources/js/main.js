@@ -70,6 +70,7 @@ var instance = {
         $('.btn-action').on('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+
             data = $(this).data();
             if (! data.action ) { console.warn('no action'); return; }
 
@@ -98,6 +99,8 @@ var instance = {
                 case 'remove-channel':
                     if (! window.confirm("Êtes vous sur de vouloir supprimer cet élément ?")) {
                          return false;
+                    } else {
+                        $(this).parents('.tunnel, .channel')[0].remove();
                     }
                     break;
                 // form in modal
