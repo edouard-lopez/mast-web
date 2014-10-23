@@ -1,0 +1,69 @@
+#! /bin/bash
+# Registration of this box on OPT-WebServer
+# location : /etc/network/if-up.d/
+# By alban.lopez@gmail.com
+# Version 1.22
+
+
+# Arrete le code en ca d'erreur meme simple
+# set -e
+
+log_file=/var/log/mast/ifup.$IFACE.txt
+
+mkdir -p /var/log/mast/
+
+# Only run from ifup.
+if [ "$MODE" != start ]; then
+        exit 0
+fi
+
+if [ "$IFACE" = lo ]; then
+        exit 0
+fi
+
+date >> $log_file
+echo "$IFACE : $METHOD" >> $log_file
+
+# Only run from dhcp interface
+if [ "$METHOD" != dhcp ]; then
+        echo "METHOD=$METHOD" >> $log_file
+        exit 0
+fi
+
+/etc/init.d/ifplugd start $IFACE
+
+# only cares about inet. Get ye gone, strange people
+# still using ipv4.
+if [ "$ADDRFAM" != inet ]; then
+        echo "ADDRFAM=$ADDRFAM" >> $log_file
+        exit 0
+fi
+
+lease="/var/lib/dhcp/dhclient*$IFACE.lease*"
+my_mac=$(ifconfig $IFACE | grep 'HWaddr ' | cut -f 1 | awk '{ print $5}')
+
+if ! tail -n 19 $lease | grep -iq -m 1 'fixed-address' $lease; then
+        sleep 3
+fi
+
+# my_ip=$(ifconfig $IFACE | grep 'inet addr:' | cut -d ':' -f 2 | awk '{ print $1}')
+my_ip=$(tail -n 19 $lease | grep -m 1 'fixed-address' | awk '{print $2}' | cut -d ';' -f1)
+# gateway=$(route -n | grep "^0.0.0.0" | tr -s " " | cut -f 2 -d " ")
+gateway=$(tail -n 19 $lease | grep -m 1 'routers' | awk '{print $3}' | cut -d ';' -f1)
+
+echo "$my_mac $my_ip > $gateway" >> $log_file
+
+# on extrait les IP de l'option www-server
+www_srv=$(tail -n 19 $lease | grep -m 1 'www-server' | awk '{print $3}' | cut -d ';' -f1)
+
+IFS="," read -ra IP_ARRAY <<< "$www_srv"
+
+for IP in "${IP_ARRAY[@]}"
+do
+        if ! grep -iq "$IP" /etc/hosts; then
+                echo "# OPT Print Server" >> /etc/hosts
+                echo "$IP       $IP.opt" >> /etc/hosts
+        fi
+        echo "http://$IP.opt/resources/ajax/box-registration.php?MAC=$my_mac&IP=$my_ip&interface=$IFACE&gateway=$gateway" >> $log_file
+        curl -f -m 3 "http://$IP.opt/resources/ajax/box-registration.php?MAC=$my_mac&IP=$my_ip&interface=$IFACE&gateway=$gateway" 1> /dev/null 2> /dev/null &
+done
