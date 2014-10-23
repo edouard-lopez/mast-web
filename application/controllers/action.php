@@ -26,10 +26,10 @@ class Action extends CI_Controller
 
         if ($this->is_valid($_, 'SERVICE_ACTIONS')) {
             $args = $this->prepare_service($args);
-            $cmd = sprintf('%s %s %s', MAST_SERVICE, $_, $args);
+            $cmd = sprintf('sudo %s %s %s', MAST_SERVICE, $_, $args);
         } elseif ($this->is_valid($_, 'SERVICE_HELPERS') or $this->is_valid($_, 'SERVICE_CH_HELPERS')) {
             $args = $this->prepare_makefile($args);
-            $cmd = sprintf('%s %s %s', MAST_UTILS, $_, $args);
+            $cmd = sprintf('sudo %s %s %s', MAST_UTILS, $_, $args);
         } else {
             show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
             exit;
