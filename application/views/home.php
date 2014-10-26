@@ -40,7 +40,8 @@
     <div class="container-fluid">
         <div class="panel-group" id="accordion"
              data-configs='<?= json_encode($configs, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
-            <?php foreach ($configs as $tunnel => $tunnelConfig) { ?>
+            <?php foreach ($configs as $tunnel => $tunnelConfig) {
+                $tunnelConfig['site']=$tunnel; ?>
                 <div id="tunnel_<?= md5($tunnel) ?>" class="panel panel-default tunnel"
                      data-tunnel='<?= json_encode($tunnelConfig, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
                     <div class="panel-heading">
@@ -54,44 +55,28 @@
                             <span class="tunnel-fqdn text-muted"> <?= $tunnelConfig['remoteHost'] ?> </span>
                         </h2>
                         <ul class="nav nav-pills nav-action pull-right">
-                                    <?php
-                                    $host_actions = array(
-                                        'status' => $this->config->item('SERVICE_ACTIONS')['status'],
-                                        'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
-                                        // 'ports-script' => $this->config->item('SERVICE_CH_HELPERS')['ports-script']
-                                    );
-                                    foreach ($host_actions as $action => $props):
-                                        $props['name'] = $tunnel;
-                                        $props['redirect'] = false;
-                                    ?>
-                                        <li>
-                                            <?php action_button($this, $action, $props); ?>
-                                        </li>
-                                    <?php endforeach ?>
-                            <!-- <li>
                             <?php
-                                // $action = 'download All port script';
-                                // $props = $this->config->item('SERVICE_ACTIONS')['port'];
-                                // $props['name'] = $tunnel;
-                                // echo "<a href='./home/getScript/PORTS/".urlencode(base64_encode(json_encode(array())))."'>";
-                                // action_button($this, $action, $props);
-                                // echo "</a>";
+                            $host_actions = array(
+                                'status' => $this->config->item('SERVICE_ACTIONS')['status'],
+                                'add-channel' => $this->config->item('SERVICE_HELPERS')['add-channel'],
+                            );
+                            foreach ($host_actions as $action => $props):
+                                $props['name'] = $tunnel;
+                                $props['redirect'] = false;
                             ?>
-                            </li> -->
-                            <li>
-                                <button role="button" class="btn btn-xs btn-default btn-action"
-                                    data-name="Ville"
-                                    data-action="ports-script"
-                                    data-redirect="./home/getScript/PORTS/<?=urlencode(base64_encode(json_encode($tunnel)))?>"
-                                    data-target="#modal-ports-script" title=""
-                                    data-placement="left"
-                                    data-toggle="tooltip"
-                                    data-trigger="hover"
-                                    data-html="true"
-                                    data-original-title="">
-                                    <i class="glyphicon glyphicon-comment"></i>
-                                </button>
-                            </li>
+                                <li>
+                                    <?php action_button($this, $action, $props); ?>
+                                </li>
+                            <?php endforeach ?>
+                           <li>
+                            <?php
+                                $action = 'link';
+                                $props = $this->config->item('SERVICE_HELPERS')['link'];
+                                $props['name'] = $tunnel;
+                                $props['redirect']="./home/getScript/PORTS/".urlencode(base64_encode(json_encode($tunnelConfig)));
+                                action_button($this, $action, $props);
+                            ?>
+                           </li>
                             <li class="divider"></li>
                             <?php
                             $host_actions = array(

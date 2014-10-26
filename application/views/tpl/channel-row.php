@@ -9,15 +9,24 @@
     </span>
     <ul class="nav-action list-inline pull-right">
         <li>
-        <a id="" class="btn btn-xs btn-default glyphicon glyphicon-comment " href="./home/getScript/BAT/<?= urlencode(base64_encode(json_encode(array(
-                'site' => $tunnel,
-                'vps' => $_SERVER['HTTP_HOST'],
-                'port' => $channel['localPort'],
-                'imp' => $channel['remoteHost'],
-                'channelComment' => $channel['comment']
-            ))))?>" target="_blank">
-        </a>
-        </li>
+        <?php
+            $action = 'link';
+            $props = $this->config->item('SERVICE_HELPERS')['link'];
+            $props['name'] = $tunnel;
+            $props['redirect']="./home/getScript/BAT/".
+                                urlencode(
+                                    base64_encode(
+                                        json_encode(
+                                            array(
+                                                'site' => $tunnel,
+                                                'vps' => $_SERVER['HTTP_HOST'],
+                                                'port' => $channel['localPort'],
+                                                'imp' => $channel['remoteHost'],
+                                                'channelComment' => $channel['comment']
+                                            ))));
+            action_button($this, $action, $props);
+        ?>
+       </li>
         <li class="divider"></li>
         <li>
             <?php

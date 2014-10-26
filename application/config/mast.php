@@ -102,6 +102,14 @@ $config['SERVICE_HELPERS'] = array(
         )
     ),
 
+    'link' => array(
+        'class' => 'btn-default btn-action',
+        'icon' => 'glyphicon glyphicon-comment',
+        'redirect' => "./home/getScript/PORTS/",
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
+    ),
     'list-logs' => array(
         'class' => 'btn-info btn-action',
         'icon' => 'glyphicon glyphicon-info',
@@ -129,14 +137,6 @@ $config['SERVICE_CH_HELPERS'] = array(
             'NAME' => array('pattern' => REGEX_NAME),
         )
     ),
-    // 'ports-script' => array(
-    //     'class' => 'btn-default btn-action',
-    //     'icon' => 'glyphicon glyphicon-comment',
-    //     'redirect' => "./home/getScript/PORTS/",
-    //     'form-fields' => array(
-    //         'NAME' => array('pattern' => REGEX_NAME),
-    //     )
-    // ),
 );
 $config['PROJECT'] = 'Mast web';
 $config['PROJECT.html'] = '<abbr title="Multiple Auto-SSH Tunnels web" class="initialism">MAST</abbr>-web';

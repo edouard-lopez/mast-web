@@ -120,6 +120,9 @@ var instance = {
                         })
                         .modal();
                     return true;
+                case 'link':
+                    window.open(data.redirect);
+                    return true;
                 default:
                     console.error('invalid action: ' + action);
                     return true;
