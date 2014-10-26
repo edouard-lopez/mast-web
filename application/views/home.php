@@ -161,7 +161,10 @@
                 ?>
                 <?php foreach ($buttons as $action => $props): ?>
                     <li>
-                        <?php action_button($this, $action, $props, false); ?>
+                        <?php
+                            $props['redirect'] = 'false';
+                            action_button($this, $action, $props, false);
+                        ?>
                     </li>
                 <?php endforeach ?>
                 <li>
