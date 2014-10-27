@@ -1,14 +1,15 @@
 #!/bin/sh
 # Construct OS on SD-Card for OPT-Box
 # By alban.lopez@gmail.com
-# Version : 0.32
-clear
+# Version : 0.33
 
 MSG_FAIL="[ $(tput setaf 1)FAIL$(tput sgr 0) ]\t"
 MSG_OK="[  $(tput setaf 2)OK$(tput sgr 0)  ]\t"
 MSG_SKIP="[ $(tput setaf 3)SKIP$(tput sgr 0) ]\t"
 
 success=0
+
+echo "\n"
 
 CURRENT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
@@ -34,6 +35,9 @@ esac
 
 sudo umount /dev/mmcblk0* /media/cubox-i > /dev/null 2>&1
 sudo mkdir -p /media/cubox-i > /dev/null 2>&1
+sleep 1
+sudo partprobe /dev/mmcblk0
+# sudo partprobe /dev/mmcblk0
 sudo mount /dev/mmcblk0p1 /media/cubox-i > /dev/null 2>&1
 
 
@@ -70,9 +74,9 @@ fi
 
 if [ $success -eq 3 ]
 then
-	echo "$MSG_OK $(tput setaf 2)## Success : SD-Card is available. ##\n\n$(tput sgr 0)"
+	echo "$MSG_OK $(tput setaf 2)## Success : SD-Card is available. ##\n$(tput sgr 0)"
 else
-	echo "$MSG_FAIL $(tput setab 1)   Sortir et remettre la carte SD, puis relancer   ./BUILD   $(tput sgr 0)\n\n"
+	echo "$MSG_FAIL $(tput setab 1)   Sortir et remettre la carte SD, puis relancer   ./BUILD   $(tput sgr 0)\n"
 	exit 1
 fi
 
