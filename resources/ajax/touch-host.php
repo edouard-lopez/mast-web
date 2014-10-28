@@ -8,7 +8,7 @@ error_reporting(E_ALL);
     * @package  MAST-web
     * @author   alban LOPEZ <alban.lopez@gmail.com>
     * @link     ./resources/ajax/touch-host.php?hosts=128.0.0.222:80,8.8.8.8:53,88.300.112.16:80,test.com,localhost:22,te@st.com,truc.fr:80,1.123.fr
-    * @version  1.0
+    * @version  1.1
 #--------------------------------------------------------------------------
 */
 define("TIMEOUT", 1);
@@ -162,7 +162,7 @@ Test each host on the network
     $hosts=explode(',', $_GET['hosts']);
 
     foreach ($hosts as $hostPort) {
-        @list($host, $port) = explode(':', $hostPort);
+        @list($host, $port, $channel) = explode(':', $hostPort);
 
             // si ca resemble a une IP
             if ( preg_match('/^([0-9]+\.)+[0-9]+$/', $host)) {

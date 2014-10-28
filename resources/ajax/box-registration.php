@@ -16,6 +16,7 @@ $BoxListFile = './BoxList.json';
 if (isset($_GET['MAC'])) {
 	$Box = array(
 		$_GET['MAC'] => array(
+			'HumanLastUp' => date('Y-m-d H:i:s'),
 			'LastUp' => time(),
 			'IP' => $_GET['IP'],
 			'Gateway' => $_GET['gateway'],

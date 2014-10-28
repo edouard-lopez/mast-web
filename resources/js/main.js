@@ -45,8 +45,11 @@ var instance = {
 
 		if (hash !== '' && hash !== null && reSmart.exec(hash)) {
             $('#dangerous-area').hide();
+            var action = /add-channel/;
+            if (action.exec(hash)) {
+                $('.restart').addClass('animated tada');
+            }
         }
-
         return this;
     },
 
@@ -90,10 +93,15 @@ var instance = {
                 //no special behavior, fallback to simple api call
                 case 'start':
                 case 'stop':
-                case 'restart':
                 case 'status':
                 case 'list-hosts':
                 case 'list-channels':
+                    break;
+                case 'restart':
+                    // console.log(self);
+                    // $('.container-fluid div div h2')
+                    //     .addClass('animated tada');
+
                     break;
                 case 'remove-host':
                 case 'remove-channel':

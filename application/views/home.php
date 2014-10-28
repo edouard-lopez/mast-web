@@ -24,14 +24,13 @@
 
     <div class="repulse">
     <?php
-    $action = 'add-host';
-    $props = $this->config->item('SERVICE_HELPERS')[$action];
-    $props['text-content'] = i18n($this, $action);
-    $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
-    action_form($this, $action, $fields);
-    action_button($this, $action, $props);
-    ?>
-    <?php
+        $action = 'add-host';
+        $props = $this->config->item('SERVICE_HELPERS')[$action];
+        $props['text-content'] = i18n($this, $action);
+        $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
+        action_form($this, $action, $fields);
+        action_button($this, $action, $props);
+
         $action = 'add-channel';
         $fields = $this->config->item('SERVICE_HELPERS')[$action]['form-fields'];
         action_form($this, $action, $fields);
@@ -42,7 +41,7 @@
              data-configs='<?= json_encode($configs, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
             <?php foreach ($configs as $tunnel => $tunnelConfig) {
                 $tunnelConfig['site']=$tunnel; ?>
-                <div id="tunnel_<?= md5($tunnel) ?>" class="panel panel-default tunnel"
+                <div id="<?= md5($tunnel) ?>" class="panel panel-default tunnel"
                      data-tunnel='<?= json_encode($tunnelConfig, JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
                     <div class="panel-heading">
                         <h2 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $tunnel ?>">
@@ -64,11 +63,11 @@
                                 $props['name'] = $tunnel;
                                 $props['redirect'] = false;
                             ?>
-                                <li>
-                                    <?php action_button($this, $action, $props); ?>
-                                </li>
+                            <li>
+                                <?php action_button($this, $action, $props); ?>
+                            </li>
                             <?php endforeach ?>
-                           <li>
+                            <li>
                             <?php
                                 $action = 'link';
                                 $props = $this->config->item('SERVICE_HELPERS')['link'];
@@ -76,7 +75,7 @@
                                 $props['redirect']="./home/getScript/PORTS/".urlencode(base64_encode(json_encode($tunnelConfig)));
                                 action_button($this, $action, $props);
                             ?>
-                           </li>
+                            </li>
                             <li class="divider"></li>
                             <?php
                             $host_actions = array(

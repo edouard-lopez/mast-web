@@ -1,9 +1,9 @@
-<li id="channel_<?=md5($channel['remoteHost'])?>" data-channel='<?= json_encode($channel,
+<li id="channel_<?=md5($channel['remoteHost'].$channel['localPort'])?>" data-channel='<?= json_encode($channel,
     JSON_HEX_APOS | JSON_HEX_QUOT) ?>' class='channel'>
     <span>
-        <i id="x<?=md5($channel['remoteHost'].':'.$channel['remotePort'])?>" class='hide'
+        <i id="x<?=md5($channel['remoteHost'].':'.$channel['remotePort'].':'.$channel['localPort'])?>" class='hide'
            data-html="true" data-toggle="tooltip" data-placement="top"></i>
-        <a href='http://<?= $channel['remoteHost'] ?>/'><?= $channel['remoteHost'] ?></a>
+        <a href='http://<?= $channel['remoteHost'] ?>/' target="_blank"><?= $channel['remoteHost'] ?></a>
         <span> by port <?= $channel['localPort'] ?></span>
         <i class="text-muted"> – <?= $channel['comment'] ?></i>
     </span>

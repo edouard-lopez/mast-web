@@ -7,7 +7,7 @@ var touch_host = function () {
             if ( !($("div:first h2:first.collapsed", currentThis)[0])) {
                 // only if channels are visible
                 ch_str = $.map(tunnelContents.channels, function (channel,i) {
-                        var key = channel.remoteHost+':'+channel.remotePort;
+                        var key = channel.remoteHost+':'+channel.remotePort+':'+channel.localPort;
                         $('#x'+MD5(key))
                             .removeClass('glyphicon-ok glyphicon-exclamation-sign')
                             .addClass('glyphicon-transfer status-in-progress')
