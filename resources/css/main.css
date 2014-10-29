@@ -130,3 +130,35 @@ p:last-child {
 .repulse {
     margin: .5em;
 }
+
+
+/**
+    Tada animation on $('block').addclass()
+*/
+.animated { 
+    -webkit-animation-duration: 1.1s; 
+    animation-duration: 1.1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    animation-iteration-count:3; 
+    -webkit-animation-iteration-count:3; 
+} 
+
+@-webkit-keyframes tada { 
+    0% {-webkit-transform: scale(1);} 
+    10%, 20% {-webkit-transform: scale(0.8) rotate(-3deg);} 
+    30%, 50%, 70%, 90% {-webkit-transform: scale(1.4) rotate(3deg);} 
+    40%, 60%, 80% {-webkit-transform: scale(1.4) rotate(-3deg);} 
+    100% {-webkit-transform: scale(1) rotate(0);} 
+} 
+@keyframes tada { 
+    0% {transform: scale(1);} 
+    10%, 20% {transform: scale(0.8) rotate(-3deg);} 
+    30%, 50%, 70%, 90% {transform: scale(1.4) rotate(3deg);} 
+    40%, 60%, 80% {transform: scale(1.4) rotate(-3deg);} 
+    100% {transform: scale(1) rotate(0);} 
+} 
+.tada { 
+    -webkit-animation-name: tada; 
+    animation-name: tada; 
+}

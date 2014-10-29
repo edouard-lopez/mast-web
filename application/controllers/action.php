@@ -26,20 +26,29 @@ class Action extends CI_Controller
 
         if ($this->is_valid($_, 'SERVICE_ACTIONS')) {
             $args = $this->prepare_service($args);
-            $cmd = sprintf('sudo %s %s %s', MAST_SERVICE, $_, $args);
+            $cmd = sprintf('sudo %s %s %s;', MAST_SERVICE, $_, $args);
         } elseif ($this->is_valid($_, 'SERVICE_HELPERS') or $this->is_valid($_, 'SERVICE_CH_HELPERS')) {
             $args = $this->prepare_makefile($args);
-            $cmd = sprintf('sudo %s %s %s', MAST_UTILS, $_, $args);
+            $cmd = sprintf('sudo %s %s %s;', MAST_UTILS, $_, $args);
+            if ($_=='add-channel') {
+            // dans le cas d'un add-channel on redemare le tunnel correspondant
+                preg_match(
+                    "/^.*[\\s]NAME=(?P<name>'\\w*')[\\s].*$/",
+                    ' '.$args.' ',
+                    $tunnel
+                );
+                $cmd .= sprintf('sudo %s restart %s;', MAST_SERVICE, $tunnel['name']);
+            }
         } else {
             show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
             exit;
         }
 
-        log_message('info', "cmd: \t\t$cmd < < < < < < < < < ");
+        log_message('info', "cmd: \t\t$cmd < < < < < < ");
         if ($redirect===true or $redirect=='true') {
             $this->shell->run($cmd);
 
-            redirect($this->config->base_url().$this->config->item('cheat-code'), 301);
+            redirect($this->config->base_url().$this->config->item('cheat-code').'&'.$_, 301);
             return true;
         } else {
             return $this->shell->run($cmd);

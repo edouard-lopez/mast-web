@@ -41,7 +41,7 @@ $config['SERVICE_ACTIONS'] = array(
 
     ),
     'restart' => array(
-        'class' => 'btn-warning btn-action',
+        'class' => 'btn-warning btn-action restart',
         'icon' => 'glyphicon glyphicon-refresh',
         'form-fields' => array(
             'NAME' => array('pattern' => REGEX_NAME),
@@ -57,6 +57,7 @@ $config['SERVICE_ACTIONS'] = array(
 
     ),
 );
+
 
 $config['SERVICE_HELPERS'] = array(
     'list-hosts' => array(
@@ -101,7 +102,14 @@ $config['SERVICE_HELPERS'] = array(
             'NAME' => array('pattern' => REGEX_NAME),
         )
     ),
-
+    'link' => array(
+        'class' => 'btn-default btn-action',
+        'icon' => 'glyphicon glyphicon-comment',
+        'redirect' => "./home/getScript/PORTS/",
+        'form-fields' => array(
+            'NAME' => array('pattern' => REGEX_NAME),
+        )
+    ),
     'list-logs' => array(
         'class' => 'btn-info btn-action',
         'icon' => 'glyphicon glyphicon-info',
@@ -111,6 +119,8 @@ $config['SERVICE_HELPERS'] = array(
         'icon' => 'glyphicon glyphicon-floppy-save',
     ),
 );
+
+
 # todo: what is SERVICE_CH_HELPERS?
 $config['SERVICE_CH_HELPERS'] = array(
     'deploy-code_BAT' => array(
@@ -129,14 +139,6 @@ $config['SERVICE_CH_HELPERS'] = array(
             'NAME' => array('pattern' => REGEX_NAME),
         )
     ),
-    // 'ports-script' => array(
-    //     'class' => 'btn-default btn-action',
-    //     'icon' => 'glyphicon glyphicon-comment',
-    //     'redirect' => "./home/getScript/PORTS/",
-    //     'form-fields' => array(
-    //         'NAME' => array('pattern' => REGEX_NAME),
-    //     )
-    // ),
 );
 $config['PROJECT'] = 'Mast web';
 $config['PROJECT.html'] = '<abbr title="Multiple Auto-SSH Tunnels web" class="initialism">MAST</abbr>-web';

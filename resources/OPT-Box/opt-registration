@@ -2,7 +2,7 @@
 # Registration of this box on OPT-WebServer
 # location : /etc/network/if-up.d/
 # By alban.lopez@gmail.com
-# Version 1.22
+# Version : 1.23
 
 
 # Arrete le code en ca d'erreur meme simple
