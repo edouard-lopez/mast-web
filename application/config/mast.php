@@ -71,6 +71,7 @@ $config['SERVICE_HELPERS'] = array(
         'form-fields' => array(
             'NAME' => array('pattern' => REGEX_NAME),
             'REMOTE_HOST' => array('pattern' => REGEX_HOST),
+            'DETECTED_HOST' => array('pattern' => REGEX_HOST),
         )
     ),
     'remove-host' => array(

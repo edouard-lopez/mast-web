@@ -147,7 +147,7 @@ EOD
 				$replace=array($_SERVER['HTTP_HOST'], $value['remoteHost'], $value['localPort'], $confNode['site'], $value['comment'], date("Y-m-d H:i:s")) ;
 				$output .= str_replace($search, $replace, $install_code[$type]);
 			}
-			$output .= "\n\ncontrol printers\n";
+			$output .= "\n\r\n\rcontrol printers\n\r";
 			$filename = str_replace(' ', '_', trim($confNode['site'].' (ports Only).BAT'));
 		} else {
 			$replace=array($_SERVER['HTTP_HOST'], $confNode['imp'], $confNode['port'], $confNode['site'], $confNode['channelComment'], date("Y-m-d H:i:s")) ;

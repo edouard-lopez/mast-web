@@ -14,11 +14,11 @@ class Action extends CI_Controller
     {
         $this->load->view('home');
     }
-
     /**
      * Start
      * @return array [description]
-     * @param string _ action to request on the service (start|stop|restart|…)
+     * @param string $_ action to request on the service (start|stop|restart|…) or on mast-utils (list-host|add-channel|…)
+     * @param strin $args is arguments for service or mast-utils
      */
     public function invoke($_, $args = null, $redirect=true)
     {
@@ -30,19 +30,11 @@ class Action extends CI_Controller
         } elseif ($this->is_valid($_, 'SERVICE_HELPERS') or $this->is_valid($_, 'SERVICE_CH_HELPERS')) {
             $args = $this->prepare_makefile($args);
             $cmd = sprintf('sudo %s %s %s;', MAST_UTILS, $_, $args);
-            if ($_=='add-channel') {
-            // dans le cas d'un add-channel on redemare le tunnel correspondant
-                preg_match(
-                    "/^.*[\\s]NAME=(?P<name>'\\w*')[\\s].*$/",
-                    ' '.$args.' ',
-                    $tunnel
-                );
-                $cmd .= sprintf('sudo %s restart %s;', MAST_SERVICE, $tunnel['name']);
-            }
         } else {
             show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
             exit;
         }
+        $cmd .= $this->post_cmd($_, $args);
 
         log_message('info', "cmd: \t\t$cmd < < < < < < ");
         if ($redirect===true or $redirect=='true') {
@@ -55,7 +47,30 @@ class Action extends CI_Controller
         }
     }
 
-
+    /**
+     * @return post command string
+     * @param string $_ action to request on the service (start|stop|restart|…) or on mast-utils (list-host|add-channel|…)
+     * @param strin $args is arguments for service or mast-utils
+     */
+    public function post_cmd($_, $args)
+    {
+        $post_cmd ='';
+        switch ($_) {
+            case 'add-channel':
+                preg_match(
+                    "/NAME='(?P<name>[^']+)/",
+                    $args,
+                    $tunnel
+                );
+                $post_cmd .= sprintf("sudo %s restart '%s';", MAST_SERVICE, $tunnel['name']);
+                break;
+            default:
+                # code...
+                break;
+        }
+        return $post_cmd;
+    }
+    
     /**
      * Prepare arguments for the SERVICE
      * @param $params
