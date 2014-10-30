@@ -16,6 +16,10 @@ body {
     top: -.75em;
 }
 
+h2.panel-title {
+    cursor: pointer;
+}
+
 p {
     padding: .75em;
     margin-top: .25em;
