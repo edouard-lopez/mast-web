@@ -33,12 +33,6 @@
                         </div>
                     <?php endforeach ?>
                 </div>
-                /resources/ajax/BoxList.json
-                <? 
-                    $BoxListFile = './resources/ajax/BoxList.json';
-                    // file_put_contents($BoxListFile, json_encode(array('1'=>1,'99'=>99)) );
-                    echo file_get_contents($BoxListFile);
-                ?>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default"
                             data-dismiss="modal"><?= i18n($this, 'close') ?></button>

@@ -13,7 +13,7 @@
             $action = 'link';
             $props = $this->config->item('SERVICE_HELPERS')['link'];
             $props['name'] = $tunnel;
-            $props['redirect']="./home/getScript/BAT/".
+            $props['href']="./home/getScript/BAT/".
                                 urlencode(
                                     base64_encode(
                                         json_encode(

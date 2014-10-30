@@ -72,7 +72,7 @@
                                 $action = 'link';
                                 $props = $this->config->item('SERVICE_HELPERS')['link'];
                                 $props['name'] = $tunnel;
-                                $props['redirect']="./home/getScript/PORTS/".urlencode(base64_encode(json_encode($tunnelConfig)));
+                                $props['href']="./home/getScript/PORTS/".urlencode(base64_encode(json_encode($tunnelConfig)));
                                 action_button($this, $action, $props);
                             ?>
                             </li>

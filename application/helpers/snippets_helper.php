@@ -4,6 +4,7 @@ function action_button($this=null, $action=null, $props)
     $props['name'] = isset($props['name']) ? $props['name']: '';
     $props['id'] = isset($props['id']) ? $props['id']: null;
     $props['redirect'] = isset($props['redirect']) ? 'false': 'true';
+    $props['href'] = isset($props['href']) ? $props['href']: './';
     $props['class'] .= isset($props['text-content']) ? null: ' hide-btn-content';
     $props['text-content'] = isset($props['text-content']) ? $props['text-content']: i18n($this, $action);
 

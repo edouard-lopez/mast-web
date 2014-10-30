@@ -125,6 +125,8 @@ EOD
 # ajout des infos : emplacement et commentaire
 	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prncnfg.vbs -t -p "%name%" -l "%site%" -m "GZ par tunnel SSH (%UTC%), %imp% par le canal %port%"
 
+control printers
+
 EOD
 ,
 'PORTS' => <<<EOD
@@ -145,7 +147,8 @@ EOD
 				$replace=array($_SERVER['HTTP_HOST'], $value['remoteHost'], $value['localPort'], $confNode['site'], $value['comment'], date("Y-m-d H:i:s")) ;
 				$output .= str_replace($search, $replace, $install_code[$type]);
 			}
-			$filename = str_replace(' ', '_', trim($confNode.' (ports Only).BAT'));
+			$output .= "\n\ncontrol printers\n";
+			$filename = str_replace(' ', '_', trim($confNode['site'].' (ports Only).BAT'));
 		} else {
 			$replace=array($_SERVER['HTTP_HOST'], $confNode['imp'], $confNode['port'], $confNode['site'], $confNode['channelComment'], date("Y-m-d H:i:s")) ;
 			$output = str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']);

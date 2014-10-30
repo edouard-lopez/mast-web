@@ -6,6 +6,7 @@
         data-name="<?= $props['name']?>"
         data-action="<?= $action ?>"
         data-redirect="<?= $props['redirect'] ?>"
+        data-href="<?= $props['href'] ?>"
         data-target="#modal-<?= $action ?>"
 
         title="<?= ucfirst(i18n($this, $action)) ?>"

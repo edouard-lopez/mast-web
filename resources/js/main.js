@@ -129,7 +129,7 @@ var instance = {
                         .modal();
                     return true;
                 case 'link':
-                    window.open(data.redirect);
+                    window.open(data.href);
                     return true;
                 default:
                     console.error('invalid action: ' + action);

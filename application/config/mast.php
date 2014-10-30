@@ -105,10 +105,7 @@ $config['SERVICE_HELPERS'] = array(
     'link' => array(
         'class' => 'btn-default btn-action',
         'icon' => 'glyphicon glyphicon-comment',
-        'redirect' => "./home/getScript/PORTS/",
-        'form-fields' => array(
-            'NAME' => array('pattern' => REGEX_NAME),
-        )
+        'href' => "./",
     ),
     'list-logs' => array(
         'class' => 'btn-info btn-action',
@@ -123,14 +120,14 @@ $config['SERVICE_HELPERS'] = array(
 
 # todo: what is SERVICE_CH_HELPERS?
 $config['SERVICE_CH_HELPERS'] = array(
-    'deploy-code_BAT' => array(
-        'class' => 'batCode btn-default',
-        'icon' => 'glyphicon glyphicon-comment',
-    ),
-    'deploy-code_PS1' => array(
-        'class' => 'ps1Code btn-primary',
-        'icon' => 'glyphicon glyphicon-comment',
-    ),
+    // 'deploy-code_BAT' => array(
+    //     'class' => 'batCode btn-default',
+    //     'icon' => 'glyphicon glyphicon-comment',
+    // ),
+    // 'deploy-code_PS1' => array(
+    //     'class' => 'ps1Code btn-primary',
+    //     'icon' => 'glyphicon glyphicon-comment',
+    // ),
     'remove-channel' => array(
         'class' => 'btn-danger',
         'icon' => 'glyphicon glyphicon-remove',
