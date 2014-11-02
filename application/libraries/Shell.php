@@ -13,8 +13,10 @@ class Shell {
      * @return mixed
      */
     public static function execute($_ = null, $debug=true) {
+        $_ = "( TERM=screen-256color $_ )";
         $_ = $debug ? $_." 2>&1"  : $_;
-        exec("TERM=screen-256color $_ | aha --no-header", $output, $exitCode);
+        # we wrap the commands in a subshell so all stdout is piped to aha
+        exec("$_ | aha --no-header", $output, $exitCode);
         return $output;
     }
 

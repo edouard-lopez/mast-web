@@ -34,6 +34,7 @@ class Action extends CI_Controller
             show_error(sprintf('<strong>Invalid action:</strong> <em>%s</em> in %s.', $_, basename(__FILE__)), 500);
             exit;
         }
+
         $cmd .= $this->post_cmd($_, $args);
 
         log_message('info', "cmd: \t\t$cmd < < < < < < ");

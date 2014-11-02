@@ -25,7 +25,7 @@
                                     <?php if ($action == 'add-channel' && $field == 'NAME'): ?>
                                         value="replaced-with-js"
                                         readonly
-                                    <?php else: ?>
+                                    <?php elseif($action == 'add-host' && $field == 'CURRENT_IP'): ?>
 
                                     <?php endif ?>
                                     >

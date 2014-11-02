@@ -70,8 +70,8 @@ $config['SERVICE_HELPERS'] = array(
         'icon' => 'glyphicon glyphicon-plus',
         'form-fields' => array(
             'NAME' => array('pattern' => REGEX_NAME),
-            'REMOTE_HOST' => array('pattern' => REGEX_HOST),
-            'DETECTED_HOST' => array('pattern' => REGEX_HOST),
+            'WORK_IP' => array('pattern' => REGEX_HOST),
+            'CURRENT_IP' => array('pattern' => REGEX_HOST),
         )
     ),
     'remove-host' => array(
