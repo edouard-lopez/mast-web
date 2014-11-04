@@ -132,32 +132,33 @@ EOD
 'PORTS' => <<<EOD
 
 # %name% :
-	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%:%port%_%imp% (%name%)" -n %port%
-	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %imp% -r "DIRECT_%imp% (%name%)"
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%:%port%_%imp%" -n %port%
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %imp% -r "DIRECT_%imp%"
 EOD
 );
 
 		$search=array('%vps%','%imp%','%port%','%site%','%name%','%UTC%');
 		if ($type=='PORTS') {
-			// echo '<pre>';
-			// echo json_encode($confNode);
-			// exit();
 			$output = '# Config de tous les ports pour : '.$confNode['site'];
 			foreach ($confNode['channels'] as $key => $value) {
-				$replace=array($_SERVER['HTTP_HOST'], $value['remoteHost'], $value['localPort'], $confNode['site'], $value['comment'], date("Y-m-d H:i:s")) ;
-				$output .= str_replace($search, $replace, $install_code[$type]);
+				if ((int)$value['remotePort'] == 9100) {
+					$replace=array($_SERVER['HTTP_HOST'], $value['remoteHost'], $value['localPort'], $confNode['site'], $value['comment'], date("Y-m-d H:i:s")) ;
+					$output .= str_replace($search, $replace, $install_code[$type]);
+				}
 			}
 			$output .= "\n\r\n\rcontrol printers\n\r";
 			$filename = str_replace(' ', '_', trim($confNode['site'].' (ports Only).BAT'));
 		} else {
-			$replace=array($_SERVER['HTTP_HOST'], $confNode['imp'], $confNode['port'], $confNode['site'], $confNode['channelComment'], date("Y-m-d H:i:s")) ;
-			$output = str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']);
 			$filename = str_replace(' ', '_', trim($confNode['channelComment'].' ('.$confNode['imp'].'-'.$confNode['port'].').'.($type=='PS1'?'PS1':'BAT') ));
+			if ((int)$confNode['remotePort'] == 9100) {
+				$replace=array($_SERVER['HTTP_HOST'], $confNode['imp'], $confNode['port'], $confNode['site'], $confNode['channelComment'], date("Y-m-d H:i:s")) ;
+				$output = str_replace($search, $replace, $install_code[($type=='PS1')?'PS1':'BAT']);
+			} else {
+				$output = "echo 'Object is not a printer !'\n\rpause";
+			}
 		}
 		@ob_end_clean();
 		header_remove();
-		// echo( $output );
-		// exit;
 
    if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
 	{

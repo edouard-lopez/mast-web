@@ -8,6 +8,7 @@
         <i class="text-muted"> – <?= $channel['comment'] ?></i>
     </span>
     <ul class="nav-action list-inline pull-right">
+        <?php if ((int)$channel['remotePort']==9100): ?>
         <li>
         <?php
             $action = 'link';
@@ -21,6 +22,7 @@
                                                 'site' => $tunnel,
                                                 'vps' => $_SERVER['HTTP_HOST'],
                                                 'port' => $channel['localPort'],
+                                                'remotePort' => $channel['remotePort'],
                                                 'imp' => $channel['remoteHost'],
                                                 'channelComment' => $channel['comment']
                                             ))));
@@ -28,6 +30,7 @@
         ?>
        </li>
         <li class="divider"></li>
+        <?php endif ?>
         <li>
             <?php
                 $action = 'remove-channel';
@@ -39,5 +42,4 @@
             ?>
         </li>
     </ul>
-
 </li>
