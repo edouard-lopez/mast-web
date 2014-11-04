@@ -34,10 +34,8 @@
                     <?php endforeach ?>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal"><?= i18n($this, 'close') ?></button>
-                    <input type="submit" class="btn btn-primary btn-sm" value="<?= i18n($this,
-                        'add') ?>">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= i18n($this, 'close') ?></button>
+                    <input type="submit" class="btn btn-primary btn-sm" value="<?= i18n($this, 'add') ?>">
                 </div>
             </form>
         </div>
