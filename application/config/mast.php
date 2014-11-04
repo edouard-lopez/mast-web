@@ -10,9 +10,9 @@ define('MAST_UTILS', '/usr/sbin/mast-utils');
 
 define('TPL_PATH', APPPATH . '/views/tpl/');
 
-define('REGEX_IP_ADRESS', '25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}');
+define('REGEX_IP_ADRESS', '^25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$');
 define('REGEX_NAME', '[a-zA-Z0-9_:\-\s]+');
-define('REGEX_HOST', '((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$');
+define('REGEX_HOST', '(((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$)|(^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$)');
 define('REGEX_DESC', '.*');
 
 $config['cheat-code'] = '#im=smart';
@@ -70,8 +70,8 @@ $config['SERVICE_HELPERS'] = array(
         'icon' => 'glyphicon glyphicon-plus',
         'form-fields' => array(
             'NAME' => array('pattern' => REGEX_NAME),
-            'WORK_IP' => array('pattern' => REGEX_HOST),
-            'CURRENT_IP' => array('pattern' => REGEX_HOST),
+            'REMOTE_HOST' => array('pattern' => REGEX_HOST),
+            // 'CURRENT_IP' => array('pattern' => REGEX_HOST),
         )
     ),
     'remove-host' => array(
