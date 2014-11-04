@@ -96,9 +96,9 @@ $install_code = array(
 
 # Powershell V4+ Windows 2012R2
 # Creaton du port
-	Add-PrinterPort -Name "GZ_%vps%_%port%" -PrinterHostAddress "%vps%" -PortNumber %port%
+	Add-PrinterPort -Name "GZ_%vps%:%port%-%imp%" -PrinterHostAddress "%vps%" -PortNumber %port%
 # Creaton du port de secour en direct
-	Add-PrinterPort -Name "DIRECT_%imp%_%port%" -PrinterHostAddress "%imp%"
+	Add-PrinterPort -Name "DIRECT_%imp%" -PrinterHostAddress "%imp%"
 # Install du driver
 	if (Get-PrinterDriver -Name "MS Publisher Color Printer") {
 	    Write-Host "Pilote Generique deja present"
@@ -107,7 +107,7 @@ $install_code = array(
 	    Add-PrinterDriver "MS Publisher Color Printer"
 	}
 # Creation de l’objet imprimante
-	Add-Printer -name "%name%" -PortName "GZ_%vps%_%port%" -Location "%site%" -Comment "GZ par tunnel SSH (%UTC%)"  -DriverName "MS Publisher Color Printer"
+	Add-Printer -name "%name%" -PortName "GZ_%vps%:%port%-%imp%" -Location "%site%" -Comment "GZ par tunnel SSH (%UTC%)"  -DriverName "MS Publisher Color Printer"
 
 EOD
 ,
@@ -115,13 +115,13 @@ EOD
 
 # DOS – Batch XP+
 # Creaton du port GZ
-	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%_%port%" -n %port%
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%:%port%-%imp%" -n %port%
 # Creaton du port de secour en direct
-	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %imp% -r "DIRECT_%imp%_%port%"
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %imp% -r "DIRECT_%imp%"
 # Install du driver
 	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prndrvr.vbs -a -m "MS Publisher Color Printer"
 # Creation de l’objet imprimante
-	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prnmngr.vbs -a -p "%name%" -r "GZ_%vps%_%port%" -m "MS Publisher Color Printer"
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prnmngr.vbs -a -p "%name%" -r "GZ_%vps%:%port%-%imp%" -m "MS Publisher Color Printer"
 # ajout des infos : emplacement et commentaire
 	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\Prncnfg.vbs -t -p "%name%" -l "%site%" -m "GZ par tunnel SSH (%UTC%), %imp% par le canal %port%"
 
@@ -132,8 +132,8 @@ EOD
 'PORTS' => <<<EOD
 
 # %name% :
-	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%_%port%" -n %port%
-	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %imp% -r "DIRECT_%imp%_%port%"
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %vps% -r "GZ_%vps%:%port%-%imp%" -n %port%
+	cscript C:\\Windows\\System32\\Printing_Admin_Scripts\\fr-FR\\prnport.vbs -a -o raw -h %imp% -r "DIRECT_%imp%"
 EOD
 );
 
