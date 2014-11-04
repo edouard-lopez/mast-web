@@ -13,7 +13,7 @@ define('TPL_PATH', APPPATH . '/views/tpl/');
 define('REGEX_IP_ADRESS', '^25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$');
 define('REGEX_NAME', '[a-zA-Z0-9_:\-]+');
 define('REGEX_HOST', '(((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$)|(^([a-zA-Z]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$)');
-define('REGEX_DESC', '.*');
+define('REGEX_DESC', '[a-zA-Z0-9_:\-\(\)\[\]\{\}><\.\s]{3,40}');
 
 $config['cheat-code'] = '#im=smart';
 
@@ -121,14 +121,6 @@ $config['SERVICE_HELPERS'] = array(
 
 # todo: what is SERVICE_CH_HELPERS?
 $config['SERVICE_CH_HELPERS'] = array(
-    // 'deploy-code_BAT' => array(
-    //     'class' => 'batCode btn-default',
-    //     'icon' => 'glyphicon glyphicon-comment',
-    // ),
-    // 'deploy-code_PS1' => array(
-    //     'class' => 'ps1Code btn-primary',
-    //     'icon' => 'glyphicon glyphicon-comment',
-    // ),
     'remove-channel' => array(
         'class' => 'btn-danger',
         'icon' => 'glyphicon glyphicon-remove',
